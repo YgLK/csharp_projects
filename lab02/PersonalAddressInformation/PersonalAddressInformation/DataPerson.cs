@@ -8,7 +8,7 @@ namespace PersonalAddressInformation
 {
     internal class DataPerson
     {
-        private string name;
+        string name;
         string surname;
         string phoneNumber;
 

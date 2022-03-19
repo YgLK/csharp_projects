@@ -22,21 +22,6 @@ namespace PersonalAddressInformation
             ds = Program.getPersonalData();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void button4_Click(object sender, EventArgs e)
         {
             string name = textBox1.Text;

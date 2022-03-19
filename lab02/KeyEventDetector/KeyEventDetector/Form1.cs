@@ -24,26 +24,11 @@ namespace KeyEventDetector
             label3.Text = String.Empty;
         }
 
-        private void label2_MouseMove(object sender, MouseEventArgs e)
-        {
-
-        }
-
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
             string actual_cord = e.Location.X + ":" + e.Location.Y;
             string information = "Mouse position (x, y): "  + actual_cord;
             label4.Text = information;
-        }
-
-        private void label2_MouseCaptureChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)

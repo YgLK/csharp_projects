@@ -54,9 +54,6 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Waiting for an action...";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
-            this.label2.MouseCaptureChanged += new System.EventHandler(this.label2_MouseCaptureChanged);
-            this.label2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label2_MouseMove);
             // 
             // label4
             // 
