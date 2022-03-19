@@ -1,0 +1,11 @@
+E:\csharp_projects\advanced_programming2\KeyEventDetector\KeyEventDetector\bin\Debug\KeyEventDetector.exe.config
+E:\csharp_projects\advanced_programming2\KeyEventDetector\KeyEventDetector\bin\Debug\KeyEventDetector.exe
+E:\csharp_projects\advanced_programming2\KeyEventDetector\KeyEventDetector\bin\Debug\KeyEventDetector.pdb
+E:\csharp_projects\advanced_programming2\KeyEventDetector\KeyEventDetector\obj\Debug\KeyEventDetector.csproj.AssemblyReference.cache
+E:\csharp_projects\advanced_programming2\KeyEventDetector\KeyEventDetector\obj\Debug\KeyEventDetector.csproj.SuggestedBindingRedirects.cache
+E:\csharp_projects\advanced_programming2\KeyEventDetector\KeyEventDetector\obj\Debug\KeyEventDetector.Form1.resources
+E:\csharp_projects\advanced_programming2\KeyEventDetector\KeyEventDetector\obj\Debug\KeyEventDetector.Properties.Resources.resources
+E:\csharp_projects\advanced_programming2\KeyEventDetector\KeyEventDetector\obj\Debug\KeyEventDetector.csproj.GenerateResource.cache
+E:\csharp_projects\advanced_programming2\KeyEventDetector\KeyEventDetector\obj\Debug\KeyEventDetector.csproj.CoreCompileInputs.cache
+E:\csharp_projects\advanced_programming2\KeyEventDetector\KeyEventDetector\obj\Debug\KeyEventDetector.exe
+E:\csharp_projects\advanced_programming2\KeyEventDetector\KeyEventDetector\obj\Debug\KeyEventDetector.pdb

@@ -1,0 +1,11 @@
+E:\csharp_projects\advanced_programming2\TextBoxFirstApp\TextBoxFirstApp\obj\Debug\TextBoxFirstApp.csproj.AssemblyReference.cache
+E:\csharp_projects\advanced_programming2\TextBoxFirstApp\TextBoxFirstApp\obj\Debug\TextBoxFirstApp.csproj.SuggestedBindingRedirects.cache
+E:\csharp_projects\advanced_programming2\TextBoxFirstApp\TextBoxFirstApp\obj\Debug\TextBoxFirstApp.Form1.resources
+E:\csharp_projects\advanced_programming2\TextBoxFirstApp\TextBoxFirstApp\obj\Debug\TextBoxFirstApp.Properties.Resources.resources
+E:\csharp_projects\advanced_programming2\TextBoxFirstApp\TextBoxFirstApp\obj\Debug\TextBoxFirstApp.csproj.GenerateResource.cache
+E:\csharp_projects\advanced_programming2\TextBoxFirstApp\TextBoxFirstApp\obj\Debug\TextBoxFirstApp.csproj.CoreCompileInputs.cache
+E:\csharp_projects\advanced_programming2\TextBoxFirstApp\TextBoxFirstApp\bin\Debug\TextBoxFirstApp.exe.config
+E:\csharp_projects\advanced_programming2\TextBoxFirstApp\TextBoxFirstApp\bin\Debug\TextBoxFirstApp.exe
+E:\csharp_projects\advanced_programming2\TextBoxFirstApp\TextBoxFirstApp\bin\Debug\TextBoxFirstApp.pdb
+E:\csharp_projects\advanced_programming2\TextBoxFirstApp\TextBoxFirstApp\obj\Debug\TextBoxFirstApp.exe
+E:\csharp_projects\advanced_programming2\TextBoxFirstApp\TextBoxFirstApp\obj\Debug\TextBoxFirstApp.pdb

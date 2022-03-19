@@ -1,0 +1,12 @@
+E:\csharp_projects\advanced_programming2\PolynomialRoots\PolynomialRoots\bin\Debug\PolynomialRoots.exe.config
+E:\csharp_projects\advanced_programming2\PolynomialRoots\PolynomialRoots\bin\Debug\PolynomialRoots.exe
+E:\csharp_projects\advanced_programming2\PolynomialRoots\PolynomialRoots\bin\Debug\PolynomialRoots.pdb
+E:\csharp_projects\advanced_programming2\PolynomialRoots\PolynomialRoots\obj\Debug\PolynomialRoots.csproj.AssemblyReference.cache
+E:\csharp_projects\advanced_programming2\PolynomialRoots\PolynomialRoots\obj\Debug\PolynomialRoots.csproj.SuggestedBindingRedirects.cache
+E:\csharp_projects\advanced_programming2\PolynomialRoots\PolynomialRoots\obj\Debug\PolynomialRoots.Form1.resources
+E:\csharp_projects\advanced_programming2\PolynomialRoots\PolynomialRoots\obj\Debug\PolynomialRoots.Properties.Resources.resources
+E:\csharp_projects\advanced_programming2\PolynomialRoots\PolynomialRoots\obj\Debug\PolynomialRoots.csproj.GenerateResource.cache
+E:\csharp_projects\advanced_programming2\PolynomialRoots\PolynomialRoots\obj\Debug\PolynomialRoots.csproj.CoreCompileInputs.cache
+E:\csharp_projects\advanced_programming2\PolynomialRoots\PolynomialRoots\obj\Debug\PolynomialRoots.exe
+E:\csharp_projects\advanced_programming2\PolynomialRoots\PolynomialRoots\obj\Debug\PolynomialRoots.pdb
+E:\csharp_projects\advanced_programming2\PolynomialRoots\PolynomialRoots\obj\Debug\PolynomialRoots.Form2.resources
