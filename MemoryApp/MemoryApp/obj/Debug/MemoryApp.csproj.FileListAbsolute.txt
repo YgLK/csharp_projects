@@ -1,0 +1,12 @@
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\bin\Debug\MemoryApp.exe.config
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\bin\Debug\MemoryApp.exe
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\bin\Debug\MemoryApp.pdb
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\MemoryApp.csproj.AssemblyReference.cache
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\MemoryApp.csproj.SuggestedBindingRedirects.cache
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\MemoryApp.Form1.resources
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\MemoryApp.Properties.Resources.resources
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\MemoryApp.csproj.GenerateResource.cache
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\MemoryApp.csproj.CoreCompileInputs.cache
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\MemoryApp.exe
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\MemoryApp.pdb
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\MemoryApp.Form2.resources
