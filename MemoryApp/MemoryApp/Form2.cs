@@ -76,23 +76,6 @@ namespace MemoryApp
             prepTime = MemoryData.prepTime;
             milisecCardShown = MemoryData.milisecCardShown;
 
-            //// set gameplay in line with difficulty level
-            //switch (MemoryData.difLevel)
-            //{
-            //    case 1:
-            //        rowCount = 4;
-            //        columnCount = 4;
-            //        break;
-            //    case 2:
-            //        rowCount = 6;
-            //        columnCount = 6;
-            //        break;
-            //    case 3:
-            //        rowCount = 8;
-            //        columnCount = 8;
-            //        break;
-            //}
-
             cardsCount = rowCount * columnCount;
 
             // initialize components attributes
@@ -229,23 +212,26 @@ namespace MemoryApp
 
         protected void button_Click(object sender, EventArgs e)
         {
-            Button button = sender as Button;
-            // identify which button was clicked and perform necessary actions
-            int[] cords = button.Name.Split().Select(Int32.Parse).ToArray<int>();
-            // position in the array: 
-            //pickedCards.Add(new Tuple<int, int>(cords[0], cords[1]));
-            if (pickedCards.Count < 2)
+            if(timer1.Enabled == true)
             {
-                Tuple<Button, int[]> card = Tuple.Create(button, cords);
-                //pickedCards.Add(Tuple.Create(cords[0], cords[1]));
-                // check if added card is not the same as already picked one
-                if (!(pickedCards.Count == 1 && 
-                    pickedCards[0].Item2[0] == card.Item2[0] && 
-                    pickedCards[0].Item2[1] == card.Item2[1]))
+                Button button = sender as Button;
+                // identify which button was clicked and perform necessary actions
+                int[] cords = button.Name.Split().Select(Int32.Parse).ToArray<int>();
+                // position in the array: 
+                //pickedCards.Add(new Tuple<int, int>(cords[0], cords[1]));
+                if (pickedCards.Count < 2)
                 {
-                    pickedCards.Add(card);
-                    showCardValue(button);
-                    hideCardValue(button, milisecCardShown);
+                    Tuple<Button, int[]> card = Tuple.Create(button, cords);
+                    //pickedCards.Add(Tuple.Create(cords[0], cords[1]));
+                    // check if added card is not the same as already picked one
+                    if (!(pickedCards.Count == 1 && 
+                        pickedCards[0].Item2[0] == card.Item2[0] && 
+                        pickedCards[0].Item2[1] == card.Item2[1]))
+                    {
+                        pickedCards.Add(card);
+                        showCardValue(button);
+                        hideCardValue(button, milisecCardShown);
+                    }
                 }
             }
         }
@@ -349,6 +335,18 @@ namespace MemoryApp
             int newTimeInMilSec = (int)(newTime * 1000);
 
             MemoryData.milisecCardShown = newTimeInMilSec;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(timer1.Enabled == true)
+            {
+                timer1.Enabled = false;
+            }
+            else
+            {
+                timer1.Enabled = true;
+            }
         }
     }
 }
