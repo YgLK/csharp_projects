@@ -31,12 +31,20 @@ namespace MemoryApp
         int milisecCardShown = 400;
         int gameTimeInSec = 0;
         // each index in arrays corresponds to the x, y coordinates on the grid
-        Tuple<Tuple<int>> pickedCards;
+        List<Tuple<Button, int[]>> pickedCards;
         //Dictionary<int, string> cardsPairs;
         Dictionary<int, int> cardsPairs;
         // array with strings corresponding to each card
         Dictionary<int, string> cardsStringValues;
 
+        // button grid info
+        int rowCount = 4;
+        int columnCount = 4;
+
+        // number of correctly chosen pairs
+        int correctBets = 0;
+        // number of moves
+        int moveCount = 0;
 
 
         public Form2()
@@ -44,70 +52,26 @@ namespace MemoryApp
             InitializeComponent();
             cardsPairs = new Dictionary<int, int>();
             cardsStringValues = new Dictionary<int, string>();
+            pickedCards = new List<Tuple<Button, int[]>>();
+            movesCountLabel.Text = "0";
             // initialize components attributes
-            createCards();
             initializeCardValues();
+            createVisualCards();
             label3.Text = "00:00";
-            label4.Text = "0";
+            movesCountLabel.Text = "0";
             timer1.Enabled = true;
         }
 
         private void initializeCardValues()
         {
             // generate 8 pairs of indexes (8*2 indexes included)
-            //generateIndexPairs();
             generateIndexPairs2();
             // generate card value for each pair
             generateCardValues();
-            int i = 0;
         }
 
 
         // generate cards pairs by picking random index of another card for each card
-        private void generateIndexPairs() 
-        {
-            // list of cards indexes
-            List<int> indexesFirstCard = Enumerable.Range(0, cardsCount).ToList();
-            // shuffle the indexes of the second card in pair in order to get mixed pairs
-            List<int> indexesSecondCard = new List<int>();
-            // idx of card which is in pair with itself 
-            int wrongPairCardIdx = 0;
-            // shuffle the cards to make pairs
-            while (true){
-                // shuffle the indexes of the second card in pair in order to get mixed pairs
-                indexesSecondCard = indexesFirstCard.OrderBy(a => Guid.NewGuid()).ToList();
-                for(int i=0; i<cardsCount; i++)
-                {
-                    // quit the for loop if second card equals first card
-                    if(indexesSecondCard[i] == indexesFirstCard[i])
-                    {
-                        // pair with itself occurred
-                        wrongPairCardIdx = i;
-                        break;
-                    }
-                }
-                // if second card the same as first card reshuffle the second card indexes list 
-                if (indexesSecondCard[wrongPairCardIdx] == indexesFirstCard[wrongPairCardIdx])
-                {
-                    // continue to another iteration in order to reshuffle indexSecondCard list
-                    continue;
-                }
-                // move out of the loop if shuffled successfully
-                break;
-            }
-
-            // add indices to the dictionary
-            for(int i=0; i<cardsCount; i++)
-            {
-                // if duplicate move on
-                if (!(cardsPairs.Keys.Contains(indexesFirstCard[i]) || cardsPairs.Keys.Contains(indexesSecondCard[i])))
-                {
-                    cardsPairs.Add(indexesFirstCard[i], indexesSecondCard[i]);
-                    cardsPairs.Add(indexesSecondCard[i], indexesFirstCard[i]);
-                }
-            }
-        }
-
         private void generateIndexPairs2()
         {
             // list of cards indexes
@@ -155,10 +119,8 @@ namespace MemoryApp
             }
         }
 
-        public void createCards()
+        public void createVisualCards()
         {
-            var rowCount = 4;
-            var columnCount = 4;
 
             this.tableLayoutPanel1.ColumnCount = columnCount;
             this.tableLayoutPanel1.RowCount = rowCount;
@@ -191,6 +153,8 @@ namespace MemoryApp
                     button.Name = string.Format("{0} {1}", i, j);
                     button.Click += new EventHandler(button_Click);
                     button.Dock = DockStyle.Fill;
+                    button.BackgroundImageLayout = ImageLayout.Stretch;
+                    button.BackgroundImage = Properties.Resources.cardDesign;
                     this.tableLayoutPanel1.Controls.Add(button, j, i);
                 }
             }
@@ -200,18 +164,73 @@ namespace MemoryApp
         {
             Button button = sender as Button;
             // identify which button was clicked and perform necessary actions
-            button.Text = "card_value";
             int[] cords = button.Name.Split().Select(Int32.Parse).ToArray<int>();
             // position in the array: 
             //pickedCards.Add(new Tuple<int, int>(cords[0], cords[1]));
-            HideCardValue(button, milisecCardShown);
+            if(pickedCards.Count < 2)
+            {
+                Tuple<Button, int[]> card = Tuple.Create(button, cords);
+                //pickedCards.Add(Tuple.Create(cords[0], cords[1]));
+                // check if added card is not the same as already picked one
+                if (!(pickedCards.Count == 1 && 
+                    pickedCards[0].Item2[0] == card.Item2[0] && 
+                    pickedCards[0].Item2[1] == card.Item2[1]))
+                {
+                    pickedCards.Add(card);
+                    showCardValue(button, cords);
+                    hideCardValue(button, milisecCardShown);
+                }
+            }
         }
 
-        public async Task HideCardValue(Button button, int time)
+        public async Task showCardValue(Button button, int[] buttonCords)
         {
-            await Task.Delay(time);
-            button.Text = button.Name;
-            //pickedCards.Clear();
+            int x_cord = buttonCords[0];
+            int y_cord = buttonCords[1];
+            // calculate button values idx in the dicts
+            int buttonIdx = columnCount * x_cord + y_cord;
+            // hide card image
+            button.BackgroundImage = null;
+            // show hidden text of the card
+            button.Text = cardsStringValues[buttonIdx];
+        }
+
+        public async Task hideCardValue(Button button, int time)
+        {
+            // wait until second card is picked
+            if(pickedCards.Count == 2)
+            {
+                int firstCardIdx = pickedCards[0].Item2[0] * columnCount + pickedCards[0].Item2[1];
+                int secondCardIdx = pickedCards[1].Item2[0] * columnCount + pickedCards[1].Item2[1];
+                if (cardsStringValues[firstCardIdx] == cardsStringValues[secondCardIdx])
+                {
+                    // hide correctly picked pair
+                    pickedCards[0].Item1.Visible = false;
+                    pickedCards[1].Item1.Visible = false;
+                    correctBets += 1;
+                }
+                
+                time = 1000;
+                // wait some time with the pair shown
+                await Task.Delay(time);
+                // hide cards
+                pickedCards[0].Item1.Text = pickedCards[0].Item1.Name;
+                pickedCards[1].Item1.Text = pickedCards[1].Item1.Name;
+
+                moveCount += 1;
+                movesCountLabel.Text = moveCount.ToString();
+                // hide card value and show cards image
+                pickedCards[0].Item1.BackgroundImage = Properties.Resources.cardDesign;
+                pickedCards[1].Item1.BackgroundImage = Properties.Resources.cardDesign;
+                // clear picked cards list
+                pickedCards.Clear();
+            }
+            
+            // open new window after the end of the game
+            if(correctBets == cardsCount / 2)
+            {
+                MessageBox.Show("Nice");
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
