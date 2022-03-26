@@ -34,5 +34,10 @@ namespace MemoryApp
             Form2 gameForm = new Form2();
             gameForm.Show();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
