@@ -10,3 +10,11 @@ E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\MemoryApp
 E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\MemoryApp.exe
 E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\MemoryApp.pdb
 E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\MemoryApp.Form2.resources
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\MemoryApp.Form3.resources
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\MemoryApp.Form4.resources
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\bin\Debug\ccp-Cakm-IN\MemoryApp.resources.dll
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\MemoryApp.Form2.ccp-Cakm-IN.resources
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\ccp-Cakm-IN\MemoryApp.resources.dll
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\MemoryApp.Form2.en.resources
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\bin\Debug\en\MemoryApp.resources.dll
+E:\csharp_projects\advanced_programming2\MemoryApp\MemoryApp\obj\Debug\en\MemoryApp.resources.dll

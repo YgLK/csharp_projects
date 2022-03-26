@@ -17,27 +17,24 @@ namespace MemoryApp
             InitializeComponent();
             Tuple<int, int> test1 = new Tuple<int, int>(3, 5);
             Tuple<int, int> test2 = new Tuple<int, int>(3, 5);
-            comboBox1.Items.Add("EASY"); // 16
-            comboBox1.Items.Add("MEDIUM"); // 36
-            comboBox1.Items.Add("HARD"); // 64
-            // test how to compare tuples
-            comboBox1.Items.Add(test1.Item1 == test2.Item1 
-                && test1.Item2 == test2.Item2); 
         }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //string selected = this.comboBox1.GetItemText(this.comboBox1.SelectedItem);
-            //MessageBox.Show(selected);
+            // open game form
+            Form4 configForm = new Form4();
+            configForm.Show();
             this.Hide();
-            Form2 gameForm = new Form2();
-            gameForm.Show();
+
+
+            // save player's nickname - Bob is set as default
+            if (textBox1.Text.Length != 0)
+            {
+                MemoryData.nickname = textBox1.Text;
+            }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }

@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -22,14 +26,26 @@ namespace MemoryApp
             "possession", "detective", "stall", "broadcast", "violation", "biscuit"
         };
         
-        
-        
-        
+        // TODO: 
+        // - configuration panel
+        // - score measure
+        // - ranking
+        // - images instead of strings as the card value
+
+
+        // --- CONFIGURATION --- 
+        // button grid info
+        int rowCount;
+        int columnCount;
         // defualt mode 16 cards
-        int cardsCount = 16;
+        int cardsCount;
+        // before start cards shown time
+        int prepTime;
         // time of the card being shown after clicking on it
-        int milisecCardShown = 400;
+        int milisecCardShown;
         int gameTimeInSec = 0;
+
+
         // each index in arrays corresponds to the x, y coordinates on the grid
         List<Tuple<Button, int[]>> pickedCards;
         //Dictionary<int, string> cardsPairs;
@@ -37,10 +53,7 @@ namespace MemoryApp
         // array with strings corresponding to each card
         Dictionary<int, string> cardsStringValues;
 
-        // button grid info
-        int rowCount = 4;
-        int columnCount = 4;
-
+       
         // number of correctly chosen pairs
         int correctBets = 0;
         // number of moves
@@ -50,29 +63,83 @@ namespace MemoryApp
         public Form2()
         {
             InitializeComponent();
+
             cardsPairs = new Dictionary<int, int>();
             cardsStringValues = new Dictionary<int, string>();
             pickedCards = new List<Tuple<Button, int[]>>();
             movesCountLabel.Text = "0";
+
+            // SET config from MemoryData class
+            rowCount = MemoryData.rowCount;
+            columnCount = MemoryData.columnCount;
+            cardsCount = rowCount * columnCount;
+            prepTime = MemoryData.prepTime;
+            milisecCardShown = MemoryData.milisecCardShown;
+
+            //// set gameplay in line with difficulty level
+            //switch (MemoryData.difLevel)
+            //{
+            //    case 1:
+            //        rowCount = 4;
+            //        columnCount = 4;
+            //        break;
+            //    case 2:
+            //        rowCount = 6;
+            //        columnCount = 6;
+            //        break;
+            //    case 3:
+            //        rowCount = 8;
+            //        columnCount = 8;
+            //        break;
+            //}
+
+            cardsCount = rowCount * columnCount;
+
             // initialize components attributes
             initializeCardValues();
+            // create grid of cards 
             createVisualCards();
+            // init values of components
             label3.Text = "00:00";
             movesCountLabel.Text = "0";
             timer1.Enabled = true;
+
+            startShowCards();
         }
+
+
+        // let player memorize cards values for the first 5 sec of the game 
+        private async void startShowCards()
+        {
+            // for the first 15 sec show cards values - Player tries to memorize its positions
+            foreach (Button button in tableLayoutPanel1.Controls)
+            {
+                showCardValue(button);
+            }
+
+            // show cards for preparation Time
+            await Task.Delay(prepTime);
+
+            // hide cards
+            foreach (Button button in tableLayoutPanel1.Controls)
+            {
+                button.BackgroundImage = Properties.Resources.cardDesign;
+                button.Text = "";
+            }
+        }
+
 
         private void initializeCardValues()
         {
             // generate 8 pairs of indexes (8*2 indexes included)
-            generateIndexPairs2();
+            generateIndexPairs();
             // generate card value for each pair
             generateCardValues();
         }
 
 
         // generate cards pairs by picking random index of another card for each card
-        private void generateIndexPairs2()
+        private void generateIndexPairs()
         {
             // list of cards indexes
             List<int> cardsIdxes = Enumerable.Range(0, cardsCount).ToList();
@@ -148,7 +215,7 @@ namespace MemoryApp
                 for (int j = 0; j < columnCount; j++)
                 {
                     var button = new Button();
-                    button.Text = string.Format("{0} {1}", i, j);
+                    button.Text = string.Format("");
                     // button id will be its name - name can be parsed with " " separator to get x, y indexes 
                     button.Name = string.Format("{0} {1}", i, j);
                     button.Click += new EventHandler(button_Click);
@@ -167,7 +234,7 @@ namespace MemoryApp
             int[] cords = button.Name.Split().Select(Int32.Parse).ToArray<int>();
             // position in the array: 
             //pickedCards.Add(new Tuple<int, int>(cords[0], cords[1]));
-            if(pickedCards.Count < 2)
+            if (pickedCards.Count < 2)
             {
                 Tuple<Button, int[]> card = Tuple.Create(button, cords);
                 //pickedCards.Add(Tuple.Create(cords[0], cords[1]));
@@ -177,14 +244,16 @@ namespace MemoryApp
                     pickedCards[0].Item2[1] == card.Item2[1]))
                 {
                     pickedCards.Add(card);
-                    showCardValue(button, cords);
+                    showCardValue(button);
                     hideCardValue(button, milisecCardShown);
                 }
             }
         }
 
-        public async Task showCardValue(Button button, int[] buttonCords)
+        public async Task showCardValue(Button button)
         {
+            // identify which button was clicked and perform necessary actions
+            int[] buttonCords = button.Name.Split().Select(Int32.Parse).ToArray<int>();
             int x_cord = buttonCords[0];
             int y_cord = buttonCords[1];
             // calculate button values idx in the dicts
@@ -210,9 +279,8 @@ namespace MemoryApp
                     correctBets += 1;
                 }
                 
-                time = 1000;
                 // wait some time with the pair shown
-                await Task.Delay(time);
+                await Task.Delay(MemoryData.milisecCardShown);
                 // hide cards
                 pickedCards[0].Item1.Text = pickedCards[0].Item1.Name;
                 pickedCards[1].Item1.Text = pickedCards[1].Item1.Name;
@@ -222,14 +290,35 @@ namespace MemoryApp
                 // hide card value and show cards image
                 pickedCards[0].Item1.BackgroundImage = Properties.Resources.cardDesign;
                 pickedCards[1].Item1.BackgroundImage = Properties.Resources.cardDesign;
+                pickedCards[0].Item1.Text = string.Format("");
+                pickedCards[1].Item1.Text = string.Format("");
                 // clear picked cards list
                 pickedCards.Clear();
             }
             
-            // open new window after the end of the game
+            // save data to file and open new window after the end of the game
             if(correctBets == cardsCount / 2)
             {
-                MessageBox.Show("Nice");
+                MemoryData.movesToWin = moveCount;
+                MemoryData.timeToWin = gameTimeInSec;
+                // evaluate score
+                int score = MemoryData.evaluateScore();
+                // prepare data record
+                string rankingRecord = score + "," + MemoryData.nickname + "," + MemoryData.timeToWin + "," + MemoryData.movesToWin;
+
+                // get the path to the ranking data txt file
+                string workingDirectory = Environment.CurrentDirectory;
+                string rankingDataPath = Directory.GetParent(workingDirectory).Parent.FullName + "\\rankingData.txt";
+
+                // write new game data record to the file
+                using (StreamWriter sw = File.AppendText(rankingDataPath))
+                {
+                    sw.WriteLine(rankingRecord);
+                }
+
+                Form3 rankingForm = new Form3();
+                rankingForm.Show();
+                this.Hide();
             }
         }
 
@@ -252,6 +341,14 @@ namespace MemoryApp
             }
 
             label3.Text = minPastStr + ":" + secPastStr;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            float newTime = float.Parse(visTimeChange.Text, CultureInfo.InvariantCulture);
+            int newTimeInMilSec = (int)(newTime * 1000);
+
+            MemoryData.milisecCardShown = newTimeInMilSec;
         }
     }
 }
