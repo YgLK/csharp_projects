@@ -182,6 +182,7 @@
             this.button1.TabIndex = 29;
             this.button1.Text = "RESIGN";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // clearButton
             // 
@@ -191,6 +192,7 @@
             this.clearButton.TabIndex = 30;
             this.clearButton.Text = "CLEAR DATA";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // addOfferButton
             // 

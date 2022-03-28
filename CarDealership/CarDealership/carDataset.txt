@@ -1,5 +1,0 @@
-﻿DATA SEPARATED WITH , 
-
-BRAND, MODEL, ENGINE,PRICE
-For instance:
-Ford,Focus,
