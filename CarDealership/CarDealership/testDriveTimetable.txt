@@ -1,3 +1,1 @@
-﻿DATE,MAKE,MODEL,NAME SURNAME
-For instance:
-26-03-2022,Ford,Focus,Jerzy Krawczyk
+﻿26-03-2022,Ford,Focus,Jerzy Krawczyk

@@ -52,6 +52,8 @@
     <Compile Include="BookTestDriveForm.Designer.cs">
       <DependentUpon>BookTestDriveForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CarOffer.cs" />
+    <Compile Include="DataOffersHandler.cs" />
     <Compile Include="SellCarForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +94,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -108,6 +111,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="carData.txt" />
+    <Content Include="carData_test.txt" />
+    <None Include="Resources\RedToyotaRav4.png" />
+    <None Include="Resources\WhiteToyotaAvensis.png" />
+    <None Include="Resources\BlueToyotaCorolla.png" />
+    <None Include="Resources\BlackToyotaCorolla.png" />
+    <None Include="Resources\BlackVolkswagenGolf7.png" />
+    <None Include="Resources\BlueToyotaRav4.png" />
+    <None Include="Resources\BlueVolkswagenPassatB6.png" />
+    <None Include="Resources\BlackToyotaRav4.png" />
+    <None Include="Resources\BrownToyotaRav4.png" />
+    <None Include="Resources\PinkToyotaCorolla.png" />
+    <Content Include="CarImages\WhiteToyotaAvensis.png" />
     <Content Include="testDriveTimetable.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
