@@ -14,6 +14,14 @@ namespace CarDealership
 {
     public partial class SellCarForm : Form
     {
+
+        // TODO:   CREATE IMAGE UPLOAD FOR EACH CREATED OFFER
+
+
+
+
+
+
         public SellCarForm()
         {
             InitializeComponent();
@@ -55,6 +63,31 @@ namespace CarDealership
 
 
             MessageBox.Show("New offer has been added.");
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void btnUploadImage_Click(object sender, EventArgs e)
+        {
+            openFileDialogCarImage.Filter = "Images (*.png) | *.png"; // file types, that will be allowed to upload
+            openFileDialogCarImage.Multiselect = false; // allow/deny user to upload more than one file at a time
+            if (openFileDialogCarImage.ShowDialog() == DialogResult.OK) // if user clicked OK
+            {
+                String path = openFileDialogCarImage.FileName; // get name of file
+                //using (StreamReader reader = new StreamReader(new FileStream(path, FileMode.Open), new UTF8Encoding())) // do anything you want, e.g. read it
+                //{
+                //    //
+                //}
+                carImage.ImageLocation = path;
+                string color = colorTextBox.Text;
+                string model = modelTextBox.Text;
+                string filename = color + model + ".png";
+                string carImagesDirPath = @"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\CarImages\" + filename;
+                System.IO.File.Copy(path, carImagesDirPath);
+            }
         }
 
         // find first image found in Google graphics with the chosen car

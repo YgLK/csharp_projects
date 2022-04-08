@@ -1,0 +1,12 @@
+﻿04 April 2022,John Doe,Volkswagen ,Volkswagen Passat B6,Blue,1.4 TSI
+04 April 2022,John Doe,Toyota ,Toyota Rav4,Brown,2.0 D-4D 116 KM
+04 April 2022,John Doe,Volkswagen ,Volkswagen Passat B6,Blue,1.4 TSI
+05 April 2022,John Doe,Volkswagen ,Volkswagen Passat B6,Blue,1.4 TSI
+06 April 2022,John Doe,Volkswagen ,Volkswagen Passat B6,Blue,1.4 TSI
+07 April 2022,John Doe,Volkswagen ,Volkswagen Passat B6,Blue,1.4 TSI
+09 April 2022,John Doe,Volkswagen ,Volkswagen Passat B6,Blue,1.4 TSI
+06 July 2022,John Doe,Volkswagen ,Volkswagen Passat B6,Blue,1.4 TSI
+06 July 2022,John Doe,Volkswagen ,Volkswagen Passat B6,Blue,1.6 FSI
+06 July 2022,John Doe,Toyota ,Toyota Rav4,Brown,2.0 D-4D 116 KM
+06 July 2022,John Doe,Toyota ,Toyota Rav4,Brown,2.0 150 KM 2.4 163 KM (USA)
+08 July 2022,John Doe,Volkswagen ,Volkswagen Passat B6,Blue,1.4 TSI

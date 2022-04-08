@@ -31,8 +31,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAddReservation = new System.Windows.Forms.Button();
+            this.showReservations = new System.Windows.Forms.Button();
             this.nameEnterLabel = new System.Windows.Forms.Label();
             this.enterNameTextBox = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -44,6 +44,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.carModel = new System.Windows.Forms.Label();
             this.carBrand = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.driverName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -70,29 +74,30 @@
             // 
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(268, 345);
+            this.dateTimePicker1.Location = new System.Drawing.Point(247, 345);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(249, 26);
+            this.dateTimePicker1.Size = new System.Drawing.Size(206, 26);
             this.dateTimePicker1.TabIndex = 28;
             // 
-            // button1
+            // btnAddReservation
             // 
-            this.button1.Location = new System.Drawing.Point(536, 492);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 38);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "ADD NEW RESERVATION";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddReservation.Location = new System.Drawing.Point(536, 492);
+            this.btnAddReservation.Name = "btnAddReservation";
+            this.btnAddReservation.Size = new System.Drawing.Size(139, 38);
+            this.btnAddReservation.TabIndex = 29;
+            this.btnAddReservation.Text = "ADD NEW RESERVATION";
+            this.btnAddReservation.UseVisualStyleBackColor = true;
+            this.btnAddReservation.Click += new System.EventHandler(this.btnAddReservation_Click);
             // 
-            // button2
+            // showReservations
             // 
-            this.button2.Location = new System.Drawing.Point(371, 492);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(145, 38);
-            this.button2.TabIndex = 30;
-            this.button2.Text = "SHOW RESERVATION LIST";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.showReservations.Location = new System.Drawing.Point(371, 492);
+            this.showReservations.Name = "showReservations";
+            this.showReservations.Size = new System.Drawing.Size(145, 38);
+            this.showReservations.TabIndex = 30;
+            this.showReservations.Text = "SHOW RESERVATION LIST";
+            this.showReservations.UseVisualStyleBackColor = true;
+            this.showReservations.Click += new System.EventHandler(this.showReservations_Click);
             // 
             // nameEnterLabel
             // 
@@ -107,10 +112,10 @@
             // enterNameTextBox
             // 
             this.enterNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.enterNameTextBox.Location = new System.Drawing.Point(268, 397);
+            this.enterNameTextBox.Location = new System.Drawing.Point(247, 397);
             this.enterNameTextBox.Name = "enterNameTextBox";
             this.enterNameTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.enterNameTextBox.Size = new System.Drawing.Size(249, 26);
+            this.enterNameTextBox.Size = new System.Drawing.Size(206, 26);
             this.enterNameTextBox.TabIndex = 32;
             this.enterNameTextBox.Text = "John Doe";
             // 
@@ -129,7 +134,7 @@
             this.colorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.colorComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.colorComboBox.FormattingEnabled = true;
-            this.colorComboBox.Location = new System.Drawing.Point(270, 289);
+            this.colorComboBox.Location = new System.Drawing.Point(249, 289);
             this.colorComboBox.Name = "colorComboBox";
             this.colorComboBox.Size = new System.Drawing.Size(204, 28);
             this.colorComboBox.TabIndex = 41;
@@ -139,7 +144,7 @@
             this.engineComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.engineComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.engineComboBox.FormattingEnabled = true;
-            this.engineComboBox.Location = new System.Drawing.Point(270, 228);
+            this.engineComboBox.Location = new System.Drawing.Point(249, 228);
             this.engineComboBox.Name = "engineComboBox";
             this.engineComboBox.Size = new System.Drawing.Size(204, 28);
             this.engineComboBox.TabIndex = 40;
@@ -149,21 +154,22 @@
             this.carModelComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.carModelComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.carModelComboBox.FormattingEnabled = true;
-            this.carModelComboBox.Location = new System.Drawing.Point(270, 161);
+            this.carModelComboBox.Location = new System.Drawing.Point(249, 161);
             this.carModelComboBox.Name = "carModelComboBox";
             this.carModelComboBox.Size = new System.Drawing.Size(204, 28);
             this.carModelComboBox.TabIndex = 39;
+            this.carModelComboBox.SelectedIndexChanged += new System.EventHandler(this.carModelComboBox_SelectedIndexChanged);
             // 
             // carMakeComboBox
             // 
             this.carMakeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.carMakeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.carMakeComboBox.FormattingEnabled = true;
-            this.carMakeComboBox.Location = new System.Drawing.Point(270, 103);
+            this.carMakeComboBox.Location = new System.Drawing.Point(249, 103);
             this.carMakeComboBox.Name = "carMakeComboBox";
             this.carMakeComboBox.Size = new System.Drawing.Size(204, 28);
             this.carMakeComboBox.TabIndex = 38;
-            this.carMakeComboBox.SelectedIndexChanged += new System.EventHandler(this.carMakeComboBox_SelectedIndexChanged_1);
+            this.carMakeComboBox.SelectedIndexChanged += new System.EventHandler(this.carMakeComboBox_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -205,11 +211,33 @@
             this.carBrand.TabIndex = 34;
             this.carBrand.Text = "Make";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.date,
+            this.driverName});
+            this.dataGridView1.Location = new System.Drawing.Point(604, 103);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(244, 320);
+            this.dataGridView1.TabIndex = 42;
+            // 
+            // date
+            // 
+            this.date.HeaderText = "Date";
+            this.date.Name = "date";
+            // 
+            // driverName
+            // 
+            this.driverName.HeaderText = "Name";
+            this.driverName.Name = "driverName";
+            // 
             // BookTestDriveForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(797, 553);
+            this.ClientSize = new System.Drawing.Size(996, 563);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.colorComboBox);
             this.Controls.Add(this.engineComboBox);
             this.Controls.Add(this.carModelComboBox);
@@ -221,13 +249,14 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.enterNameTextBox);
             this.Controls.Add(this.nameEnterLabel);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.showReservations);
+            this.Controls.Add(this.btnAddReservation);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "BookTestDriveForm";
             this.Text = "Book the test drive";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,8 +266,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button showReservations;
         private System.Windows.Forms.Label nameEnterLabel;
         private System.Windows.Forms.TextBox enterNameTextBox;
         private System.Windows.Forms.Button button3;
@@ -250,5 +278,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label carModel;
         private System.Windows.Forms.Label carBrand;
+        private System.Windows.Forms.Button btnAddReservation;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn driverName;
     }
 }

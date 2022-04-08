@@ -45,6 +45,8 @@
             this.yearTextBox = new System.Windows.Forms.TextBox();
             this.yearLabel = new System.Windows.Forms.Label();
             this.colorTextBox = new System.Windows.Forms.TextBox();
+            this.btnUploadImage = new System.Windows.Forms.Button();
+            this.openFileDialogCarImage = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.carImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +54,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(61, 228);
+            this.label3.Location = new System.Drawing.Point(61, 194);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(71, 24);
             this.label3.TabIndex = 21;
@@ -63,6 +65,7 @@
             this.carImage.Location = new System.Drawing.Point(535, 109);
             this.carImage.Name = "carImage";
             this.carImage.Size = new System.Drawing.Size(204, 163);
+            this.carImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.carImage.TabIndex = 19;
             this.carImage.TabStop = false;
             // 
@@ -70,7 +73,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(61, 275);
+            this.label2.Location = new System.Drawing.Point(61, 241);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 24);
             this.label2.TabIndex = 17;
@@ -80,7 +83,7 @@
             // 
             this.carModel.AutoSize = true;
             this.carModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.carModel.Location = new System.Drawing.Point(61, 147);
+            this.carModel.Location = new System.Drawing.Point(61, 113);
             this.carModel.Name = "carModel";
             this.carModel.Size = new System.Drawing.Size(63, 24);
             this.carModel.TabIndex = 16;
@@ -90,7 +93,7 @@
             // 
             this.carBrand.AutoSize = true;
             this.carBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.carBrand.Location = new System.Drawing.Point(61, 109);
+            this.carBrand.Location = new System.Drawing.Point(61, 75);
             this.carBrand.Name = "carBrand";
             this.carBrand.Size = new System.Drawing.Size(56, 24);
             this.carBrand.TabIndex = 14;
@@ -108,28 +111,28 @@
             // 
             // makeTextBox
             // 
-            this.makeTextBox.Location = new System.Drawing.Point(283, 114);
+            this.makeTextBox.Location = new System.Drawing.Point(283, 80);
             this.makeTextBox.Name = "makeTextBox";
             this.makeTextBox.Size = new System.Drawing.Size(187, 20);
             this.makeTextBox.TabIndex = 24;
             // 
             // modelTextBox
             // 
-            this.modelTextBox.Location = new System.Drawing.Point(283, 152);
+            this.modelTextBox.Location = new System.Drawing.Point(283, 118);
             this.modelTextBox.Name = "modelTextBox";
             this.modelTextBox.Size = new System.Drawing.Size(187, 20);
             this.modelTextBox.TabIndex = 25;
             // 
             // engineTextBox
             // 
-            this.engineTextBox.Location = new System.Drawing.Point(283, 232);
+            this.engineTextBox.Location = new System.Drawing.Point(283, 198);
             this.engineTextBox.Name = "engineTextBox";
             this.engineTextBox.Size = new System.Drawing.Size(187, 20);
             this.engineTextBox.TabIndex = 26;
             // 
             // priceTextBox
             // 
-            this.priceTextBox.Location = new System.Drawing.Point(283, 324);
+            this.priceTextBox.Location = new System.Drawing.Point(283, 290);
             this.priceTextBox.Name = "priceTextBox";
             this.priceTextBox.Size = new System.Drawing.Size(187, 20);
             this.priceTextBox.TabIndex = 28;
@@ -138,7 +141,7 @@
             // 
             this.priceLabel.AutoSize = true;
             this.priceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.priceLabel.Location = new System.Drawing.Point(61, 320);
+            this.priceLabel.Location = new System.Drawing.Point(61, 286);
             this.priceLabel.Name = "priceLabel";
             this.priceLabel.Size = new System.Drawing.Size(53, 24);
             this.priceLabel.TabIndex = 27;
@@ -176,7 +179,7 @@
             // 
             // yearTextBox
             // 
-            this.yearTextBox.Location = new System.Drawing.Point(283, 192);
+            this.yearTextBox.Location = new System.Drawing.Point(283, 158);
             this.yearTextBox.Name = "yearTextBox";
             this.yearTextBox.Size = new System.Drawing.Size(187, 20);
             this.yearTextBox.TabIndex = 32;
@@ -185,7 +188,7 @@
             // 
             this.yearLabel.AutoSize = true;
             this.yearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.yearLabel.Location = new System.Drawing.Point(61, 187);
+            this.yearLabel.Location = new System.Drawing.Point(61, 153);
             this.yearLabel.Name = "yearLabel";
             this.yearLabel.Size = new System.Drawing.Size(49, 24);
             this.yearLabel.TabIndex = 33;
@@ -193,16 +196,31 @@
             // 
             // colorTextBox
             // 
-            this.colorTextBox.Location = new System.Drawing.Point(283, 280);
+            this.colorTextBox.Location = new System.Drawing.Point(283, 246);
             this.colorTextBox.Name = "colorTextBox";
             this.colorTextBox.Size = new System.Drawing.Size(187, 20);
             this.colorTextBox.TabIndex = 34;
+            // 
+            // btnUploadImage
+            // 
+            this.btnUploadImage.Location = new System.Drawing.Point(65, 333);
+            this.btnUploadImage.Name = "btnUploadImage";
+            this.btnUploadImage.Size = new System.Drawing.Size(405, 30);
+            this.btnUploadImage.TabIndex = 35;
+            this.btnUploadImage.Text = "Upload car image";
+            this.btnUploadImage.UseVisualStyleBackColor = true;
+            this.btnUploadImage.Click += new System.EventHandler(this.btnUploadImage_Click);
+            // 
+            // openFileDialogCarImage
+            // 
+            this.openFileDialogCarImage.FileName = "openFileDialog1";
             // 
             // SellCarForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnUploadImage);
             this.Controls.Add(this.colorTextBox);
             this.Controls.Add(this.yearLabel);
             this.Controls.Add(this.yearTextBox);
@@ -246,5 +264,7 @@
         private System.Windows.Forms.TextBox yearTextBox;
         private System.Windows.Forms.Label yearLabel;
         private System.Windows.Forms.TextBox colorTextBox;
+        private System.Windows.Forms.Button btnUploadImage;
+        private System.Windows.Forms.OpenFileDialog openFileDialogCarImage;
     }
 }
