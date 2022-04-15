@@ -159,6 +159,7 @@
             this.engineComboBox.Name = "engineComboBox";
             this.engineComboBox.Size = new System.Drawing.Size(204, 28);
             this.engineComboBox.TabIndex = 15;
+            this.engineComboBox.SelectedIndexChanged += new System.EventHandler(this.engineComboBox_SelectedIndexChanged);
             // 
             // contextMenuStrip1
             // 

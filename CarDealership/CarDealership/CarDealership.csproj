@@ -52,6 +52,7 @@
     <Compile Include="BookTestDriveForm.Designer.cs">
       <DependentUpon>BookTestDriveForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="InputValidator.cs" />
     <Compile Include="Reservation.cs" />
     <Compile Include="CarOffer.cs" />
     <Compile Include="ReservationHandler.cs" />

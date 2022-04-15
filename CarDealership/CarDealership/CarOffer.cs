@@ -12,7 +12,7 @@ namespace CarDealership
         public string make;
         public string model;
         public int year;
-        public float price;
+        public double price;
         public string color;
         public string engine;
 
@@ -21,7 +21,7 @@ namespace CarDealership
             this.year = Int32.Parse(Year);
             this.make = Make;
             this.model = Model;
-            this.price = Int32.Parse(Price);
+            this.price = Double.Parse(Price);
             this.color = Color;
             this.engine = Engine;
         }

@@ -47,25 +47,6 @@ namespace CarDealership
             }
         }
 
-        //private void colorPickButton_Click(object sender, EventArgs e)
-        //{
-        //    ColorDialog MyDialog = new ColorDialog();
-        //    // Keeps the user from selecting a custom color.
-        //    MyDialog.AllowFullOpen = true;
-        //    // Allows the user to get help. (The default is false.)
-        //    MyDialog.ShowHelp = true;
-        //    // Sets the initial color select to the current text color.
-        //    MyDialog.Color = colorPickButton.ForeColor;
-
-        //    // Update the text box color if the user clicks OK 
-        //    if (MyDialog.ShowDialog() == DialogResult.OK)
-        //    {
-        //        colorPickButton.ForeColor = MyDialog.Color;
-        //        colorPickButton.BackColor = MyDialog.Color;
-        //    }
-        //}
-
-
         private void searchOffersButton_Click(object sender, EventArgs e)
         {
             string imageName = (colorComboBox.SelectedText + carModelComboBox.SelectedText).Replace(" ", "");
@@ -75,9 +56,16 @@ namespace CarDealership
             }
 
             // TODO: handle if image doesnt exist
-            
-            //carImage.Image = (Image)Properties.Resources.ResourceManager.GetObject(imageName, Properties.Resources.Culture);
-            carImage.Image = Image.FromFile(@"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\CarImages\" + imageName + ".png");
+
+            try
+            {
+                //carImage.Image = (Image)Properties.Resources.ResourceManager.GetObject(imageName, Properties.Resources.Culture);
+                carImage.Image = Image.FromFile(@"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\CarImages\" + imageName + ".png");
+            }
+            catch (Exception)
+            {
+                carImage.Image = Image.FromFile(@"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\CarImages\" + "noPicture" + ".png");
+            }
             
 
             var imageSize = carImage.Image.Size;
@@ -85,12 +73,12 @@ namespace CarDealership
             carImage.SizeMode = imageSize.Width > fitSize.Width || imageSize.Height > fitSize.Height ?
                 PictureBoxSizeMode.Zoom : PictureBoxSizeMode.CenterImage;
 
-            float price = 0;
+            double price = 0;
             int year = 2000;
 
             foreach (CarOffer offer in dataOffersHandler.getMakeOffers(carMakeComboBox.Text))
             {
-                if (offer.color == colorComboBox.Text && offer.model == carModelComboBox.Text && offer.color == colorComboBox.Text && offer.engine == engineComboBox.Text)
+                if (offer.color == colorComboBox.Text && offer.model == carModelComboBox.Text && offer.engine == engineComboBox.Text)
                 {
                     price = offer.price;
                     year = offer.year;
@@ -131,14 +119,30 @@ namespace CarDealership
             {
                 if (offer.model == model)
                 {
-                    colors.Add(offer.color);
+                    //colors.Add(offer.color);
                     engines.Add(offer.engine);
                 }
             }
-            colorComboBox.DataSource = colors.Distinct().ToList();
+            //colorComboBox.DataSource = colors.Distinct().ToList();
             engineComboBox.DataSource = engines.Distinct().ToList();
         }
 
+        private void engineComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string make = carMakeComboBox.Text;
+            string model = carModelComboBox.Text;
+            string engine = engineComboBox.Text;
+            List<string> models = new List<string>();
+            List<string> colors = new List<string>();
+            foreach (CarOffer offer in dataOffersHandler.getMakeOffers(make).ToList())
+            {
+                if (offer.model == model && offer.engine == engine)
+                {
+                    colors.Add(offer.color);
+                }
+            }
+            colorComboBox.DataSource = colors.Distinct().ToList();
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -146,5 +150,6 @@ namespace CarDealership
             menu.Show();
             this.Close();
         }
+
     }
 }

@@ -14,6 +14,3 @@
 2019,Toyota ,Toyota Corolla,24321,Pink,2.0 Hybrid Dynamic Force 184KM
 2019,Toyota ,Toyota Corolla,35564,Black,1.2 Turbo D-4T 116KM 85kW
 2018,Toyota ,Toyota Corolla,23612,Blue,2.0 Hybrid Dynamic Force 184KM
-12,12,12,12,12,12
-3,Karol,G,634,GG,GaA
-3,bo,fuck,213,Bordo,you

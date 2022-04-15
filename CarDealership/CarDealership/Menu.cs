@@ -37,5 +37,10 @@ namespace CarDealership
             BookTestDriveForm bookTestDrive = new BookTestDriveForm();
             bookTestDrive.Show();
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
     }
 }

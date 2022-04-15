@@ -32,6 +32,7 @@
             this.newCarAddButton = new System.Windows.Forms.Button();
             this.reservationButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // dreamCarButton
@@ -77,11 +78,23 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Car Dealeship";
             // 
+            // btnExit
+            // 
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnExit.Location = new System.Drawing.Point(256, 376);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(238, 47);
+            this.btnExit.TabIndex = 4;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 472);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.reservationButton);
             this.Controls.Add(this.newCarAddButton);
@@ -99,6 +112,7 @@
         private System.Windows.Forms.Button newCarAddButton;
         private System.Windows.Forms.Button reservationButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnExit;
     }
 }
 
