@@ -33,7 +33,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.initTimeTextBox = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnStartGame = new System.Windows.Forms.Button();
             this.cardVisibilityTextBox = new System.Windows.Forms.TextBox();
             this.boardSizeTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -88,16 +88,16 @@
             this.initTimeTextBox.TabIndex = 5;
             this.initTimeTextBox.Text = "3";
             // 
-            // button2
+            // btnStartGame
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button2.Location = new System.Drawing.Point(302, 344);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 35);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "START";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnStartGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.btnStartGame.Location = new System.Drawing.Point(302, 344);
+            this.btnStartGame.Name = "btnStartGame";
+            this.btnStartGame.Size = new System.Drawing.Size(150, 35);
+            this.btnStartGame.TabIndex = 6;
+            this.btnStartGame.Text = "START";
+            this.btnStartGame.UseVisualStyleBackColor = true;
+            this.btnStartGame.Click += new System.EventHandler(this.btnStartGame_Click);
             // 
             // cardVisibilityTextBox
             // 
@@ -142,7 +142,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.boardSizeTextBox);
             this.Controls.Add(this.cardVisibilityTextBox);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnStartGame);
             this.Controls.Add(this.initTimeTextBox);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -161,7 +161,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox initTimeTextBox;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnStartGame;
         private System.Windows.Forms.TextBox cardVisibilityTextBox;
         private System.Windows.Forms.TextBox boardSizeTextBox;
         private System.Windows.Forms.Label label5;

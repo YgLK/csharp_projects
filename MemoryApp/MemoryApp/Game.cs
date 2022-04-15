@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Resources;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,30 +12,6 @@ namespace MemoryApp
 {
     public partial class Game : Form
     {
-        
-        // list of strings placed on the reverse of the card
-        List<string> cardsValues = new List<string>() {"flow", "directory", "penguin", "palace",
-            "sneakers", "gene", "ambiguous", "compromise", "assume",
-            "finance", "bottle", "criticism", "kidnap", "argument",
-            "pineapple", "bottle", "dare", "stable", "door", "chip",
-            "freight", "blackberries", "fiction", "torch", "bland", "pedestrian",
-            "possession", "emerald", "stall", "broadcast", "violation", "biscuit",
-            "insect","resident","proposal","tune","salary","aspect","literature",
-            "priest","anything","loss","profit","beginning","benefit","injury",
-            "intention","season","connection","magazine","attention","truth",
-            "guidance","priority","scene", "phrase","election","resort",
-            "breath","employer","sir","specialist","population","emphasis",
-            "poetry","commission","path","assist","confusion","beyond",
-            "theme","depression","rent","fortune","emotion","convert",
-            "stranger","county", "ambition","agreement","inspector","opening"
-        };
-        
-        // TODO: 
-        // - configuration panel
-        // - score measure
-        // - ranking
-        // - images instead of strings as the card value
-
 
         // --- CONFIGURATION --- 
         // button grid info
@@ -56,15 +28,8 @@ namespace MemoryApp
 
         // each index in arrays corresponds to the x, y coordinates on the grid
         List<Tuple<Button, int[]>> pickedCards;
-        //Dictionary<int, string> cardsPairs;
         Dictionary<int, int> cardsPairs;
-
-        //--------
-            // //array with strings corresponding to each card
-            //Dictionary<int, string> cardsStringValues;
-        // array with image index corresponding to each card
-        Dictionary<int, int> cardsStringValues;
-        //--------
+        Dictionary<int, int> cardsImageIdx;
 
         // number of correctly chosen pairs
         int correctBets = 0;
@@ -77,10 +42,9 @@ namespace MemoryApp
             InitializeComponent();
 
             cardsPairs = new Dictionary<int, int>();
-            //---------
-            //cardsStringValues = new Dictionary<int, string>();
-            cardsStringValues = new Dictionary<int, int>();
-            //---------
+            cardsImageIdx = new Dictionary<int, int>();
+
+
             pickedCards = new List<Tuple<Button, int[]>>();
             movesCountLabel.Text = "0";
 
@@ -164,40 +128,20 @@ namespace MemoryApp
                 cardsPairs.Add(secondCardIdx, firstCardIdx);
             }
         }
-            // generate string per card
-        //public void generateCardValues()
-        //{
-        //    // generate 16 random words form cardsValues
-        //    int pairCount = cardsCount / 2;
-        //    List<string> cardValues = cardsValues.OrderBy(arg => Guid.NewGuid()).Take(pairCount).ToList();
-
-        //    int i = 0;
-        //    // add value of each card into the dictionary
-        //    foreach (KeyValuePair<int, int> kvp in cardsPairs)
-        //    {
-        //        if (!cardsStringValues.Keys.Contains(kvp.Key))
-        //        {
-        //            cardsStringValues.Add(kvp.Key, cardValues[i]);
-        //            cardsStringValues.Add(kvp.Value, cardValues[i]);
-        //            i++;
-        //        }
-        //    }
-        //}
 
         public void generateCardValues()
         {
             // generate 16 random words form cardsValues
             int pairCount = cardsCount / 2;
-            List<string> cardValues = cardsValues.OrderBy(arg => Guid.NewGuid()).Take(pairCount).ToList();
 
             int i = 0;
             // add value of each card into the dictionary
             foreach (KeyValuePair<int, int> kvp in cardsPairs)
             {
-                if (!cardsStringValues.Keys.Contains(kvp.Key))
+                if (!cardsImageIdx.Keys.Contains(kvp.Key))
                 {
-                    cardsStringValues.Add(kvp.Key, i);
-                    cardsStringValues.Add(kvp.Value, i);
+                    cardsImageIdx.Add(kvp.Key, i);
+                    cardsImageIdx.Add(kvp.Value, i);
                     i++;
                 }
             }
@@ -205,7 +149,6 @@ namespace MemoryApp
 
         public void createVisualCards()
         {
-
             this.tableLayoutPanel1.ColumnCount = columnCount;
             this.tableLayoutPanel1.RowCount = rowCount;
 
@@ -282,7 +225,7 @@ namespace MemoryApp
             button.BackgroundImage = null;
             // show hidden text of the card
             //button.Text = cardsStringValues[buttonIdx];
-            string filename = "im" + cardsStringValues[buttonIdx];
+            string filename = "im" + cardsImageIdx[buttonIdx];
             var cardImage = Properties.Resources.ResourceManager.GetObject(filename, Properties.Resources.Culture);
             //button.BackgroundImage = Properties.Resources.im1;
             button.BackgroundImage = (Image)cardImage;
@@ -295,7 +238,7 @@ namespace MemoryApp
             {
                 int firstCardIdx = pickedCards[0].Item2[0] * columnCount + pickedCards[0].Item2[1];
                 int secondCardIdx = pickedCards[1].Item2[0] * columnCount + pickedCards[1].Item2[1];
-                if (cardsStringValues[firstCardIdx] == cardsStringValues[secondCardIdx])
+                if (cardsImageIdx[firstCardIdx] == cardsImageIdx[secondCardIdx])
                 {
                     await Task.Delay(MemoryData.milisecCardShown);
                     // hide correctly picked pair

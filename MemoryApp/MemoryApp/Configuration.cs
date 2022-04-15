@@ -18,7 +18,7 @@ namespace MemoryApp
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnStartGame_Click(object sender, EventArgs e)
         {
             string[] rowColSizes = boardSizeTextBox.Text.Split('x');
             // validate board size
@@ -27,7 +27,7 @@ namespace MemoryApp
             } else
             {
                 MemoryData.setData(
-                    pre_time: float.Parse(cardVisibilityTextBox.Text, CultureInfo.InvariantCulture),
+                    pre_time: float.Parse(initTimeTextBox.Text, CultureInfo.InvariantCulture),
                     row_size: Int32.Parse(rowColSizes[0]),
                     col_size: Int32.Parse(rowColSizes[1]),
                     card_shown_time: float.Parse(cardVisibilityTextBox.Text, CultureInfo.InvariantCulture)

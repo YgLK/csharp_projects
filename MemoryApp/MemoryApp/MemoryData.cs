@@ -9,8 +9,6 @@ namespace MemoryApp
     internal static class MemoryData
     {
         public static string nickname = "Unknown";
-        // 1 - easy (16), 2 - medium (32), 3 - hard (64)
-        //public static int difLevel = 1;
         public static int timeToWin = 0;
         public static int movesToWin = 0;
         // --- CONFIGURATION --- 
