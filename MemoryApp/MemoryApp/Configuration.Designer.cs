@@ -1,6 +1,6 @@
 ﻿namespace MemoryApp
 {
-    partial class Form4
+    partial class Configuration
     {
         /// <summary>
         /// Required designer variable.
@@ -133,7 +133,7 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "If no values are chosen, the default ones will be set!";
             // 
-            // Form4
+            // Configuration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -148,7 +148,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "Form4";
+            this.Name = "Configuration";
             this.Text = "Configuration";
             this.ResumeLayout(false);
             this.PerformLayout();

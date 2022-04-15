@@ -14,16 +14,24 @@ using System.Windows.Forms;
 
 namespace MemoryApp
 {
-    public partial class Form2 : Form
+    public partial class Game : Form
     {
         
         // list of strings placed on the reverse of the card
-        List<string> cardsValues = new List<string>() {"flow", "directory", "breast", "palace",
-            "reptile", "gene", "ambiguous", "compromise", "assume",
-            "corpse", "stun", "criticism", "kidnap", "argument",
-            "horror", "bottle", "dare", "stable", "door", "chip",
-            "freight", "chest", "fiction", "torch", "bland", "pedestrian",
-            "possession", "detective", "stall", "broadcast", "violation", "biscuit"
+        List<string> cardsValues = new List<string>() {"flow", "directory", "penguin", "palace",
+            "sneakers", "gene", "ambiguous", "compromise", "assume",
+            "finance", "bottle", "criticism", "kidnap", "argument",
+            "pineapple", "bottle", "dare", "stable", "door", "chip",
+            "freight", "blackberries", "fiction", "torch", "bland", "pedestrian",
+            "possession", "emerald", "stall", "broadcast", "violation", "biscuit",
+            "insect","resident","proposal","tune","salary","aspect","literature",
+            "priest","anything","loss","profit","beginning","benefit","injury",
+            "intention","season","connection","magazine","attention","truth",
+            "guidance","priority","scene", "phrase","election","resort",
+            "breath","employer","sir","specialist","population","emphasis",
+            "poetry","commission","path","assist","confusion","beyond",
+            "theme","depression","rent","fortune","emotion","convert",
+            "stranger","county", "ambition","agreement","inspector","opening"
         };
         
         // TODO: 
@@ -50,22 +58,29 @@ namespace MemoryApp
         List<Tuple<Button, int[]>> pickedCards;
         //Dictionary<int, string> cardsPairs;
         Dictionary<int, int> cardsPairs;
-        // array with strings corresponding to each card
-        Dictionary<int, string> cardsStringValues;
 
-       
+        //--------
+            // //array with strings corresponding to each card
+            //Dictionary<int, string> cardsStringValues;
+        // array with image index corresponding to each card
+        Dictionary<int, int> cardsStringValues;
+        //--------
+
         // number of correctly chosen pairs
         int correctBets = 0;
         // number of moves
         int moveCount = 0;
 
 
-        public Form2()
+        public Game()
         {
             InitializeComponent();
 
             cardsPairs = new Dictionary<int, int>();
-            cardsStringValues = new Dictionary<int, string>();
+            //---------
+            //cardsStringValues = new Dictionary<int, string>();
+            cardsStringValues = new Dictionary<int, int>();
+            //---------
             pickedCards = new List<Tuple<Button, int[]>>();
             movesCountLabel.Text = "0";
 
@@ -149,6 +164,25 @@ namespace MemoryApp
                 cardsPairs.Add(secondCardIdx, firstCardIdx);
             }
         }
+            // generate string per card
+        //public void generateCardValues()
+        //{
+        //    // generate 16 random words form cardsValues
+        //    int pairCount = cardsCount / 2;
+        //    List<string> cardValues = cardsValues.OrderBy(arg => Guid.NewGuid()).Take(pairCount).ToList();
+
+        //    int i = 0;
+        //    // add value of each card into the dictionary
+        //    foreach (KeyValuePair<int, int> kvp in cardsPairs)
+        //    {
+        //        if (!cardsStringValues.Keys.Contains(kvp.Key))
+        //        {
+        //            cardsStringValues.Add(kvp.Key, cardValues[i]);
+        //            cardsStringValues.Add(kvp.Value, cardValues[i]);
+        //            i++;
+        //        }
+        //    }
+        //}
 
         public void generateCardValues()
         {
@@ -162,8 +196,8 @@ namespace MemoryApp
             {
                 if (!cardsStringValues.Keys.Contains(kvp.Key))
                 {
-                    cardsStringValues.Add(kvp.Key, cardValues[i]);
-                    cardsStringValues.Add(kvp.Value, cardValues[i]);
+                    cardsStringValues.Add(kvp.Key, i);
+                    cardsStringValues.Add(kvp.Value, i);
                     i++;
                 }
             }
@@ -247,7 +281,11 @@ namespace MemoryApp
             // hide card image
             button.BackgroundImage = null;
             // show hidden text of the card
-            button.Text = cardsStringValues[buttonIdx];
+            //button.Text = cardsStringValues[buttonIdx];
+            string filename = "im" + cardsStringValues[buttonIdx];
+            var cardImage = Properties.Resources.ResourceManager.GetObject(filename, Properties.Resources.Culture);
+            //button.BackgroundImage = Properties.Resources.im1;
+            button.BackgroundImage = (Image)cardImage;
         }
 
         public async Task hideCardValue(Button button, int time)
@@ -259,6 +297,7 @@ namespace MemoryApp
                 int secondCardIdx = pickedCards[1].Item2[0] * columnCount + pickedCards[1].Item2[1];
                 if (cardsStringValues[firstCardIdx] == cardsStringValues[secondCardIdx])
                 {
+                    await Task.Delay(MemoryData.milisecCardShown);
                     // hide correctly picked pair
                     pickedCards[0].Item1.Visible = false;
                     pickedCards[1].Item1.Visible = false;
@@ -302,7 +341,7 @@ namespace MemoryApp
                     sw.WriteLine(rankingRecord);
                 }
 
-                Form3 rankingForm = new Form3();
+                Ranking rankingForm = new Ranking();
                 rankingForm.Show();
                 this.Hide();
             }

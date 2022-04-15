@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace MemoryApp
 {
-    public partial class Form3 : Form
+    public partial class Ranking : Form
     {
         List<string> records;
 
-        public Form3()
+        public Ranking()
         {
             InitializeComponent();
             
@@ -28,7 +28,7 @@ namespace MemoryApp
         private void button1_Click(object sender, EventArgs e)
         {
             //start new game
-            Form1 nextGame = new Form1();
+            Start nextGame = new Start();
             nextGame.Show();
             this.Close();
         }

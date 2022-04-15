@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MemoryApp
 {
-    public partial class Form1 : Form
+    public partial class Start : Form
     {
-        public Form1()
+        public Start()
         {
             InitializeComponent();
             Tuple<int, int> test1 = new Tuple<int, int>(3, 5);
@@ -23,7 +23,7 @@ namespace MemoryApp
         private void button1_Click(object sender, EventArgs e)
         {
             // open game form
-            Form4 configForm = new Form4();
+            Configuration configForm = new Configuration();
             configForm.Show();
             this.Hide();
 
@@ -36,5 +36,9 @@ namespace MemoryApp
         }
 
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
     }
 }

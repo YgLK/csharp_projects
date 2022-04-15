@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace MemoryApp
 {
-    public partial class Form4 : Form
+    public partial class Configuration : Form
     {
-        public Form4()
+        public Configuration()
         {
             InitializeComponent();
         }
@@ -34,7 +34,7 @@ namespace MemoryApp
                 );
 
                 // open game form
-                Form2 gameForm = new Form2();
+                Game gameForm = new Game();
                 gameForm.Show();
                 this.Hide();
             }
