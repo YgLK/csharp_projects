@@ -311,7 +311,7 @@ namespace MemoryApp
             label3.Text = minPastStr + ":" + secPastStr;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void setShowCardTime_Click(object sender, EventArgs e)
         {
             double newTime = InputValidator.validateDouble(visTimeChange.Text);
             // if newTime isn't in proper format -1 is returned
@@ -322,7 +322,7 @@ namespace MemoryApp
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void gamePause_Click(object sender, EventArgs e)
         {
             if(timer1.Enabled == true)
             {

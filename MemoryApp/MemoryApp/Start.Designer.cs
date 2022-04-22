@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnContinue = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnExit = new System.Windows.Forms.Button();
@@ -46,15 +46,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Memory Game";
             // 
-            // button1
+            // btnContinue
             // 
-            this.button1.Location = new System.Drawing.Point(228, 226);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 33);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "CONTINUE";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnContinue.Location = new System.Drawing.Point(228, 226);
+            this.btnContinue.Name = "btnContinue";
+            this.btnContinue.Size = new System.Drawing.Size(137, 33);
+            this.btnContinue.TabIndex = 2;
+            this.btnContinue.Text = "CONTINUE";
+            this.btnContinue.UseVisualStyleBackColor = true;
+            this.btnContinue.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
@@ -90,7 +90,7 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnContinue);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Start";
@@ -103,7 +103,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnContinue;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnExit;
