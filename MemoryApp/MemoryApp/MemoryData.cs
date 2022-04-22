@@ -23,13 +23,13 @@ namespace MemoryApp
         public static int milisecCardShown = 400;
         public static int gameTimeInSec = 0;
 
-
+         
         public static int evaluateScore()
         {
             return 100 * cardsCount - (timeToWin * 12 + movesToWin * 15);
         }
 
-        public static void setData(int row_size=4, int col_size=4, float pre_time=3000, float card_shown_time=400)
+        public static void setData(int row_size=4, int col_size=4, double pre_time=3000, double card_shown_time=400)
         {
             rowCount = row_size;
             columnCount = col_size;

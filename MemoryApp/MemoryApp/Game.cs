@@ -313,10 +313,13 @@ namespace MemoryApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            float newTime = float.Parse(visTimeChange.Text, CultureInfo.InvariantCulture);
-            int newTimeInMilSec = (int)(newTime * 1000);
-
-            MemoryData.milisecCardShown = newTimeInMilSec;
+            double newTime = InputValidator.validateDouble(visTimeChange.Text);
+            // if newTime isn't in proper format -1 is returned
+            if(newTime != -1)
+            {
+                int newTimeInMilSec = (int)(newTime * 1000);
+                MemoryData.milisecCardShown = newTimeInMilSec;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
