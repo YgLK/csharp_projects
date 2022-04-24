@@ -31,16 +31,6 @@ namespace CarDealership
 
         }
 
-        //private void carMakeComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    string make = carMakeComboBox.Text;
-        //    List<string> models = new List<string>();
-        //    foreach (CarOffer offer in dataOffersHandler.getMakeOffers(make).ToList())
-        //    {
-        //        models.Add(offer.model);
-        //    }
-        //    carModelComboBox.DataSource = models.Distinct().ToList();
-        //}
 
         private void carModelComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -134,7 +124,7 @@ namespace CarDealership
             if (isAvailable)
             {
                 // it should append txt to cardata_test.txt
-                File.AppendAllText(@"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\reservationsTestDrive.txt",
+                File.AppendAllText(@"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\Data\reservationsTestDrive.txt",
                         record + Environment.NewLine);
                 if (reservationsHandler.reservations.ContainsKey(date))
                 {

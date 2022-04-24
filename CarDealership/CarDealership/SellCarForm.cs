@@ -64,7 +64,7 @@ namespace CarDealership
             string record = year + "," + make + "," + model + "," + price + "," + color + "," + engine;
 
             // it should append txt to cardata_test.txt
-            File.AppendAllText(@"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\carData_test.txt",
+            File.AppendAllText(@"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\Data\carData_test.txt",
                    record + Environment.NewLine);
 
             // upload picture associated with offer
@@ -97,8 +97,8 @@ namespace CarDealership
             {
                 String path = openFileDialogCarImage.FileName; // get name of file
                 carImage.ImageLocation = path;
-                string color = colorTextBox.Text;
-                string model = modelTextBox.Text;
+                string color = colorTextBox.Text.Replace(" ", "");
+                string model = modelTextBox.Text.Replace(" ", "");
                 string filename = color + model + ".png";
                 string carImagesDirPath = @"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\CarImages\" + filename;
 

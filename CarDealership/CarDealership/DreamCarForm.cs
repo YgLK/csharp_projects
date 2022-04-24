@@ -11,7 +11,7 @@ namespace CarDealership
         DataOffersHandler dataOffersHandler;
         Dictionary<string, int> accessories;
 
-        // --------------------------------------------------------
+        // -------------------------------------------------------- # DONE
         // TODO:
         // BUG JEST - Toyota Rav4 - kila kolorów samochodu dla każdego koloru po jednym silniku 
         // silniki nie są rozdzielane na podstawie kolorów przez co brakuje ceny jesli damy nieodpowiedni 
@@ -151,5 +151,39 @@ namespace CarDealership
             this.Close();
         }
 
+        private void DeleteOffer_Click(object sender, EventArgs e)
+        {
+            OfferRemover remover = new OfferRemover();
+
+            if(
+                carModelComboBox.Text.Equals(String.Empty) ||
+                engineComboBox.Text.Equals(String.Empty) ||
+                colorComboBox.Text.Equals(String.Empty)
+                )
+            {
+                MessageBox.Show("Pick all car offer data before deleting the offer!");
+            } else
+            {
+                string color = colorComboBox.Text;
+                string model = carModelComboBox.Text;
+                string engine = engineComboBox.Text;
+
+                // model cena kolor silnik
+                string[] carOfferToRemove = new string[] { model, "," + color + "," + engine };
+                string carReservationToRemove = model + "," + color + "," + engine;
+
+                remover.RemoveOffer(carOfferToRemove);
+                remover.RemoveOfferReservations(carReservationToRemove);
+
+
+                // remove image associated with the offer
+                string filename = color + model + ".png";
+                string carImagePath = @"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\CarImages\" + filename;
+                // car image cannot be removed because it's used during the deletion of the car offer data
+                //remover.RemoveOfferImage(carImagePath);
+
+                MessageBox.Show("Car offer removed successfully.");
+            }
+        }
     }
 }

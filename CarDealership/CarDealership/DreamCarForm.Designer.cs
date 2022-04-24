@@ -47,6 +47,7 @@
             this.prodYearLabel = new System.Windows.Forms.Label();
             this.boxAdditionalAccessories = new System.Windows.Forms.CheckedListBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.carImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,11 +121,11 @@
             // 
             // searchOffersButton
             // 
-            this.searchOffersButton.Location = new System.Drawing.Point(929, 643);
+            this.searchOffersButton.Location = new System.Drawing.Point(792, 643);
             this.searchOffersButton.Name = "searchOffersButton";
-            this.searchOffersButton.Size = new System.Drawing.Size(196, 45);
+            this.searchOffersButton.Size = new System.Drawing.Size(172, 45);
             this.searchOffersButton.TabIndex = 12;
-            this.searchOffersButton.Text = "SEARCH";
+            this.searchOffersButton.Text = "SHOW";
             this.searchOffersButton.UseVisualStyleBackColor = true;
             this.searchOffersButton.Click += new System.EventHandler(this.searchOffersButton_Click);
             // 
@@ -214,11 +215,22 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(986, 643);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(115, 45);
+            this.button2.TabIndex = 22;
+            this.button2.Text = "DELETE";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.DeleteOffer_Click);
+            // 
             // DreamCarForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.boxAdditionalAccessories);
             this.Controls.Add(this.prodYearLabel);
@@ -263,5 +275,6 @@
         private System.Windows.Forms.Label prodYearLabel;
         private System.Windows.Forms.CheckedListBox boxAdditionalAccessories;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

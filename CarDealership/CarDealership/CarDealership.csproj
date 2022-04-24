@@ -52,6 +52,7 @@
     <Compile Include="BookTestDriveForm.Designer.cs">
       <DependentUpon>BookTestDriveForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OfferRemover.cs" />
     <Compile Include="InputValidator.cs" />
     <Compile Include="Reservation.cs" />
     <Compile Include="CarOffer.cs" />
@@ -113,8 +114,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="carData.txt" />
-    <Content Include="carData_test.txt" />
+    <Content Include="carData_test - Copy.txt" />
+    <Content Include="Data\carData_test.txt" />
     <None Include="Resources\RedToyotaRav4.png" />
     <None Include="Resources\WhiteToyotaAvensis.png" />
     <None Include="Resources\BlueToyotaCorolla.png" />
@@ -126,7 +127,8 @@
     <None Include="Resources\BrownToyotaRav4.png" />
     <None Include="Resources\PinkToyotaCorolla.png" />
     <Content Include="CarImages\WhiteToyotaAvensis.png" />
-    <Content Include="reservationsTestDrive.txt" />
+    <Content Include="reservationsTestDrive - Copy.txt" />
+    <Content Include="Data\reservationsTestDrive.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

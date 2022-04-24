@@ -81,7 +81,7 @@
             // 
             // btnAddReservation
             // 
-            this.btnAddReservation.Location = new System.Drawing.Point(536, 492);
+            this.btnAddReservation.Location = new System.Drawing.Point(662, 492);
             this.btnAddReservation.Name = "btnAddReservation";
             this.btnAddReservation.Size = new System.Drawing.Size(139, 38);
             this.btnAddReservation.TabIndex = 29;
@@ -91,7 +91,7 @@
             // 
             // showReservations
             // 
-            this.showReservations.Location = new System.Drawing.Point(371, 492);
+            this.showReservations.Location = new System.Drawing.Point(499, 492);
             this.showReservations.Name = "showReservations";
             this.showReservations.Size = new System.Drawing.Size(145, 38);
             this.showReservations.TabIndex = 30;
@@ -121,7 +121,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(693, 492);
+            this.button3.Location = new System.Drawing.Point(826, 492);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(72, 38);
             this.button3.TabIndex = 33;
