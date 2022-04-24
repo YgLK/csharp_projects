@@ -46,26 +46,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form2.cs">
+    <Compile Include="InputValidator.cs" />
+    <Compile Include="Configuration.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <Compile Include="Configuration.Designer.cs">
+      <DependentUpon>Configuration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RankingReader.cs" />
+    <Compile Include="Game.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Game.Designer.cs">
+      <DependentUpon>Game.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ranking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ranking.Designer.cs">
+      <DependentUpon>Ranking.cs</DependentUpon>
     </Compile>
     <Compile Include="MemoryData.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Start.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Start.Designer.cs">
+      <DependentUpon>Start.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Start.resx">
+      <DependentUpon>Start.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form2.resx">
-      <DependentUpon>Form2.cs</DependentUpon>
+    <EmbeddedResource Include="Game.ccp-Cakm-IN.resx">
+      <DependentUpon>Game.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game.en.resx">
+      <DependentUpon>Game.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Game.resx">
+      <DependentUpon>Game.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ranking.resx">
+      <DependentUpon>Ranking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configuration.resx">
+      <DependentUpon>Configuration.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -75,6 +101,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -88,6 +115,82 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cardDesign.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="rankingData.txt" />
+    <None Include="Resources\im63.jpg" />
+    <None Include="Resources\im62.jpg" />
+    <None Include="Resources\im61.jpg" />
+    <None Include="Resources\im60.jpg" />
+    <None Include="Resources\im59.jpg" />
+    <None Include="Resources\im58.jpg" />
+    <None Include="Resources\im57.jpg" />
+    <None Include="Resources\im56.jpg" />
+    <None Include="Resources\im55.jpg" />
+    <None Include="Resources\im54.jpg" />
+    <None Include="Resources\im53.jpg" />
+    <None Include="Resources\im52.jpg" />
+    <None Include="Resources\im51.jpg" />
+    <None Include="Resources\im50.jpg" />
+    <None Include="Resources\im49.jpg" />
+    <None Include="Resources\im48.jpg" />
+    <None Include="Resources\im47.jpg" />
+    <None Include="Resources\im46.jpg" />
+    <None Include="Resources\im45.jpg" />
+    <None Include="Resources\im44.jpg" />
+    <None Include="Resources\im43.jpg" />
+    <None Include="Resources\im42.jpg" />
+    <None Include="Resources\im41.jpg" />
+    <None Include="Resources\im40.jpg" />
+    <None Include="Resources\im39.jpg" />
+    <None Include="Resources\im38.jpg" />
+    <None Include="Resources\im37.jpg" />
+    <None Include="Resources\im36.jpg" />
+    <None Include="Resources\im35.jpg" />
+    <None Include="Resources\im34.jpg" />
+    <None Include="Resources\im33.jpg" />
+    <None Include="Resources\im32.jpg" />
+    <None Include="Resources\im31.jpg" />
+    <None Include="Resources\im30.jpg" />
+    <None Include="Resources\im29.jpg" />
+    <None Include="Resources\im28.jpg" />
+    <None Include="Resources\im27.jpg" />
+    <None Include="Resources\im26.jpg" />
+    <None Include="Resources\im25.jpg" />
+    <None Include="Resources\im24.jpg" />
+    <None Include="Resources\im23.jpg" />
+    <None Include="Resources\im22.jpg" />
+    <None Include="Resources\im21.jpg" />
+    <None Include="Resources\im20.jpg" />
+    <None Include="Resources\im19.jpg" />
+    <None Include="Resources\im18.jpg" />
+    <None Include="Resources\im17.jpg" />
+    <None Include="Resources\im16.jpg" />
+    <None Include="Resources\im15.jpg" />
+    <None Include="Resources\im14.jpg" />
+    <None Include="Resources\im13.jpg" />
+    <None Include="Resources\im12.jpg" />
+    <None Include="Resources\im11.jpg" />
+    <None Include="Resources\im10.jpg" />
+    <None Include="Resources\im9.jpg" />
+    <None Include="Resources\im8.jpg" />
+    <None Include="Resources\im7.jpg" />
+    <None Include="Resources\im6.jpg" />
+    <None Include="Resources\im5.jpg" />
+    <None Include="Resources\im4.jpg" />
+    <None Include="Resources\im3.jpg" />
+    <None Include="Resources\im2.jpg" />
+    <None Include="Resources\im1.jpg" />
+    <None Include="Resources\im0.jpg" />
+    <None Include="Resources\im69.jpg" />
+    <None Include="Resources\im68.jpg" />
+    <None Include="Resources\im67.jpg" />
+    <None Include="Resources\im66.jpg" />
+    <None Include="Resources\im65.jpg" />
+    <None Include="Resources\im64.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
