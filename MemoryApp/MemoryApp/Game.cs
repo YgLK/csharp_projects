@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace MemoryApp
 {
     public partial class Game : Form
     {
-
-        // --- CONFIGURATION --- 
+        //-----------------------
+        //    CONFIGURATION 
+        //-----------------------
         // button grid info
         int rowCount;
         int columnCount;
@@ -41,6 +42,18 @@ namespace MemoryApp
         {
             InitializeComponent();
 
+            // set game configuration values
+            InitConfiguration();
+            // initialize components attributes
+            InitializeCardValues();
+            // create grid of cards 
+            CreateVisualCards();
+            // start the game by showing the cards
+            StartShowCards();
+        }
+
+        private void InitConfiguration()
+        {
             cardsPairs = new Dictionary<int, int>();
             cardsImageIdx = new Dictionary<int, int>();
 
@@ -57,26 +70,21 @@ namespace MemoryApp
 
             cardsCount = rowCount * columnCount;
 
-            // initialize components attributes
-            initializeCardValues();
-            // create grid of cards 
-            createVisualCards();
+
             // init values of components
             label3.Text = "00:00";
             movesCountLabel.Text = "0";
             timer1.Enabled = true;
-
-            startShowCards();
         }
 
 
         // let player memorize cards values for the first 5 sec of the game 
-        private async void startShowCards()
+        private async void StartShowCards()
         {
             // for the first 15 sec show cards values - Player tries to memorize its positions
             foreach (Button button in tableLayoutPanel1.Controls)
             {
-                showCardValue(button);
+                ShowCardValue(button);
             }
 
             // show cards for preparation Time
@@ -91,17 +99,17 @@ namespace MemoryApp
         }
 
 
-        private void initializeCardValues()
+        private void InitializeCardValues()
         {
             // generate 8 pairs of indexes (8*2 indexes included)
-            generateIndexPairs();
+            GenerateIndexPairs();
             // generate card value for each pair
-            generateCardValues();
+            GenerateCardValues();
         }
 
 
         // generate cards pairs by picking random index of another card for each card
-        private void generateIndexPairs()
+        private void GenerateIndexPairs()
         {
             // list of cards indexes
             List<int> cardsIdxes = Enumerable.Range(0, cardsCount).ToList();
@@ -129,7 +137,7 @@ namespace MemoryApp
             }
         }
 
-        public void generateCardValues()
+        public void GenerateCardValues()
         {
             // generate 16 random words form cardsValues
             int pairCount = cardsCount / 2;
@@ -147,8 +155,9 @@ namespace MemoryApp
             }
         }
 
-        public void createVisualCards()
+        public void CreateVisualCards()
         {
+            // create grid
             this.tableLayoutPanel1.ColumnCount = columnCount;
             this.tableLayoutPanel1.RowCount = rowCount;
 
@@ -170,6 +179,12 @@ namespace MemoryApp
                     );
             }
 
+            // put cards on the grid
+            InitializeButtons();
+        }
+
+        private void InitializeButtons()
+        {
             for (int i = 0; i < rowCount; i++)
             {
                 for (int j = 0; j < columnCount; j++)
@@ -178,7 +193,7 @@ namespace MemoryApp
                     button.Text = string.Format("");
                     // button id will be its name - name can be parsed with " " separator to get x, y indexes 
                     button.Name = string.Format("{0} {1}", i, j);
-                    button.Click += new EventHandler(button_Click);
+                    button.Click += new EventHandler(Button_Click);
                     button.Dock = DockStyle.Fill;
                     button.BackgroundImageLayout = ImageLayout.Stretch;
                     button.BackgroundImage = Properties.Resources.cardDesign;
@@ -187,7 +202,7 @@ namespace MemoryApp
             }
         }
 
-        protected void button_Click(object sender, EventArgs e)
+        protected void Button_Click(object sender, EventArgs e)
         {
             if(timer1.Enabled == true)
             {
@@ -206,14 +221,14 @@ namespace MemoryApp
                         pickedCards[0].Item2[1] == card.Item2[1]))
                     {
                         pickedCards.Add(card);
-                        showCardValue(button);
-                        hideCardValue(button, milisecCardShown);
+                        ShowCardValue(button);
+                        HideCardValue(button, milisecCardShown);
                     }
                 }
             }
         }
 
-        public async Task showCardValue(Button button)
+        public async void ShowCardValue(Button button)
         {
             // identify which button was clicked and perform necessary actions
             int[] buttonCords = button.Name.Split().Select(Int32.Parse).ToArray<int>();
@@ -223,19 +238,20 @@ namespace MemoryApp
             int buttonIdx = columnCount * x_cord + y_cord;
             // hide card image
             button.BackgroundImage = null;
-            // show hidden text of the card
-            //button.Text = cardsStringValues[buttonIdx];
+            // show hidden image of the card
             string filename = "im" + cardsImageIdx[buttonIdx];
+            // retrieve corresponding card image
             var cardImage = Properties.Resources.ResourceManager.GetObject(filename, Properties.Resources.Culture);
-            //button.BackgroundImage = Properties.Resources.im1;
+            // show card image
             button.BackgroundImage = (Image)cardImage;
         }
 
-        public async Task hideCardValue(Button button, int time)
+        public async void HideCardValue(Button button, int time)
         {
             // wait until second card is picked
             if(pickedCards.Count == 2)
             {
+                // get card indexes and check if pair is picked
                 int firstCardIdx = pickedCards[0].Item2[0] * columnCount + pickedCards[0].Item2[1];
                 int secondCardIdx = pickedCards[1].Item2[0] * columnCount + pickedCards[1].Item2[1];
                 if (cardsImageIdx[firstCardIdx] == cardsImageIdx[secondCardIdx])
@@ -247,12 +263,12 @@ namespace MemoryApp
                     correctBets += 1;
                 }
                 
+
                 // wait some time with the pair shown
                 await Task.Delay(MemoryData.milisecCardShown);
-                // hide cards
-                pickedCards[0].Item1.Text = pickedCards[0].Item1.Name;
-                pickedCards[1].Item1.Text = pickedCards[1].Item1.Name;
 
+
+                // update move counter
                 moveCount += 1;
                 movesCountLabel.Text = moveCount.ToString();
                 // hide card value and show cards image
@@ -290,7 +306,7 @@ namespace MemoryApp
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void GameTimer_Tick(object sender, EventArgs e)
         {
             gameTimeInSec += 1;
             // extract min:sec time format
@@ -299,6 +315,7 @@ namespace MemoryApp
             string minPastStr =  minPast.ToString();
             string secPastStr = secPast.ToString();
 
+            // show time in the elegant way (instead of 0:1 it's 0:01 etc.)
             if(minPast < 10)
             {
                 minPastStr = "0" + minPastStr;
@@ -311,19 +328,22 @@ namespace MemoryApp
             label3.Text = minPastStr + ":" + secPastStr;
         }
 
-        private void setShowCardTime_Click(object sender, EventArgs e)
+        private void SetShowCardTime_Click(object sender, EventArgs e)
         {
             double newTime = InputValidator.validateDouble(visTimeChange.Text);
             // if newTime isn't in proper format -1 is returned
             if(newTime != -1)
             {
+                // set card show time to configuration variable
                 int newTimeInMilSec = (int)(newTime * 1000);
-                MemoryData.milisecCardShown = newTimeInMilSec;
+                // get absolute value of parameters to cope with negative values
+                MemoryData.milisecCardShown = Math.Abs(newTimeInMilSec);
             }
         }
 
-        private void gamePause_Click(object sender, EventArgs e)
+        private void GamePause_Click(object sender, EventArgs e)
         {
+            // switch timer mode when gamePuase button is clicked
             if(timer1.Enabled == true)
             {
                 timer1.Enabled = false;

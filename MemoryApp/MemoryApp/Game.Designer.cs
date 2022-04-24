@@ -70,7 +70,7 @@
             // timer1
             // 
             this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer1.Tick += new System.EventHandler(this.GameTimer_Tick);
             // 
             // visTimeChange
             // 
@@ -87,14 +87,14 @@
             resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.setShowCardTime_Click);
+            this.button1.Click += new System.EventHandler(this.SetShowCardTime_Click);
             // 
             // button2
             // 
             resources.ApplyResources(this.button2, "button2");
             this.button2.Name = "button2";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.gamePause_Click);
+            this.button2.Click += new System.EventHandler(this.GamePause_Click);
             // 
             // Form2
             // 
