@@ -1,0 +1,15 @@
+2012,Volkswagen ,Volkswagen Passat B6,8690,Blue,1.4 TSI
+2012,Volkswagen ,Volkswagen Passat B6,9251,Blue,1.6 FSI
+2014,Toyota ,Toyota Rav4,25429,Brown,2.0 D-4D 116 KM
+2019,Toyota ,Toyota Rav4,27367,Blue,1.8 125 KM
+2016,Toyota ,Toyota Rav4,28412,Red,2.0 150 KM 2.4 163 KM (USA)
+2018,Toyota ,Toyota Rav4,22453,Black,2.4 163 KM (USA)
+2021,Toyota ,Toyota Avensis,12482,White,2AZ-FSE R4 2.4 l
+2017,Toyota ,Toyota Avensis,18482,White,R4 2.0 l
+2016,Volkswagen ,Volkswagen Golf 7,27262,Black,1.8 TSI 172 KM
+2016,Volkswagen ,Volkswagen Golf 7,22531,Black,1.4 TSI 122 KM
+2016,Volkswagen ,Volkswagen Golf 7,23246,Black,GTD 2.0 TDI 184 KM
+2019,Toyota ,Toyota Corolla,23640,Pink,1.2 Turbo D-4T 116KM 85kW
+2019,Toyota ,Toyota Corolla,24321,Pink,2.0 Hybrid Dynamic Force 184KM
+2019,Toyota ,Toyota Corolla,35564,Black,1.2 Turbo D-4T 116KM 85kW
+2018,Toyota ,Toyota Corolla,23612,Blue,2.0 Hybrid Dynamic Force 184KM

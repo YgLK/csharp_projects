@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{882FFDEA-F8A3-4A92-8B75-9F0CB0D72D95}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CarDealership</RootNamespace>
+    <AssemblyName>CarDealership</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BookTestDriveForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookTestDriveForm.Designer.cs">
+      <DependentUpon>BookTestDriveForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfferRemover.cs" />
+    <Compile Include="InputValidator.cs" />
+    <Compile Include="Reservation.cs" />
+    <Compile Include="CarOffer.cs" />
+    <Compile Include="ReservationHandler.cs" />
+    <Compile Include="DataOffersHandler.cs" />
+    <Compile Include="SellCarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellCarForm.Designer.cs">
+      <DependentUpon>SellCarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DreamCarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DreamCarForm.Designer.cs">
+      <DependentUpon>DreamCarForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BookTestDriveForm.resx">
+      <DependentUpon>BookTestDriveForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellCarForm.resx">
+      <DependentUpon>SellCarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DreamCarForm.resx">
+      <DependentUpon>DreamCarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="carData_test - Copy.txt" />
+    <Content Include="Data\carData_test.txt" />
+    <None Include="Resources\RedToyotaRav4.png" />
+    <None Include="Resources\WhiteToyotaAvensis.png" />
+    <None Include="Resources\BlueToyotaCorolla.png" />
+    <None Include="Resources\BlackToyotaCorolla.png" />
+    <None Include="Resources\BlackVolkswagenGolf7.png" />
+    <None Include="Resources\BlueToyotaRav4.png" />
+    <None Include="Resources\BlueVolkswagenPassatB6.png" />
+    <None Include="Resources\BlackToyotaRav4.png" />
+    <None Include="Resources\BrownToyotaRav4.png" />
+    <None Include="Resources\PinkToyotaCorolla.png" />
+    <Content Include="CarImages\WhiteToyotaAvensis.png" />
+    <Content Include="reservationsTestDrive - Copy.txt" />
+    <Content Include="Data\reservationsTestDrive.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
