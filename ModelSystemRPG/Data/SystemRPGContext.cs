@@ -6,15 +6,16 @@ using ModelSystemRPG.Data.Models;
 
 namespace ModelSystemRPG.Data
 {
-    public class SystemPRGContext : DbContext
+    public class SystemRPGContext : DbContext
     {
-        public SystemPRGContext()
+        public SystemRPGContext()
         {
         
         }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories{ get; set; }
+        public DbSet<Model> Models { get; set; }
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
