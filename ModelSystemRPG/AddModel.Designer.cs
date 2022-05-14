@@ -37,13 +37,10 @@
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.label2 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
-            this.txtProperty1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnAddProperty = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnAddModel
@@ -118,13 +115,6 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // txtProperty1
-            // 
-            this.txtProperty1.Location = new System.Drawing.Point(3, 3);
-            this.txtProperty1.Name = "txtProperty1";
-            this.txtProperty1.Size = new System.Drawing.Size(248, 23);
-            this.txtProperty1.TabIndex = 26;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -136,7 +126,7 @@
             // 
             // btnAddProperty
             // 
-            this.btnAddProperty.Location = new System.Drawing.Point(821, 257);
+            this.btnAddProperty.Location = new System.Drawing.Point(852, 254);
             this.btnAddProperty.Name = "btnAddProperty";
             this.btnAddProperty.Size = new System.Drawing.Size(35, 23);
             this.btnAddProperty.TabIndex = 28;
@@ -144,17 +134,10 @@
             this.btnAddProperty.UseVisualStyleBackColor = true;
             this.btnAddProperty.Click += new System.EventHandler(this.btnAddProperty_Click);
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(257, 3);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(170, 23);
-            this.textBox2.TabIndex = 29;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(684, 239);
+            this.label4.Location = new System.Drawing.Point(711, 236);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(35, 15);
             this.label4.TabIndex = 30;
@@ -163,12 +146,11 @@
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.Controls.Add(this.txtProperty1);
-            this.flowLayoutPanel1.Controls.Add(this.textBox2);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(355, 254);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(310, 254);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(452, 236);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(536, 236);
             this.flowLayoutPanel1.TabIndex = 31;
+            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
             // 
             // AddModel
             // 
@@ -189,8 +171,6 @@
             this.Controls.Add(this.txtCategoryDescription);
             this.Name = "AddModel";
             this.Text = "Add new model";
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,10 +187,8 @@
         private FontDialog fontDialog1;
         private Label label2;
         private Button btnBack;
-        private TextBox txtProperty1;
         private Label label3;
         private Button btnAddProperty;
-        private TextBox textBox2;
         private Label label4;
         private FlowLayoutPanel flowLayoutPanel1;
     }

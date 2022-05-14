@@ -10,11 +10,6 @@ namespace ModelSystemRPG
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.Exit();
@@ -39,8 +34,8 @@ namespace ModelSystemRPG
         private void btnAddUser_Click(object sender, EventArgs e)
         {
             // open form
-            AddUser addUser = new AddUser();
-            addUser.Show();
+            Catalog catalog = new Catalog();
+            catalog.Show();
             this.Hide();
         }
 
@@ -52,6 +47,19 @@ namespace ModelSystemRPG
             Debug.WriteLine("Dict: \n" + string.Join(Environment.NewLine, dictProp));
             string stringProp = dbHandler.toStringModelProperties(dictProp);
             Debug.WriteLine("String: \n" + stringProp);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // open form
+            AddUser addUser = new AddUser();
+            addUser.Show();
+            this.Hide();
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

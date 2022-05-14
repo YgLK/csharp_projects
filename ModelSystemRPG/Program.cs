@@ -11,7 +11,11 @@ namespace ModelSystemRPG
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Menu());
+            // commented for tests
+            //Application.Run(new Menu());
+            
+            // TESTS
+            Application.Run(new AddModel());
         }
     }
 }

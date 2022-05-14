@@ -39,9 +39,10 @@
             // 
             this.btnAddCategory.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAddCategory.AutoSize = true;
-            this.btnAddCategory.Location = new System.Drawing.Point(276, 236);
+            this.btnAddCategory.Location = new System.Drawing.Point(315, 194);
+            this.btnAddCategory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddCategory.Name = "btnAddCategory";
-            this.btnAddCategory.Size = new System.Drawing.Size(590, 56);
+            this.btnAddCategory.Size = new System.Drawing.Size(674, 75);
             this.btnAddCategory.TabIndex = 0;
             this.btnAddCategory.Text = "ADD NEW CATEGORY";
             this.btnAddCategory.UseVisualStyleBackColor = true;
@@ -51,9 +52,10 @@
             // 
             this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnExit.AutoSize = true;
-            this.btnExit.Location = new System.Drawing.Point(276, 482);
+            this.btnExit.Location = new System.Drawing.Point(315, 643);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(590, 56);
+            this.btnExit.Size = new System.Drawing.Size(674, 75);
             this.btnExit.TabIndex = 1;
             this.btnExit.Text = "BACK";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -63,9 +65,10 @@
             // 
             this.btnAddModel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAddModel.AutoSize = true;
-            this.btnAddModel.Location = new System.Drawing.Point(276, 311);
+            this.btnAddModel.Location = new System.Drawing.Point(315, 294);
+            this.btnAddModel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAddModel.Name = "btnAddModel";
-            this.btnAddModel.Size = new System.Drawing.Size(590, 56);
+            this.btnAddModel.Size = new System.Drawing.Size(674, 75);
             this.btnAddModel.TabIndex = 2;
             this.btnAddModel.Text = "ADD NEW MODEL";
             this.btnAddModel.UseVisualStyleBackColor = true;
@@ -75,9 +78,10 @@
             // 
             this.btnCatalog.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCatalog.AutoSize = true;
-            this.btnCatalog.Location = new System.Drawing.Point(276, 161);
+            this.btnCatalog.Location = new System.Drawing.Point(315, 94);
+            this.btnCatalog.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCatalog.Name = "btnCatalog";
-            this.btnCatalog.Size = new System.Drawing.Size(590, 56);
+            this.btnCatalog.Size = new System.Drawing.Size(674, 75);
             this.btnCatalog.TabIndex = 3;
             this.btnCatalog.Text = "CATALOG";
             this.btnCatalog.UseVisualStyleBackColor = true;
@@ -85,9 +89,10 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(53, 42);
+            this.btnTest.Location = new System.Drawing.Point(61, 56);
+            this.btnTest.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(75, 23);
+            this.btnTest.Size = new System.Drawing.Size(86, 31);
             this.btnTest.TabIndex = 4;
             this.btnTest.Text = "TestButton";
             this.btnTest.UseVisualStyleBackColor = true;
@@ -95,18 +100,17 @@
             // 
             // Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1145, 668);
+            this.ClientSize = new System.Drawing.Size(1309, 891);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.btnCatalog);
             this.Controls.Add(this.btnAddModel);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnAddCategory);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Menu";
             this.Text = "Menu";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,5 +123,6 @@
         private Button btnAddModel;
         private Button btnCatalog;
         private Button btnTest;
+        private Button btnAddUser;
     }
 }

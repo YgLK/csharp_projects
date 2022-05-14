@@ -132,6 +132,7 @@
             this.Controls.Add(this.txtCategoryDescription);
             this.Name = "AddUser";
             this.Text = "Add new User";
+            this.Load += new System.EventHandler(this.AddUser_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
