@@ -47,7 +47,10 @@ namespace ModelSystemRPG
             string modelName = txtCategoryDescription.Text;
             int categoryId = dbHandler.getCategoryIdByName(categoryName);
 
-            string jsonData = "{";
+            // add model to db
+            dbHandler.addModel(modelName, categoryId);
+
+            //string jsonData = "{";
 
             for (int i = 0; i <= flowLayoutPanel1.Controls.Count; i++)
             {
@@ -66,15 +69,18 @@ namespace ModelSystemRPG
                     {
                         propertyKey = txtBoxName.Text;
                         propertyValue = txtBoxValue.Text;
-                        jsonData += "\"" + propertyKey + "\":\"" + propertyValue + "\",";
+                        //jsonData += "\"" + propertyKey + "\":\"" + propertyValue + "\",";
+                        
+                        dbHandler.addModelProperty(propertyKey, propertyValue);
                     }
                 }
             }
 
-            jsonData = jsonData.Remove(jsonData.Length - 1, 1) + "}";
 
-            MessageBox.Show(jsonData);
-            //MessageBox.Show(flowLayoutPanel1.Controls[0].Text);
+
+            //jsonData = jsonData.Remove(jsonData.Length - 1, 1) + "}";
+
+            //MessageBox.Show(jsonData);
 
             ////Create properties
             //var properties = new

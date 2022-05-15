@@ -48,6 +48,32 @@ namespace ModelSystemRPG.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("ModelSystemRPG.Data.Models.CategoryProperty", b =>
+                {
+                    b.Property<int>("CategoryPropertyId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryPropertyId"), 1L, 1);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CategoryPropertyId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("CategoryProperties");
+                });
+
             modelBuilder.Entity("ModelSystemRPG.Data.Models.Model", b =>
                 {
                     b.Property<int>("ModelId")
@@ -72,6 +98,32 @@ namespace ModelSystemRPG.Migrations
                     b.HasIndex("CategoryId");
 
                     b.ToTable("Models");
+                });
+
+            modelBuilder.Entity("ModelSystemRPG.Data.Models.ModelProperty", b =>
+                {
+                    b.Property<int>("ModelPropertyId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ModelPropertyId"), 1L, 1);
+
+                    b.Property<int>("ModelId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ModelPropertyId");
+
+                    b.HasIndex("ModelId");
+
+                    b.ToTable("ModelProperties");
                 });
 
             modelBuilder.Entity("ModelSystemRPG.Data.Models.User", b =>
@@ -111,6 +163,17 @@ namespace ModelSystemRPG.Migrations
                     b.Navigation("User");
                 });
 
+            modelBuilder.Entity("ModelSystemRPG.Data.Models.CategoryProperty", b =>
+                {
+                    b.HasOne("ModelSystemRPG.Data.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("ModelSystemRPG.Data.Models.Model", b =>
                 {
                     b.HasOne("ModelSystemRPG.Data.Models.Category", "Category")
@@ -120,6 +183,17 @@ namespace ModelSystemRPG.Migrations
                         .IsRequired();
 
                     b.Navigation("Category");
+                });
+
+            modelBuilder.Entity("ModelSystemRPG.Data.Models.ModelProperty", b =>
+                {
+                    b.HasOne("ModelSystemRPG.Data.Models.Model", "Model")
+                        .WithMany()
+                        .HasForeignKey("ModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Model");
                 });
 #pragma warning restore 612, 618
         }

@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace ModelSystemRPG.Data.Models
 {
-    public class Model
+    public class CategoryProperty
     {
-        public int ModelId { get; set; }
+        public int CategoryPropertyId { get; set; }
         public string Name { get; set; }
-        // properties in the JSON string        // - delete this PropertiesJson field
-        public string PropertiesJson { get; set; }
+        public string Value { get; set; }
         public int CategoryId { get; set; }
-        public Category? Category { get; set; }
+        public Category Category { get; set; }
     }
 }

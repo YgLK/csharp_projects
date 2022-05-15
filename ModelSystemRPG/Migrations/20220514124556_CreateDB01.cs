@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ModelSystemRPG.Migrations
 {
-    public partial class CreateSystenRPGdb : Migration
+    public partial class CreateDB01 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,6 +46,27 @@ namespace ModelSystemRPG.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "CategoryProperties",
+                columns: table => new
+                {
+                    CategoryPropertyId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CategoryProperties", x => x.CategoryPropertyId);
+                    table.ForeignKey(
+                        name: "FK_CategoryProperties_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "CategoryId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Models",
                 columns: table => new
                 {
@@ -66,10 +87,41 @@ namespace ModelSystemRPG.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "ModelProperties",
+                columns: table => new
+                {
+                    ModelPropertyId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ModelId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ModelProperties", x => x.ModelPropertyId);
+                    table.ForeignKey(
+                        name: "FK_ModelProperties_Models_ModelId",
+                        column: x => x.ModelId,
+                        principalTable: "Models",
+                        principalColumn: "ModelId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Categories_UserId",
                 table: "Categories",
                 column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CategoryProperties_CategoryId",
+                table: "CategoryProperties",
+                column: "CategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ModelProperties_ModelId",
+                table: "ModelProperties",
+                column: "ModelId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Models_CategoryId",
@@ -79,6 +131,12 @@ namespace ModelSystemRPG.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "CategoryProperties");
+
+            migrationBuilder.DropTable(
+                name: "ModelProperties");
+
             migrationBuilder.DropTable(
                 name: "Models");
 

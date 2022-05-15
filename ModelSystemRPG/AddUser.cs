@@ -33,9 +33,5 @@ namespace ModelSystemRPG
             this.Hide();
         }
 
-        private void AddUser_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

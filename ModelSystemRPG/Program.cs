@@ -13,9 +13,9 @@ namespace ModelSystemRPG
             ApplicationConfiguration.Initialize();
             // commented for tests
             //Application.Run(new Menu());
-            
+
             // TESTS
-            Application.Run(new AddModel());
+            Application.Run(new Catalog());
         }
     }
 }

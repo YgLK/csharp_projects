@@ -7,7 +7,7 @@ namespace ModelSystemRPG.Data
     public class DBHandler
     {
         SystemRPGContext rpgDbContext;
-
+        int lastModelId = -1;
         public DBHandler()
         {
             rpgDbContext = new SystemRPGContext();
@@ -44,12 +44,16 @@ namespace ModelSystemRPG.Data
             rpgDbContext.SaveChanges();
         }
 
-
         public List<string> getCategoryNames()
         {
             // get all categories' names
             var categoryNames = rpgDbContext.Categories.Select(e => e.Name).ToList();
             return categoryNames;
+        }
+
+        internal void deleteModel(int modelId)
+        {
+            return;
         }
 
         public int getCategoryIdByName(string categoryName)
@@ -70,6 +74,40 @@ namespace ModelSystemRPG.Data
             model.PropertiesJson = properties;
 
             rpgDbContext.Models.Add(model);
+
+            // save data
+            rpgDbContext.SaveChanges();
+
+            // find id of the actually added model
+            lastModelId = model.ModelId;
+        }
+
+        public void addModelProperty(string propertyName, string propertyValue)
+        {
+            ModelProperty modelProperty = new ModelProperty();
+            modelProperty.Name = propertyName;
+            modelProperty.Value = propertyValue;
+            // property is attached to the earliest added model (model properties are added immediately after model creation)
+            modelProperty.ModelId = lastModelId;
+            
+            // add the property
+            rpgDbContext.ModelProperties.Add(modelProperty);
+            
+            // save data
+            rpgDbContext.SaveChanges();
+        }
+
+        public void addCategoryProperty(string categoryName, string propertyName, string propertyValue)
+        {
+            CategoryProperty categoryProperty = new CategoryProperty();
+            categoryProperty.Name = propertyName;
+            categoryProperty.Value = propertyValue;
+            // get category id
+            int categoryId = rpgDbContext.Categories.Where(e => e.Name == categoryName).Select(e => e.CategoryId).ToArray()[0];
+            categoryProperty.CategoryId = categoryId;
+
+            // add the property
+            rpgDbContext.CategoryProperties.Add(categoryProperty);
 
             // save data
             rpgDbContext.SaveChanges();
@@ -95,6 +133,10 @@ namespace ModelSystemRPG.Data
             return propertyDict;
         }
 
+        public Array getModels()
+        {
+            return null;
+        }
 
         // get model properties converted from dictionary to string
         // as string is acceptable in the database Properties column of the Model
