@@ -50,6 +50,8 @@ namespace ModelSystemRPG
             // add model to db
             dbHandler.addModel(modelName, categoryId);
 
+            int modelId = dbHandler.getModelIdx(categoryName, modelName);
+
             //string jsonData = "{";
 
             for (int i = 0; i <= flowLayoutPanel1.Controls.Count; i++)
@@ -71,7 +73,7 @@ namespace ModelSystemRPG
                         propertyValue = txtBoxValue.Text;
                         //jsonData += "\"" + propertyKey + "\":\"" + propertyValue + "\",";
                         
-                        dbHandler.addModelProperty(propertyKey, propertyValue);
+                        dbHandler.addModelProperty(modelId, propertyKey, propertyValue);
                     }
                 }
             }

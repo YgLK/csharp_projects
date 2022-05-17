@@ -41,29 +41,20 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.AutoScroll = true;
-            this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.ColumnCount = 5;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.8934F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.1066F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 284F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            //this.tableLayoutPanel1.Controls.Add(this.button4, 4, 0);
-            //this.tableLayoutPanel1.Controls.Add(this.button1, 0, 0);
-            //this.tableLayoutPanel1.Controls.Add(this.button2, 2, 0);
-            //this.tableLayoutPanel1.Controls.Add(this.button3, 3, 0);
-            //this.tableLayoutPanel1.Controls.Add(this.label7, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 73);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            //this.tableLayoutPanel1.RowCount = 1;
-            //this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(965, 521);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(965, 618);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // button4
@@ -198,9 +189,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Catalog";
             this.Text = "Item catalog";
-            this.Load += new System.EventHandler(this.Catalog_Load);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

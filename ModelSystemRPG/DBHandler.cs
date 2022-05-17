@@ -56,6 +56,31 @@ namespace ModelSystemRPG.Data
             return;
         }
 
+        public void deleteModelProperty(int propertyId)
+        {
+            // delete model property of the given id
+            var toDelProperty = rpgDbContext.ModelProperties.Where(e => e.ModelPropertyId == propertyId).Select(e => e).ToArray()[0];
+            rpgDbContext.Remove(toDelProperty);
+            rpgDbContext.SaveChanges();
+        }
+
+        public int getModelIdx(string categoryName, string modelName)
+        {
+            var model = rpgDbContext.Models.Where(e => e.Category.Name == categoryName && e.Name == modelName).ToArray()[0];
+            return model.ModelId;
+        }
+
+        public void deleteAllModelProperties(int modelId)
+        {
+            var toDelProperties = rpgDbContext.ModelProperties.Where(e => e.ModelId == modelId).Select(e => e).ToArray();
+            foreach(var property in toDelProperties)
+            {
+                rpgDbContext.Remove(property);
+                rpgDbContext.SaveChanges();
+            }
+        }
+
+
         public int getCategoryIdByName(string categoryName)
         {
             // return category id of the name
@@ -82,13 +107,12 @@ namespace ModelSystemRPG.Data
             lastModelId = model.ModelId;
         }
 
-        public void addModelProperty(string propertyName, string propertyValue)
+        public void addModelProperty(int modelId, string propertyName, string propertyValue)
         {
-            ModelProperty modelProperty = new ModelProperty();
+            Models.ModelProperty modelProperty = new Models.ModelProperty();
             modelProperty.Name = propertyName;
             modelProperty.Value = propertyValue;
-            // property is attached to the earliest added model (model properties are added immediately after model creation)
-            modelProperty.ModelId = lastModelId;
+            modelProperty.ModelId = modelId;
             
             // add the property
             rpgDbContext.ModelProperties.Add(modelProperty);
@@ -133,10 +157,7 @@ namespace ModelSystemRPG.Data
             return propertyDict;
         }
 
-        public Array getModels()
-        {
-            return null;
-        }
+
 
         // get model properties converted from dictionary to string
         // as string is acceptable in the database Properties column of the Model

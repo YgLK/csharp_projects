@@ -17,7 +17,7 @@ namespace ModelSystemRPG.Data
         public DbSet<Category> Categories{ get; set; }
         public DbSet<Model> Models { get; set; }
         public DbSet<CategoryProperty> CategoryProperties { get; set; }
-        public DbSet<ModelProperty> ModelProperties { get; set; }
+        public DbSet<Models.ModelProperty> ModelProperties { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
