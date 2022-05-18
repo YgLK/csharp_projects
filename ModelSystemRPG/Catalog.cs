@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ModelSystemRPG.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,17 +15,27 @@ namespace ModelSystemRPG
     public partial class Catalog : Form
     {
         Dictionary<int, ModelData> modelsData;
+        List<int> modelsIdxSorted;
+        DBHandler dbHandler;
 
-        public Catalog()
+        // sort parameters in here
+        public Catalog(string sortType = "", bool ascending = true)
         {
             InitializeComponent();
+
+            if (LoginSystem.user != null)
+            {
+                lblLoggedInUsername.Text = LoginSystem.user.userName;
+            }
+
             DataOperator dataOperator = new DataOperator();
             // get all models with data
             modelsData = dataOperator.getModels();
-            InitDataTable();
+            dbHandler = new DBHandler();
+            InitDataTable(sortType: sortType, ascending: ascending);
         }
 
-        private void InitDataTable()
+        private void InitDataTable(string sortType, bool ascending)
         {
 
             // -- get models data --
@@ -33,7 +44,19 @@ namespace ModelSystemRPG
             int i = 0;
             // add new rows
 
-            var modelList = modelsData.Values;
+            // HERE SORTED MODELS DATA SHOULD BE SET
+            // default case
+            List<ModelData> modelList = new List<ModelData>(modelsData.Values);
+            // if sorted parameters are provided
+            if (sortType == "categoryName")
+            {
+                modelList = Sorter.sortAlphabeticallyByCategory(models: modelsData, ascending: ascending);
+            }
+            else if(sortType == "modelName")
+            {
+                modelList = Sorter.sortAlphabeticallyByModel(models: modelsData, ascending: ascending);
+            }
+
             // go through each model
             foreach(var model in modelList)
             {
@@ -119,8 +142,9 @@ namespace ModelSystemRPG
                 btnDelete.UseVisualStyleBackColor = true;
                 btnDelete.Click +=
                     (s, e) => {
+                        dbHandler.deleteModel(model.modelId); 
                         // refresh Catalog form
-                        Catalog catalog= new Catalog();
+                        Catalog catalog = new Catalog();
                         catalog.Show();
                         this.Hide();
                     };
@@ -133,6 +157,45 @@ namespace ModelSystemRPG
                 //this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
                 i++;
             }
+        }
+
+        private void btnSortByCategory_Click(object sender, EventArgs e)
+        {
+            bool dafuq = checkAscendingSort.Checked;
+            if (checkAscendingSort.Checked)
+            {
+                Catalog catalog = new Catalog(sortType: "categoryName", ascending: true);
+                catalog.Show();
+                this.Hide();
+            } else
+            {
+                Catalog catalog = new Catalog(sortType: "categoryName", ascending: false);
+                catalog.Show();
+                this.Hide();
+            }
+        }
+
+        private void btnSortByModel_Click(object sender, EventArgs e)
+        {
+            if (checkAscendingSort.Checked)
+            {
+                Catalog catalog = new Catalog(sortType: "modelName", ascending: true);
+                catalog.Show();
+                this.Hide();
+            }
+            else
+            {
+                Catalog catalog = new Catalog(sortType: "modelName", ascending: false);
+                catalog.Show();
+                this.Hide();
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Menu menu = new Menu();
+            menu.Show();
+            this.Hide();
         }
     }
 }

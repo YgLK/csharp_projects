@@ -14,6 +14,12 @@ namespace ModelSystemRPG
         public AddModel()
         {
             InitializeComponent();
+            
+            if (LoginSystem.user != null)
+            {
+                lblLoggedInUsername.Text = LoginSystem.user.userName;
+            }
+
             dbHandler = new DBHandler();
             var names = dbHandler.getCategoryNames();
             comboBoxCat.DataSource = names;
@@ -77,6 +83,13 @@ namespace ModelSystemRPG
                     }
                 }
             }
+                
+            MessageBox.Show("Model \'" + modelName + "\' has been added.");
+
+            // get back to the menu
+            Menu menu = new Menu();
+            menu.Show();
+            this.Hide();
 
 
 
@@ -123,14 +136,5 @@ namespace ModelSystemRPG
             propertyCount++;
         }
 
-        private void txtProperty1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

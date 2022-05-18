@@ -41,6 +41,8 @@
             this.btnAddProperty = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblLoggedInUsername = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnAddModel
@@ -150,13 +152,33 @@
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(536, 236);
             this.flowLayoutPanel1.TabIndex = 31;
-            this.flowLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel1_Paint);
+            // 
+            // lblLoggedInUsername
+            // 
+            this.lblLoggedInUsername.AutoSize = true;
+            this.lblLoggedInUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblLoggedInUsername.Location = new System.Drawing.Point(1049, 4);
+            this.lblLoggedInUsername.Name = "lblLoggedInUsername";
+            this.lblLoggedInUsername.Size = new System.Drawing.Size(84, 21);
+            this.lblLoggedInUsername.TabIndex = 33;
+            this.lblLoggedInUsername.Text = "Unknown";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(937, 9);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 15);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "Logged in as:";
             // 
             // AddModel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1145, 668);
+            this.Controls.Add(this.lblLoggedInUsername);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnAddProperty);
@@ -191,5 +213,7 @@
         private Button btnAddProperty;
         private Label label4;
         private FlowLayoutPanel flowLayoutPanel1;
+        private Label lblLoggedInUsername;
+        private Label label5;
     }
 }

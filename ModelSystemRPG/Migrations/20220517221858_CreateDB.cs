@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ModelSystemRPG.Migrations
 {
-    public partial class CreateDB01 : Migration
+    public partial class CreateDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -73,7 +73,6 @@ namespace ModelSystemRPG.Migrations
                     ModelId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PropertiesJson = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>

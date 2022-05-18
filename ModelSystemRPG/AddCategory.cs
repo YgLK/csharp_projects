@@ -16,6 +16,10 @@ namespace ModelSystemRPG
         public AddCategory()
         {
             InitializeComponent();
+            if (LoginSystem.user != null)
+            {
+                lblLoggedInUsername.Text = LoginSystem.user.userName;
+            }
         }
 
         private void btnAddCategory_Click(object sender, EventArgs e)

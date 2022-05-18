@@ -10,8 +10,6 @@ namespace ModelSystemRPG.Data.Models
     {
         public int ModelId { get; set; }
         public string Name { get; set; }
-        // properties in the JSON string        // - delete this PropertiesJson field
-        public string PropertiesJson { get; set; }
         public int CategoryId { get; set; }
         public Category? Category { get; set; }
     }

@@ -29,7 +29,5 @@ namespace ModelSystemRPG
         {
             return modelProperties;
         }
-
-        public int MyProperty { get; set; }
     }
 }

@@ -27,7 +27,6 @@ namespace ModelSystemRPG.Data
             rpgDbContext.SaveChanges();
         }
 
-
         public void addUser(string name = "NewUser", string role = "User", string email = "abcd123@gmail.com")
         {
             // add new user 
@@ -51,9 +50,11 @@ namespace ModelSystemRPG.Data
             return categoryNames;
         }
 
-        internal void deleteModel(int modelId)
+        public void deleteModel(int modelId)
         {
-            return;
+            var modelToDel = rpgDbContext.Models.Where(e => e.ModelId == modelId).Select(e => e).ToArray()[0];
+            rpgDbContext.Remove(modelToDel);
+            rpgDbContext.SaveChanges();
         }
 
         public void deleteModelProperty(int propertyId)
@@ -90,13 +91,12 @@ namespace ModelSystemRPG.Data
             return id;
         }
 
-        public void addModel(string name = "NewModel", int categoryId = 1, string properties = "{}")
+        public void addModel(string name = "NewModel", int categoryId = 1)
         {
             // add model
             Model model = new Model();
             model.Name = name;
             model.CategoryId = categoryId;
-            model.PropertiesJson = properties;
 
             rpgDbContext.Models.Add(model);
 
@@ -126,6 +126,7 @@ namespace ModelSystemRPG.Data
             CategoryProperty categoryProperty = new CategoryProperty();
             categoryProperty.Name = propertyName;
             categoryProperty.Value = propertyValue;
+
             // get category id
             int categoryId = rpgDbContext.Categories.Where(e => e.Name == categoryName).Select(e => e.CategoryId).ToArray()[0];
             categoryProperty.CategoryId = categoryId;
@@ -142,28 +143,20 @@ namespace ModelSystemRPG.Data
             return rpgDbContext;
         }
 
-        // get model properties as dictionary from the model of modelId
-        public Dictionary<string, string> getModelProperties(int modelId)
+        public List<int> getUsersCategories(int userId)
         {
-            string properties = rpgDbContext.Models.Where(e => e.ModelId == modelId).Select(e => e.PropertiesJson).ToList()[0];
-            //Parse the json object
-            JObject jsonObject = JObject.Parse(properties);
-
-            Dictionary<string, string> propertyDict = new Dictionary<string, string>();
-            foreach(var property in jsonObject)
-            {
-                propertyDict.Add(property.Key, property.Value.ToString());
-            }
-            return propertyDict;
+            // get all user's categories ids
+            return rpgDbContext.Categories.Where(e => e.UserId == userId).Select(e => e.CategoryId).ToList();
         }
 
-
-
-        // get model properties converted from dictionary to string
-        // as string is acceptable in the database Properties column of the Model
-        public string toStringModelProperties(Dictionary<string, string> modelPropertiesDict)
+        public string getUserPassword(string username)
         {
-            return JsonConvert.SerializeObject(modelPropertiesDict);
+            return rpgDbContext.Users.Where(e => e.Username == username).Select(e => e.Password).ToList()[0];
+        }
+
+        public User getUserByUsername(string username)
+        {
+            return rpgDbContext.Users.Where(e => e.Username == username).Select(e => e).ToList()[0];
         }
     }
 }

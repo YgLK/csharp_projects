@@ -12,8 +12,8 @@ using ModelSystemRPG.Data;
 namespace ModelSystemRPG.Migrations
 {
     [DbContext(typeof(SystemRPGContext))]
-    [Migration("20220514124556_CreateDB01")]
-    partial class CreateDB01
+    [Migration("20220518162750_AddPasswordToUserModel")]
+    partial class AddPasswordToUserModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -91,10 +91,6 @@ namespace ModelSystemRPG.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PropertiesJson")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("ModelId");
 
                     b.HasIndex("CategoryId");
@@ -140,6 +136,10 @@ namespace ModelSystemRPG.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

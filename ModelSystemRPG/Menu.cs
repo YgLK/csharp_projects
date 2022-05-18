@@ -14,7 +14,15 @@ namespace ModelSystemRPG
             //{
             //    Debug.WriteLine(x);
             //}
-
+            if(LoginSystem.user != null)
+            {
+                txtUserName.Enabled = false;
+                txtPassword.Enabled = false;
+                btnLogin.Enabled = false;
+                btnRegister.Enabled = false;
+                btnLogout.Visible = true;
+                lblLoggedInUsername.Text = LoginSystem.user.userName;
+            }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -46,15 +54,6 @@ namespace ModelSystemRPG
             this.Hide();
         }
 
-        // test environment
-        private void btnTest_Click(object sender, EventArgs e)
-        {
-            DBHandler dbHandler = new DBHandler();
-            var dictProp = dbHandler.getModelProperties(1);
-            Debug.WriteLine("Dict: \n" + string.Join(Environment.NewLine, dictProp));
-            string stringProp = dbHandler.toStringModelProperties(dictProp);
-            Debug.WriteLine("String: \n" + stringProp);
-        }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -62,6 +61,43 @@ namespace ModelSystemRPG
             AddUser addUser = new AddUser();
             addUser.Show();
             this.Hide();
+        }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+            string username = txtUserName.Text;
+            string password = txtPassword.Text;
+
+            if(username != "" && password != "")
+            {
+                if(LoginSystem.LogIn(username, password))
+                {
+                    lblLoggedInUsername.Text = LoginSystem.user.userName;
+                    txtUserName.Enabled = false;
+                    txtPassword.Enabled = false;
+                    btnLogin.Enabled = false;
+                    btnRegister.Enabled = false;
+                    btnLogout.Visible = true;
+                    btnLogout.Enabled = true;
+                } else
+                {
+                    MessageBox.Show("Incorrect password. Try different one.");
+                }
+            } else
+            {
+                MessageBox.Show("Enter your username and password firstly.");
+            }
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            txtUserName.Enabled = true;
+            txtPassword.Enabled = true;
+            btnLogin.Enabled = true;
+            btnRegister.Enabled = true;
+            btnLogout.Visible = false;
+            lblLoggedInUsername.Text = "Unknown";
+            LoginSystem.LogOut();
         }
     }
 }

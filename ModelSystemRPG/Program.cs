@@ -15,7 +15,8 @@ namespace ModelSystemRPG
             //Application.Run(new Menu());
 
             // TESTS
-            Application.Run(new Catalog());
+            //Application.Run(new Catalog());
+            Application.Run(new Menu());
         }
     }
 }

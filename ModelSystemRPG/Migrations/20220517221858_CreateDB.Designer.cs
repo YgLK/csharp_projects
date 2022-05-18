@@ -12,8 +12,8 @@ using ModelSystemRPG.Data;
 namespace ModelSystemRPG.Migrations
 {
     [DbContext(typeof(SystemRPGContext))]
-    [Migration("20220517153236_RemoveJsonPropColumnFROMmodelProperties")]
-    partial class RemoveJsonPropColumnFROMmodelProperties
+    [Migration("20220517221858_CreateDB")]
+    partial class CreateDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -88,10 +88,6 @@ namespace ModelSystemRPG.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PropertiesJson")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

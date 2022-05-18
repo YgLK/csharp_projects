@@ -17,12 +17,22 @@ namespace ModelSystemRPG
     {
         ModelData model;
         DBHandler dBHandler;
+        // used to update properties
+        DataOperator dataOperator;
+
         // num of rows
         int i = 0;
 
         public EditModel(ModelData _model)
         {
-            model = _model;
+            if (LoginSystem.user != null)
+            {
+                lblLoggedInUsername.Text = LoginSystem.user.userName;
+            }
+
+
+            dataOperator = new DataOperator();   
+            model = dataOperator.getModels()[_model.modelId];
             dBHandler = new DBHandler();
             InitializeComponent();
             loadProperties();
@@ -67,11 +77,11 @@ namespace ModelSystemRPG
                     btnDelete.Click +=
                         (s, e) => {
                             dBHandler.deleteModelProperty(property.propertyId);                             // <- it works, property is deleted, but Forms reload should be fixed
-                            MessageBox.Show("Property" + property.propertyName + " has been deleted.");
                             // reload properties edit view
                             EditModel editModel = new EditModel(model);
                             editModel.Show();
                             this.Hide();
+                            MessageBox.Show("Property" + property.propertyName + " has been deleted.");
                         };
                     btnDelete.Size = new System.Drawing.Size(145, 36);
                     btnDelete.UseVisualStyleBackColor = true;
@@ -182,6 +192,25 @@ namespace ModelSystemRPG
 
             // voila
             MessageBox.Show("Changes has been saved.");
+            //InitializeComponent();
+            
+            //Catalog catalog = new Catalog();
+            //this.Close();
+            //catalog.Show();
+            EditModel editModel = new EditModel(model);
+            this.Close();
+            editModel.Show();
+            //              W A R N I N G
+            //---------------------------------------------------------------------------------------------------------
+            // TODO:
+            //  - po usunięciu property powinno się odświeżyć tablePanel i wyświetlać aktualne properties,
+            //  po odświeżeniu jednak pozostają properties w takim stanie jak przed usunięciem/zmianą    // DONE
+            // - system z użytkownikami
+            //      - system logowania
+            //      - dane modele może edytować // chyba // tylko wlasciciel kategorii
+            // - filtracja podczas wyświetlania, sortowanie po nazwie/ilości properties etc.
+            //---------------------------------------------------------------------------------------------------------
+
         }
     }
 }

@@ -41,6 +41,8 @@
             this.btnSaveChanges = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.btnAddProp = new System.Windows.Forms.Button();
+            this.lblLoggedInUsername = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -53,7 +55,7 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(136, 183);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 89F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(739, 278);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -168,11 +170,32 @@
             this.btnAddProp.UseVisualStyleBackColor = true;
             this.btnAddProp.Click += new System.EventHandler(this.btnAddProp_Click);
             // 
+            // lblLoggedInUsername
+            // 
+            this.lblLoggedInUsername.AutoSize = true;
+            this.lblLoggedInUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblLoggedInUsername.Location = new System.Drawing.Point(988, 4);
+            this.lblLoggedInUsername.Name = "lblLoggedInUsername";
+            this.lblLoggedInUsername.Size = new System.Drawing.Size(84, 21);
+            this.lblLoggedInUsername.TabIndex = 15;
+            this.lblLoggedInUsername.Text = "Unknown";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(876, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 15);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Logged in as:";
+            // 
             // EditModel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1083, 557);
+            this.Controls.Add(this.lblLoggedInUsername);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnAddProp);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnSaveChanges);
@@ -209,5 +232,7 @@
         private Label lblCategoryName;
         private Label hModelName;
         private Label hModel;
+        private Label lblLoggedInUsername;
+        private Label label3;
     }
 }

@@ -35,6 +35,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddCategory = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.lblLoggedInUsername = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtCategoryName
@@ -98,11 +100,32 @@
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // lblLoggedInUsername
+            // 
+            this.lblLoggedInUsername.AutoSize = true;
+            this.lblLoggedInUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblLoggedInUsername.Location = new System.Drawing.Point(1042, 4);
+            this.lblLoggedInUsername.Name = "lblLoggedInUsername";
+            this.lblLoggedInUsername.Size = new System.Drawing.Size(84, 21);
+            this.lblLoggedInUsername.TabIndex = 27;
+            this.lblLoggedInUsername.Text = "Unknown";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(930, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 15);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Logged in as:";
+            // 
             // AddCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1145, 668);
+            this.Controls.Add(this.lblLoggedInUsername);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnAddCategory);
             this.Controls.Add(this.label1);
@@ -126,5 +149,7 @@
         private Label label1;
         private Button btnAddCategory;
         private Button btnBack;
+        private Label lblLoggedInUsername;
+        private Label label3;
     }
 }

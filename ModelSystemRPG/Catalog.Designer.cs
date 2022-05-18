@@ -41,6 +41,19 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnSortByCategory = new System.Windows.Forms.Button();
+            this.btnSortByModel = new System.Windows.Forms.Button();
+            this.checkAscendingSort = new System.Windows.Forms.CheckBox();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.lblLoggedInUsername = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -173,11 +186,148 @@
             this.label6.TabIndex = 7;
             this.label6.Text = "Delete model";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(1035, 58);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(64, 21);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "Sort by";
+            // 
+            // btnSortByCategory
+            // 
+            this.btnSortByCategory.Location = new System.Drawing.Point(1053, 142);
+            this.btnSortByCategory.Name = "btnSortByCategory";
+            this.btnSortByCategory.Size = new System.Drawing.Size(239, 39);
+            this.btnSortByCategory.TabIndex = 9;
+            this.btnSortByCategory.Text = "Category name";
+            this.btnSortByCategory.UseVisualStyleBackColor = true;
+            this.btnSortByCategory.Click += new System.EventHandler(this.btnSortByCategory_Click);
+            // 
+            // btnSortByModel
+            // 
+            this.btnSortByModel.Location = new System.Drawing.Point(1053, 196);
+            this.btnSortByModel.Name = "btnSortByModel";
+            this.btnSortByModel.Size = new System.Drawing.Size(239, 38);
+            this.btnSortByModel.TabIndex = 10;
+            this.btnSortByModel.Text = "Model name";
+            this.btnSortByModel.UseVisualStyleBackColor = true;
+            this.btnSortByModel.Click += new System.EventHandler(this.btnSortByModel_Click);
+            // 
+            // checkAscendingSort
+            // 
+            this.checkAscendingSort.AutoSize = true;
+            this.checkAscendingSort.Checked = true;
+            this.checkAscendingSort.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkAscendingSort.Location = new System.Drawing.Point(1068, 106);
+            this.checkAscendingSort.Name = "checkAscendingSort";
+            this.checkAscendingSort.Size = new System.Drawing.Size(82, 19);
+            this.checkAscendingSort.TabIndex = 11;
+            this.checkAscendingSort.Text = "Ascending";
+            this.checkAscendingSort.UseVisualStyleBackColor = true;
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(1035, 315);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(257, 112);
+            this.checkedListBox1.TabIndex = 12;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(1035, 266);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(138, 21);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "Choose category";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(1035, 517);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(257, 23);
+            this.textBox1.TabIndex = 14;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(1035, 484);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(140, 21);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Search for model";
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(1217, 556);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 16;
+            this.button5.Text = "Find";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(1217, 442);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 17;
+            this.button6.Text = "Apply";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(1165, 630);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(127, 41);
+            this.btnBack.TabIndex = 18;
+            this.btnBack.Text = "BACK";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // lblLoggedInUsername
+            // 
+            this.lblLoggedInUsername.AutoSize = true;
+            this.lblLoggedInUsername.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblLoggedInUsername.Location = new System.Drawing.Point(1233, 4);
+            this.lblLoggedInUsername.Name = "lblLoggedInUsername";
+            this.lblLoggedInUsername.Size = new System.Drawing.Size(84, 21);
+            this.lblLoggedInUsername.TabIndex = 20;
+            this.lblLoggedInUsername.Text = "Unknown";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(1121, 9);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(77, 15);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "Logged in as:";
+            // 
             // Catalog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1324, 703);
+            this.Controls.Add(this.lblLoggedInUsername);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.btnBack);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.checkedListBox1);
+            this.Controls.Add(this.checkAscendingSort);
+            this.Controls.Add(this.btnSortByModel);
+            this.Controls.Add(this.btnSortByCategory);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -209,5 +359,18 @@
         private Button button3;
         private Label label7;
         private Button button4;
+        private Label label8;
+        private Button btnSortByCategory;
+        private Button btnSortByModel;
+        private CheckBox checkAscendingSort;
+        private CheckedListBox checkedListBox1;
+        private Label label9;
+        private TextBox textBox1;
+        private Label label10;
+        private Button button5;
+        private Button button6;
+        private Button btnBack;
+        private Label lblLoggedInUsername;
+        private Label label11;
     }
 }
