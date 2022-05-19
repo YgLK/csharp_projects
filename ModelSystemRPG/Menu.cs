@@ -14,6 +14,7 @@ namespace ModelSystemRPG
             //{
             //    Debug.WriteLine(x);
             //}
+            txtPassword.PasswordChar = '*';
             if(LoginSystem.user != null)
             {
                 txtUserName.Enabled = false;
@@ -21,6 +22,7 @@ namespace ModelSystemRPG
                 btnLogin.Enabled = false;
                 btnRegister.Enabled = false;
                 btnLogout.Visible = true;
+                btnLogout.Enabled = true;
                 lblLoggedInUsername.Text = LoginSystem.user.userName;
             }
         }
@@ -32,18 +34,30 @@ namespace ModelSystemRPG
 
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
-            // open form
-            AddCategory addCategory = new AddCategory();
-            addCategory.Show();
-            this.Hide();
+            if (LoginSystem.user == null)
+            {
+                MessageBox.Show("You must be logged in to add a category.");
+            } else
+            {
+                // open form
+                AddCategory addCategory = new AddCategory();
+                addCategory.Show();
+                this.Hide();
+            }
         }
 
         private void btnAddModel_Click(object sender, EventArgs e)
         {
-            // open form
-            AddModel addModel = new AddModel();
-            addModel.Show();
-            this.Hide();
+            if(LoginSystem.user == null)
+            {
+                MessageBox.Show("You must be logged in to add a model.");
+            } else
+            {
+                // open form
+                AddModel addModel = new AddModel();
+                addModel.Show();
+                this.Hide();
+            }
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)

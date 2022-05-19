@@ -35,6 +35,8 @@ namespace ModelSystemRPG
                                   CategoryId = ep.CategoryId,
                                   // category description
                                   CategoryDescription = ep.Description,
+                                  // category owner id
+                                  CategoryOwnerId = ep.UserId,
                                   // model name
                                   ModelName = e.Name,
                                   // model id
@@ -55,6 +57,8 @@ namespace ModelSystemRPG
                                   CategoryId = ep.CategoryId,
                                   // category description
                                   CategoryDescription = ep.Description,
+                                  // category owner id
+                                  CategoryOwnerId = ep.UserId,
                                   // model name
                                   ModelName = e.Name,
                                   // model id
@@ -72,7 +76,7 @@ namespace ModelSystemRPG
                 string categoryName = modelData[i].CategoryName;
                 int categoryId = modelData[i].CategoryId;
                 string categoryDescription = modelData[i].CategoryDescription;
-
+                int categoryOwnerId = modelData[i].CategoryOwnerId;
 
                 string modelName = modelData[i].ModelName;
                 int modelId = modelData[i].ModelId;
@@ -86,7 +90,7 @@ namespace ModelSystemRPG
                 // craete model if doesnt occur in the dictionary
                 if (!models.ContainsKey(modelId))
                 {
-                    ModelData model = new ModelData(categoryName, categoryDescription, categoryId, modelName, modelId);
+                    ModelData model = new ModelData(categoryName, categoryDescription, categoryId, categoryOwnerId, modelName, modelId);
                     models.Add(modelId, model);
                 }
 
@@ -99,9 +103,8 @@ namespace ModelSystemRPG
             {
                 if (!models.ContainsKey(model.ModelId))
                 {
-                    models.Add(model.ModelId, new ModelData(model.CategoryName, model.CategoryDescription, model.CategoryId, model.ModelName, model.ModelId));
+                    models.Add(model.ModelId, new ModelData(model.CategoryName, model.CategoryDescription, model.CategoryId, model.CategoryOwnerId, model.ModelName, model.ModelId));
                 }
-
             }
 
             //}

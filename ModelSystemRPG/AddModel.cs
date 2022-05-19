@@ -21,8 +21,14 @@ namespace ModelSystemRPG
             }
 
             dbHandler = new DBHandler();
+            // if user is admin
             var names = dbHandler.getCategoryNames();
+            if (LoginSystem.user.role != "Admin")
+            {
+                names = dbHandler.getUsersCategoriesNames(LoginSystem.user.userId);
+            }
             comboBoxCat.DataSource = names;
+            comboBoxCat.DropDownStyle = ComboBoxStyle.DropDownList;
             propertyCount = 0;
         }
 
@@ -33,32 +39,28 @@ namespace ModelSystemRPG
             Menu menu = new Menu();
             menu.Show();
             this.Hide();
-
-            //// test if json parses properly
-            //string propertyJsonString = dbHandler.getDbContext().Models.Select(e => e.PropertiesJson).ToList()[0];
-            ////Parse the json object
-            //JObject jsonObject = JObject.Parse(propertyJsonString);
-            //Debug.WriteLine(jsonObject);
-
-            //foreach(var x in jsonObject)
-            //{
-            //    Debug.WriteLine("Key:" + x.Key + "\nValue:" + x.Value);
-            //}
         }
 
         private void btnAddModel_Click(object sender, EventArgs e)
         {
+
             // model data
             string categoryName = comboBoxCat.Text;
             string modelName = txtCategoryDescription.Text;
+            if(categoryName == "" || modelName == "")
+            {
+                MessageBox.Show("You have to fill all the fields before adding new model.");
+                return;
+            }
+            
             int categoryId = dbHandler.getCategoryIdByName(categoryName);
+
 
             // add model to db
             dbHandler.addModel(modelName, categoryId);
 
             int modelId = dbHandler.getModelIdx(categoryName, modelName);
 
-            //string jsonData = "{";
 
             for (int i = 0; i <= flowLayoutPanel1.Controls.Count; i++)
             {
@@ -90,28 +92,6 @@ namespace ModelSystemRPG
             Menu menu = new Menu();
             menu.Show();
             this.Hide();
-
-
-
-            //jsonData = jsonData.Remove(jsonData.Length - 1, 1) + "}";
-
-            //MessageBox.Show(jsonData);
-
-            ////Create properties
-            //var properties = new
-            //{
-            //    surface = @"100",
-            //    tree_count = "my_username",
-            //    Password = "my_password",
-            //    SourceDir = "/export/zip/mypath/",
-            //    FileName = "my_file.zip"
-            //};
-
-            //// convert properties to string
-            //string jsonData = JsonConvert.SerializeObject(properties);
-
-            //// add model to the database
-            //dbHandler.addModel(modelName, categoryId, jsonData);
         }
 
         private void btnAddProperty_Click(object sender, EventArgs e)

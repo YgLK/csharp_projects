@@ -16,17 +16,35 @@ namespace ModelSystemRPG
         public AddUser()
         {
             InitializeComponent();
-            if(LoginSystem.user != null)
+            txtPassword.PasswordChar = '*';
+            txtPasswordRepeat.PasswordChar = '*';
+            if (LoginSystem.user != null)
             {
                 lblLoggedInUsername.Text = LoginSystem.user.userName; 
             }
+            cboxRole.DataSource = new[]{ "User", "Admin" };
         }
 
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
-            DBHandler dbHandler = new DBHandler();
-            dbHandler.addUser("nowy20", "Admin", "nowy20@gmail.com");
-            MessageBox.Show("New user has been inserted.");
+            string username = txtUsername.Text;
+            string role = cboxRole.Text;
+            string email = txtEmail.Text;
+            string password = txtPassword.Text;
+            string passwordRepeated = txtPasswordRepeat.Text;
+            if(password != passwordRepeated)
+            {
+                MessageBox.Show("Passwords are not equal. Try again.");
+
+            } else if (username != "" && role != "" && email != "" && password != "")
+            {
+                DBHandler dbHandler = new DBHandler();
+                dbHandler.addUser(username, role, email, password);
+                MessageBox.Show("New user has been added.");
+            } else
+            {
+                MessageBox.Show("Couldn't add new user. Fill compulsory data first.");
+            }
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -36,6 +54,5 @@ namespace ModelSystemRPG
             menu.Show();
             this.Hide();
         }
-
     }
 }

@@ -125,6 +125,14 @@ namespace ModelSystemRPG
                 btnEdit.Name = "btnEdit" + i;
                 btnEdit.Size = new System.Drawing.Size(160, 41);
                 btnEdit.UseVisualStyleBackColor = true;
+                // if user is owner or admin then allow him to edit the model
+                if (LoginSystem.user != null  && (LoginSystem.user.getCategoriesIds().Contains(model.categoryId) || LoginSystem.user.role == "Admin"))
+                {
+                    btnEdit.Enabled = true;
+                } else
+                {
+                    btnEdit.Enabled = false;
+                }
                 btnEdit.Click +=
                     (s, e) => {
                         EditModel editModel = new EditModel(model);
@@ -140,6 +148,15 @@ namespace ModelSystemRPG
                 btnDelete.Name = "btnDelete" + i;
                 btnDelete.Size = new System.Drawing.Size(145, 41);
                 btnDelete.UseVisualStyleBackColor = true;
+                // if user is owner or admin then allow him to delete the model
+                if (LoginSystem.user != null && (LoginSystem.user.getCategoriesIds().Contains(model.categoryId) || LoginSystem.user.role == "Admin"))
+                {
+                    btnDelete.Enabled = true;
+                }
+                else
+                {
+                    btnDelete.Enabled = false;
+                }
                 btnDelete.Click +=
                     (s, e) => {
                         dbHandler.deleteModel(model.modelId); 

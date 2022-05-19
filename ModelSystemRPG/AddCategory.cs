@@ -28,7 +28,8 @@ namespace ModelSystemRPG
             // add new category
             string categoryName = txtCategoryName.Text;
             string description = txtCategoryDescription.Text;
-            dbHandler.addCategory(categoryName, userId: 1, description);
+            int userId = LoginSystem.user.userId;
+            dbHandler.addCategory(categoryName, userId, description);
             MessageBox.Show("New category has been inserted.");
         }
 

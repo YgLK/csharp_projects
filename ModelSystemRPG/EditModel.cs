@@ -25,16 +25,16 @@ namespace ModelSystemRPG
 
         public EditModel(ModelData _model)
         {
+            InitializeComponent();
+
             if (LoginSystem.user != null)
             {
                 lblLoggedInUsername.Text = LoginSystem.user.userName;
             }
 
-
             dataOperator = new DataOperator();   
             model = dataOperator.getModels()[_model.modelId];
             dBHandler = new DBHandler();
-            InitializeComponent();
             loadProperties();
         }
 

@@ -32,18 +32,23 @@
             this.labelName = new System.Windows.Forms.Label();
             this.labelHeader = new System.Windows.Forms.Label();
             this.labelUser = new System.Windows.Forms.Label();
-            this.txtCategoryDescription = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.lblLoggedInUsername = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.cboxRole = new System.Windows.Forms.ComboBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtPasswordRepeat = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnAddCategory
             // 
-            this.btnAddCategory.Location = new System.Drawing.Point(511, 321);
+            this.btnAddCategory.Location = new System.Drawing.Point(499, 468);
             this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(182, 35);
             this.btnAddCategory.TabIndex = 18;
@@ -72,45 +77,38 @@
             // labelUser
             // 
             this.labelUser.AutoSize = true;
-            this.labelUser.Location = new System.Drawing.Point(367, 167);
+            this.labelUser.Location = new System.Drawing.Point(367, 157);
             this.labelUser.Name = "labelUser";
             this.labelUser.Size = new System.Drawing.Size(60, 15);
             this.labelUser.TabIndex = 15;
             this.labelUser.Text = "Username";
             // 
-            // txtCategoryDescription
+            // txtUsername
             // 
-            this.txtCategoryDescription.Location = new System.Drawing.Point(547, 193);
-            this.txtCategoryDescription.Name = "txtCategoryDescription";
-            this.txtCategoryDescription.Size = new System.Drawing.Size(230, 23);
-            this.txtCategoryDescription.TabIndex = 14;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(547, 164);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(230, 23);
-            this.textBox1.TabIndex = 21;
+            this.txtUsername.Location = new System.Drawing.Point(547, 154);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(230, 23);
+            this.txtUsername.TabIndex = 21;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(367, 225);
+            this.label1.Location = new System.Drawing.Point(367, 239);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 15);
             this.label1.TabIndex = 23;
             this.label1.Text = "Email";
             // 
-            // textBox2
+            // txtEmail
             // 
-            this.textBox2.Location = new System.Drawing.Point(547, 222);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(230, 23);
-            this.textBox2.TabIndex = 22;
+            this.txtEmail.Location = new System.Drawing.Point(547, 236);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(230, 23);
+            this.txtEmail.TabIndex = 22;
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(511, 362);
+            this.btnBack.Location = new System.Drawing.Point(499, 509);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(182, 35);
             this.btnBack.TabIndex = 24;
@@ -137,22 +135,76 @@
             this.label3.TabIndex = 25;
             this.label3.Text = "Logged in as:";
             // 
+            // cboxRole
+            // 
+            this.cboxRole.FormattingEnabled = true;
+            this.cboxRole.Location = new System.Drawing.Point(547, 193);
+            this.cboxRole.Name = "cboxRole";
+            this.cboxRole.Size = new System.Drawing.Size(230, 23);
+            this.cboxRole.TabIndex = 27;
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.Location = new System.Drawing.Point(547, 286);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(230, 23);
+            this.txtPassword.TabIndex = 29;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(367, 289);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 15);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Password";
+            // 
+            // txtPasswordRepeat
+            // 
+            this.txtPasswordRepeat.Location = new System.Drawing.Point(547, 349);
+            this.txtPasswordRepeat.Name = "txtPasswordRepeat";
+            this.txtPasswordRepeat.Size = new System.Drawing.Size(230, 23);
+            this.txtPasswordRepeat.TabIndex = 31;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(367, 357);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 15);
+            this.label4.TabIndex = 30;
+            this.label4.Text = "Password";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(583, 321);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(123, 15);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "Repeat your password";
+            // 
             // AddUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1145, 668);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtPasswordRepeat);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cboxRole);
             this.Controls.Add(this.lblLoggedInUsername);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtEmail);
+            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btnAddCategory);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.labelHeader);
             this.Controls.Add(this.labelUser);
-            this.Controls.Add(this.txtCategoryDescription);
             this.Name = "AddUser";
             this.Text = "Add new User";
             this.ResumeLayout(false);
@@ -172,5 +224,14 @@
         private Button btnBack;
         private Label lblLoggedInUsername;
         private Label label3;
+        private ComboBox comboBox1;
+        private TextBox txtUsername;
+        private TextBox txtEmail;
+        private ComboBox cboxRole;
+        private TextBox txtPassword;
+        private Label label2;
+        private TextBox txtPasswordRepeat;
+        private Label label4;
+        private Label label5;
     }
 }

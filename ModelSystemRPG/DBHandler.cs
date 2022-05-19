@@ -27,15 +27,15 @@ namespace ModelSystemRPG.Data
             rpgDbContext.SaveChanges();
         }
 
-        public void addUser(string name = "NewUser", string role = "User", string email = "abcd123@gmail.com")
+        public void addUser(string name, string role, string email, string password)
         {
             // add new user 
             User user = new User();
             user.Username= name;
             user.Role = role;
             user.Email = email;
+            user.Password = password;
             user.Created = DateTime.Now;
-
 
             rpgDbContext.Users.Add(user);
 
@@ -138,15 +138,22 @@ namespace ModelSystemRPG.Data
             rpgDbContext.SaveChanges();
         }
 
+
         public SystemRPGContext getDbContext()
         {
             return rpgDbContext;
         }
 
-        public List<int> getUsersCategories(int userId)
+        public List<int> getUsersCategoriesIds(int userId)
         {
             // get all user's categories ids
             return rpgDbContext.Categories.Where(e => e.UserId == userId).Select(e => e.CategoryId).ToList();
+        }
+
+        public List<string> getUsersCategoriesNames(int userId)
+        {
+            // get all user's categories names
+            return rpgDbContext.Categories.Where(e => e.UserId == userId).Select(e => e.Name).ToList();
         }
 
         public string getUserPassword(string username)
