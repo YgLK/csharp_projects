@@ -1,4 +1,4 @@
-namespace TestPasswordValidator
+namespace TestWeekScheduler
 {
     internal static class Program
     {

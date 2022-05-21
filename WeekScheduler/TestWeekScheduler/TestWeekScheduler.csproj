@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PasswordValidatorControl\PasswordValidatorControl.csproj" />
+    <ProjectReference Include="..\WeekSchedulerControl\WeekSchedulerControl.csproj" />
   </ItemGroup>
 
 </Project>
