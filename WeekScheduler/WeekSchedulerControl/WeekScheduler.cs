@@ -44,8 +44,10 @@ namespace WeekSchedulerControl
         // TODO: 
         //      - zostawić wygenerowane buttony puste (te do dodawania nowego wydarzenia) 
         //      i wstawiać w ich miejsce buttony z taskami w zależności od tygodnia
-        //      bo generowanie za każdym razem i usuwanie buttonów to strasznie zamula aplikacje
-
+        //      bo generowanie za każdym razem i usuwanie buttonów to strasznie zamula aplikacje // DONE
+        // TODO: 
+        //      - relative path a nie global do pliku JSON
+        //      - refresh planszy po dodaniu/usunieciu taska
 
         public void initTableLayout()
         {
