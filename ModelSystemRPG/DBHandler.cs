@@ -1,6 +1,7 @@
 ﻿using ModelSystemRPG.Data.Models;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace ModelSystemRPG.Data
 {
@@ -158,7 +159,16 @@ namespace ModelSystemRPG.Data
 
         public string getUserPassword(string username)
         {
-            return rpgDbContext.Users.Where(e => e.Username == username).Select(e => e.Password).ToList()[0];
+            try
+            {
+                var password = rpgDbContext.Users.Where(e => e.Username == username).Select(e => e.Password).ToList()[0];
+                return password;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return null;
+            }
         }
 
         public User getUserByUsername(string username)

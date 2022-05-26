@@ -136,7 +136,6 @@ namespace ModelSystemRPG
                     {
                         Properties properties = new Properties(model);
                         properties.Show();
-                        //MessageBox.Show("Properties of " + model.modelName + "\n\n" + propertiesStr.ToString());
                     };
                 btnProperties.UseVisualStyleBackColor = true;
                 this.tableLayoutPanel1.Controls.Add(btnProperties, 2, i);

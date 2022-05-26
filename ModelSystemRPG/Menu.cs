@@ -8,12 +8,8 @@ namespace ModelSystemRPG
         public Menu()
         {
             InitializeComponent();
-            // ------ TESTING ENVIRONMENT -------------
-            //Debug.WriteLine("Array dawaj: \n");
-            //foreach(string x in (new DBHandler()).getCategoryNames())
-            //{
-            //    Debug.WriteLine(x);
-            //}
+            
+
             txtPassword.PasswordChar = '*';
             if(LoginSystem.user != null)
             {
@@ -98,11 +94,11 @@ namespace ModelSystemRPG
                     btnLogout.Enabled = true;
                 } else
                 {
-                    MessageBox.Show("Incorrect password. Try different one.");
+                    MessageBox.Show("Incorrect login data. Try again.");
                 }
             } else
             {
-                MessageBox.Show("Enter your username and password firstly.");
+                MessageBox.Show("Enter your username and password first.");
             }
         }
 
