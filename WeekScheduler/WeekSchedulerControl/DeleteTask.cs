@@ -58,10 +58,5 @@ namespace WeekSchedulerControl
             lblStartTime.Text = pickedTask.timeStart;
             lblEndTime.Text = pickedTask.timeEnd;
         }
-
-        private void DeleteTask_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

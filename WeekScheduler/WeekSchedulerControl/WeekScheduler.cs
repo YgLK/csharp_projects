@@ -14,43 +14,12 @@ namespace WeekSchedulerControl
             monthCalendar1.ShowWeekNumbers = true;
             isReminderShown = false;
 
-            //Button taskButton = new Button();
-            //taskButton.Text = "";
-            //taskButton.Name = "addButton" + 1 + "-" + 1;
-            //taskButton.Click +=
-            //    (s, e) =>
-            //    {
-            //        AddTask addTask = new AddTask();
-            //        addTask.Show();
-            //    };
-            //taskButton.Size = new System.Drawing.Size(84, 60);
-            //taskButton.UseVisualStyleBackColor = true;
-            //tableLayoutPanel1.Controls.Add(taskButton, 1, 1);
             initTableLayout();
             timerRemind.Start();
 
             // read tasks
             var tasks = ReaderJSON.getTasksList();
-        
-        
-        
         }
-
-        // TODO: 
-        //      - wyświetlanie tygodnia który jest wybierany na kalendarzu // DONE
-        //      - wyświetlanie w dobrych interwałach czasowych przycisku, który będzie wyświetlał informacje na temat taska // DONE
-        // AKTUALNIE:
-        //      - rozmiary dla każdego wiersza powinny być większe +  // DONE
-
-        //          -------- FRESH TODOs -------------
-        // TODO: 
-        //      - zostawić wygenerowane buttony puste (te do dodawania nowego wydarzenia) 
-        //      i wstawiać w ich miejsce buttony z taskami w zależności od tygodnia
-        //      bo generowanie za każdym razem i usuwanie buttonów to strasznie zamula aplikacje // DONE
-        // TODO: 
-        //      - relative path a nie global do pliku JSON // DONE
-        //      - refresh planszy po dodaniu/usunieciu taska  // DONE
-        //      - przypomnienia (?) 
 
         public void initTableLayout()
         {
@@ -63,10 +32,8 @@ namespace WeekSchedulerControl
             // add addButtons for each timeframe of each day 
             generateAddButtons();
 
-
             // load tasks from JSON format
             loadTasks();
-
 
             this.tableLayoutPanel1.Size = new System.Drawing.Size(720, 549);
             this.tableLayoutPanel1.TabIndex = 0;
@@ -90,18 +57,6 @@ namespace WeekSchedulerControl
                 {
                     if(tableLayoutPanel1.GetControlFromPosition(i, j) == null)
                     {
-                        //Button taskButton = new Button();
-                        //taskButton.Text = "";
-                        //taskButton.Name = "addButton" + i + "-" + j;
-                        //taskButton.Click +=
-                        //    (s, e) =>
-                        //    {
-                        //        AddTask addTask = new AddTask();
-                        //        addTask.Show();
-                        //    };
-                        //taskButton.Size = new System.Drawing.Size(84, 60);
-                        //taskButton.UseVisualStyleBackColor = true;
-                        //tableLayoutPanel1.Controls.Add(taskButton, i, j);
                         addVanillaAddButton(i, j);
                     }
                 }
@@ -118,7 +73,6 @@ namespace WeekSchedulerControl
                 (s, e) =>
                 {
                     CultureInfo ciCurr = CultureInfo.CurrentCulture;
-                    //AddTask addTask = new AddTask(year: monthCalendar1.SelectionStart.Year, weekNum: monthCalendar1.SelectionStart.Wee, colIdx: colIdx, rowIdx: rowIdx);
                     AddTask addTask = new AddTask(this, date: monthCalendar1.SelectionStart.ToShortDateString(), colIdx: colIdx, rowIdx: rowIdx);
                     addTask.Show();
                 };
@@ -144,21 +98,7 @@ namespace WeekSchedulerControl
                 {
                     if (tableLayoutPanel1.GetControlFromPosition(i, j) != null && tableLayoutPanel1.GetControlFromPosition(i, j).Text != "")
                     {
-                        //Button taskButton = new Button();
-                        //taskButton.Text = "";
-                        //taskButton.Name = "addButton" + i + "-" + j;
-                        //taskButton.Click +=
-                        //    (s, e) =>
-                        //    {
-                        //        AddTask addTask = new AddTask();
-                        //        addTask.Show();
-                        //    };
-                        //taskButton.Size = new System.Drawing.Size(84, 60);
-                        //taskButton.UseVisualStyleBackColor = true;
-                        //tableLayoutPanel1.Controls.Add(taskButton, i, j);
-                        
                         tableLayoutPanel1.Controls.Remove(tableLayoutPanel1.GetControlFromPosition(i, j));
-                        
                         addVanillaAddButton(i, j);
                     }
                 }
@@ -167,9 +107,6 @@ namespace WeekSchedulerControl
 
         public void loadTasks()
         {
-            //// delete old buttons
-            //delButtonsFromTable();
-
             // get selected from calendar date week number
             int weekNumber = getWeekNumber(monthCalendar1.SelectionStart.Date);
             int year = monthCalendar1.SelectionStart.Year;
@@ -216,7 +153,6 @@ namespace WeekSchedulerControl
                              MessageBox.Show($"Task: {task.taskName} \nDescription: {task.taskDescription}\nDate: {task.date}\n Start time: {task.timeStart}\n End time: {task.timeEnd}"); 
                          };
                     taskButton.Size = new System.Drawing.Size(84, 60);
-                    //taskButton.UseVisualStyleBackColor = true;
                     buttonsForTask.Add(taskButton);
                 }
                 taskButtons.Add(buttonsForTask);
@@ -291,7 +227,6 @@ namespace WeekSchedulerControl
 
         public void delButtonsFromTable()
         {
-            // TODO: delete buttons after changing week and generate new ones for each task in the week
             List<Button> buttons = tableLayoutPanel1.Controls.OfType<Button>().ToList();
             foreach (Button btn in buttons)
             {
@@ -434,7 +369,7 @@ namespace WeekSchedulerControl
                 Dictionary<DateTime, Task> taskByRemindTime = reminder.remindTask;
                 foreach(DateTime remindDate in taskByRemindTime.Keys)
                 {
-                    // if less than 10 seconds to remind time
+                    // if less than 2 seconds to remind time
                     if (Math.Abs((nowDate - remindDate).TotalSeconds) <= 2)
                     {
                         timerRemind.Stop();
