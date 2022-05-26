@@ -12,12 +12,16 @@ namespace WeekSchedulerControl
 {
     public partial class AddTask : Form
     {
+        WeekScheduler currOpenScheduler;
+
         //public AddTask(int year = -1, int weekNum = -1, int rowIdx = -1, int colIdx = -1)\
 
         // not sure if i passed the correct parameter as string date
-        public AddTask(string date = "", int rowIdx = -1, int colIdx = -1)
+        public AddTask(WeekScheduler _weekScheduler, string date = "", int rowIdx = -1, int colIdx = -1)
         {
             InitializeComponent();
+            currOpenScheduler = _weekScheduler;
+
             cbxPriority.DataSource = new List<string>()
             {
                 "Important", "Casual", "Non-relevant"
@@ -136,6 +140,9 @@ namespace WeekSchedulerControl
                 Task task = new Task(taskName, taskDescription, taskDate, taskStartTime, taskEndTime, taskPriority);
                 ReaderJSON.addNewTask(task);
                 MessageBox.Show("Success! You added new task to your todo list.");
+                // update scheduler look
+                currOpenScheduler.deleteButtonsFromPreviousTasks();
+                currOpenScheduler.loadTasks();
                 this.Hide();
             } else
             {
@@ -145,10 +152,7 @@ namespace WeekSchedulerControl
 
         private void button1_Click(object sender, EventArgs e)
         {
-            WeekScheduler wk = new WeekScheduler();
-            this.Close();
-            wk.Show();
-
+            this.Hide();
         }
     }
 }

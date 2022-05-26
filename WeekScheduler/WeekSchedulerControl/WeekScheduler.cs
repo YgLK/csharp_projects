@@ -46,8 +46,8 @@ namespace WeekSchedulerControl
         //      i wstawiać w ich miejsce buttony z taskami w zależności od tygodnia
         //      bo generowanie za każdym razem i usuwanie buttonów to strasznie zamula aplikacje // DONE
         // TODO: 
-        //      - relative path a nie global do pliku JSON
-        //      - refresh planszy po dodaniu/usunieciu taska
+        //      - relative path a nie global do pliku JSON // DONE
+        //      - refresh planszy po dodaniu/usunieciu taska  // DONE
 
         public void initTableLayout()
         {
@@ -116,7 +116,7 @@ namespace WeekSchedulerControl
                 {
                     CultureInfo ciCurr = CultureInfo.CurrentCulture;
                     //AddTask addTask = new AddTask(year: monthCalendar1.SelectionStart.Year, weekNum: monthCalendar1.SelectionStart.Wee, colIdx: colIdx, rowIdx: rowIdx);
-                    AddTask addTask = new AddTask(date: monthCalendar1.SelectionStart.ToShortDateString(), colIdx: colIdx, rowIdx: rowIdx);
+                    AddTask addTask = new AddTask(this, date: monthCalendar1.SelectionStart.ToShortDateString(), colIdx: colIdx, rowIdx: rowIdx);
                     addTask.Show();
                 };
             taskButton.Size = new System.Drawing.Size(84, 60);
@@ -328,7 +328,8 @@ namespace WeekSchedulerControl
 
         private void button1_Click(object sender, EventArgs e)
         {
-            AddTask addTask = new AddTask();
+            WeekScheduler currWeekScheduler = this;
+            AddTask addTask = new AddTask(currWeekScheduler);
             addTask.Show();
         }
 
@@ -406,8 +407,19 @@ namespace WeekSchedulerControl
 
         private void button2_Click(object sender, EventArgs e)
         {
-            DeleteTask deleteTask = new DeleteTask();
+            WeekScheduler currSchedulerForm = this;
+            DeleteTask deleteTask = new DeleteTask(currSchedulerForm);
             deleteTask.Show();
+        }
+
+        private void WeekScheduler_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

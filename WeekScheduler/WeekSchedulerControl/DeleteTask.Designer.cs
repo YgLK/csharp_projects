@@ -209,6 +209,7 @@
             this.Controls.Add(this.label1);
             this.Name = "DeleteTask";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.DeleteTask_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

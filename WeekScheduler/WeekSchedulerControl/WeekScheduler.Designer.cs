@@ -49,6 +49,7 @@
             this.lbl01 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // monthCalendar1
@@ -61,7 +62,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1015, 511);
+            this.button1.Location = new System.Drawing.Point(1015, 436);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 46);
             this.button1.TabIndex = 1;
@@ -135,7 +136,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(1015, 572);
+            this.button2.Location = new System.Drawing.Point(1015, 488);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(110, 37);
             this.button2.TabIndex = 3;
@@ -302,10 +303,21 @@
             this.label9.TabIndex = 8;
             this.label9.Text = "Time";
             // 
+            // btnExit
+            // 
+            this.btnExit.Location = new System.Drawing.Point(1015, 571);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(110, 38);
+            this.btnExit.TabIndex = 9;
+            this.btnExit.Text = "Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // WeekScheduler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
@@ -320,6 +332,7 @@
             this.Controls.Add(this.monthCalendar1);
             this.Name = "WeekScheduler";
             this.Size = new System.Drawing.Size(1161, 667);
+            this.Load += new System.EventHandler(this.WeekScheduler_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -348,5 +361,6 @@
         private Button btnSob;
         private Button btnNie;
         private Label label8;
+        private Button btnExit;
     }
 }

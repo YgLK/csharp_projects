@@ -12,10 +12,13 @@ namespace WeekSchedulerControl
 {
     public partial class DeleteTask : Form
     {
-        public DeleteTask()
+        WeekScheduler currOpenScheduler;
+
+        public DeleteTask(WeekScheduler _weekScheduler)
         {
             InitializeComponent();
             comboBox1.DataSource = ReaderJSON.getTaskNames();
+            currOpenScheduler = _weekScheduler;
 
             Task pickedTask = ReaderJSON.getTaskByName(comboBox1.Text);
             lblDate.Text =  pickedTask.date;
@@ -29,7 +32,11 @@ namespace WeekSchedulerControl
         {
             Task toDel = ReaderJSON.getTaskByName(comboBox1.Text);
             ReaderJSON.deleteTask(toDel);
+            // update scheduler form
+            // get back to the scheduler
             MessageBox.Show("Task successfully deleted.");
+            currOpenScheduler.deleteButtonsFromPreviousTasks();
+            currOpenScheduler.loadTasks();
             this.Hide();
         }
 
@@ -46,6 +53,11 @@ namespace WeekSchedulerControl
             lblPriority.Text = pickedTask.priority;
             lblStartTime.Text = pickedTask.timeStart;
             lblEndTime.Text = pickedTask.timeEnd;
+        }
+
+        private void DeleteTask_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
