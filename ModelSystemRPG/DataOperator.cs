@@ -116,6 +116,65 @@ namespace ModelSystemRPG
             return models;
         }
 
+        public Dictionary<int, ModelData> getModelsOfCategories(List<string> categories)
+        {
+            Dictionary<int, ModelData> allModels = getModels();
+            // filter the models
+            Dictionary<int, ModelData> filteredModels = new Dictionary<int, ModelData>();
 
+            foreach (int key in allModels.Keys)
+            {
+                if (categories.Contains(allModels[key].categoryName))
+                {
+                    filteredModels.Add(key, allModels[key]);
+                }
+            }
+            return filteredModels;
+        }
+
+        public Dictionary<int, ModelData> getModelsFilteredByName(string partOfName)
+        {
+            Dictionary<int, ModelData> allModels = getModels();
+            // filter the models
+            Dictionary<int, ModelData> filteredModels = new Dictionary<int, ModelData>();
+
+
+            foreach (int key in allModels.Keys)
+            {
+                Debug.WriteLine(allModels[key].modelName);
+                if (allModels[key].modelName.Contains(partOfName))
+                {
+                    filteredModels.Add(key, allModels[key]);
+                }
+            }
+            return filteredModels;
+        }
+
+        public Dictionary<int, ModelData> getTheNewestModels()
+        {
+            // get the latest 5 models
+            Dictionary<int, ModelData> allModels = getModels();
+
+            // the newest
+            Dictionary<int, ModelData> newestModels = new Dictionary<int, ModelData>();
+
+            // sorted in the descending order as the higher is id the newer is model
+            List<int> idsList = new List<int>(allModels.Keys);
+            
+            idsList.Sort();
+            idsList.Reverse();
+
+
+            for(int i=0; i<5; i++)
+            {
+                int idx = idsList[i];
+                if (allModels.Keys.Contains(idx))
+                {
+                    newestModels.Add(idx, allModels[idx]);
+                }
+            }
+            
+            return newestModels;
+        }
     }
 }

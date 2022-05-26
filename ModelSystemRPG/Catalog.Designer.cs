@@ -45,12 +45,12 @@
             this.btnSortByCategory = new System.Windows.Forms.Button();
             this.btnSortByModel = new System.Windows.Forms.Button();
             this.checkAscendingSort = new System.Windows.Forms.CheckBox();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.chooseCategory = new System.Windows.Forms.CheckedListBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtEnterName = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnFindName = new System.Windows.Forms.Button();
+            this.btnFilterCategory = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
             this.lblLoggedInUsername = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -228,13 +228,13 @@
             this.checkAscendingSort.Text = "Ascending";
             this.checkAscendingSort.UseVisualStyleBackColor = true;
             // 
-            // checkedListBox1
+            // chooseCategory
             // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(1035, 315);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(257, 112);
-            this.checkedListBox1.TabIndex = 12;
+            this.chooseCategory.FormattingEnabled = true;
+            this.chooseCategory.Location = new System.Drawing.Point(1035, 315);
+            this.chooseCategory.Name = "chooseCategory";
+            this.chooseCategory.Size = new System.Drawing.Size(257, 112);
+            this.chooseCategory.TabIndex = 12;
             // 
             // label9
             // 
@@ -246,12 +246,12 @@
             this.label9.TabIndex = 13;
             this.label9.Text = "Choose category";
             // 
-            // textBox1
+            // txtEnterName
             // 
-            this.textBox1.Location = new System.Drawing.Point(1035, 517);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(257, 23);
-            this.textBox1.TabIndex = 14;
+            this.txtEnterName.Location = new System.Drawing.Point(1035, 517);
+            this.txtEnterName.Name = "txtEnterName";
+            this.txtEnterName.Size = new System.Drawing.Size(257, 23);
+            this.txtEnterName.TabIndex = 14;
             // 
             // label10
             // 
@@ -263,23 +263,25 @@
             this.label10.TabIndex = 15;
             this.label10.Text = "Search for model";
             // 
-            // button5
+            // btnFindName
             // 
-            this.button5.Location = new System.Drawing.Point(1217, 556);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 16;
-            this.button5.Text = "Find";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnFindName.Location = new System.Drawing.Point(1217, 556);
+            this.btnFindName.Name = "btnFindName";
+            this.btnFindName.Size = new System.Drawing.Size(75, 23);
+            this.btnFindName.TabIndex = 16;
+            this.btnFindName.Text = "Find";
+            this.btnFindName.UseVisualStyleBackColor = true;
+            this.btnFindName.Click += new System.EventHandler(this.btnFindName_Click);
             // 
-            // button6
+            // btnFilterCategory
             // 
-            this.button6.Location = new System.Drawing.Point(1217, 442);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 17;
-            this.button6.Text = "Apply";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnFilterCategory.Location = new System.Drawing.Point(1217, 442);
+            this.btnFilterCategory.Name = "btnFilterCategory";
+            this.btnFilterCategory.Size = new System.Drawing.Size(75, 23);
+            this.btnFilterCategory.TabIndex = 17;
+            this.btnFilterCategory.Text = "Apply";
+            this.btnFilterCategory.UseVisualStyleBackColor = true;
+            this.btnFilterCategory.Click += new System.EventHandler(this.btnFilterCategory_Click);
             // 
             // btnBack
             // 
@@ -318,12 +320,12 @@
             this.Controls.Add(this.lblLoggedInUsername);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btnFilterCategory);
+            this.Controls.Add(this.btnFindName);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtEnterName);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.checkedListBox1);
+            this.Controls.Add(this.chooseCategory);
             this.Controls.Add(this.checkAscendingSort);
             this.Controls.Add(this.btnSortByModel);
             this.Controls.Add(this.btnSortByCategory);
@@ -363,7 +365,7 @@
         private Button btnSortByCategory;
         private Button btnSortByModel;
         private CheckBox checkAscendingSort;
-        private CheckedListBox checkedListBox1;
+        private CheckedListBox chooseCategory;
         private Label label9;
         private TextBox textBox1;
         private Label label10;
@@ -372,5 +374,8 @@
         private Button btnBack;
         private Label lblLoggedInUsername;
         private Label label11;
+        private TextBox txtEnterName;
+        private Button btnFindName;
+        private Button btnFilterCategory;
     }
 }

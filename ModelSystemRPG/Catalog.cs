@@ -17,6 +17,7 @@ namespace ModelSystemRPG
         Dictionary<int, ModelData> modelsData;
         List<int> modelsIdxSorted;
         DBHandler dbHandler;
+        DataOperator dataOperator;
 
         // sort parameters in here
         public Catalog(string sortType = "", bool ascending = true)
@@ -28,16 +29,29 @@ namespace ModelSystemRPG
                 lblLoggedInUsername.Text = LoginSystem.user.userName;
             }
 
-            DataOperator dataOperator = new DataOperator();
+
+            dataOperator = new DataOperator();
+
             // get all models with data
             modelsData = dataOperator.getModels();
             dbHandler = new DBHandler();
-            InitDataTable(sortType: sortType, ascending: ascending);
+            
+            chooseCategory.DataSource = dbHandler.getCategoryNames();
+
+
+            List<ModelData> modelList = new List<ModelData>(modelsData.Values);
+
+            InitDataTable(sortType: sortType, ascending: ascending, modelList);
+
         }
 
-        private void InitDataTable(string sortType, bool ascending)
+        private void InitDataTable(string sortType, bool ascending, List<ModelData> modelList)
         {
 
+            if (tableLayoutPanel1.Controls.Count != 0)
+            {
+                tableLayoutPanel1.Controls.Clear();
+            }
             // -- get models data --
 
             // i is compulsory to keep track of row number
@@ -46,7 +60,14 @@ namespace ModelSystemRPG
 
             // HERE SORTED MODELS DATA SHOULD BE SET
             // default case
-            List<ModelData> modelList = new List<ModelData>(modelsData.Values);
+
+            // -- EditModel 
+
+            //List<ModelData> modelList = new List<ModelData>(modelsData.Values);
+
+            // -- EditModel 
+
+
             // if sorted parameters are provided
             if (sortType == "categoryName")
             {
@@ -95,7 +116,7 @@ namespace ModelSystemRPG
                 txtModelName.Name = "btnModel" + i;
                 txtModelName.Size = new System.Drawing.Size(106, 21);
                 txtModelName.Text = model.modelName;
-                txtModelName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+                txtModelName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
                 this.tableLayoutPanel1.Controls.Add(txtModelName, 1, i);
 
 
@@ -113,7 +134,9 @@ namespace ModelSystemRPG
                 btnProperties.Click +=
                     (s, e) =>
                     {
-                        MessageBox.Show("Properties of " + model.modelName + "\n\n" + propertiesStr.ToString());
+                        Properties properties = new Properties(model);
+                        properties.Show();
+                        //MessageBox.Show("Properties of " + model.modelName + "\n\n" + propertiesStr.ToString());
                     };
                 btnProperties.UseVisualStyleBackColor = true;
                 this.tableLayoutPanel1.Controls.Add(btnProperties, 2, i);
@@ -167,7 +190,6 @@ namespace ModelSystemRPG
                     };
                 this.tableLayoutPanel1.Controls.Add(btnDelete, 4, i);
 
-
                 // increment row count
                 this.tableLayoutPanel1.RowCount = this.tableLayoutPanel1.RowCount + 1;
                 //tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 52F));
@@ -213,6 +235,29 @@ namespace ModelSystemRPG
             Menu menu = new Menu();
             menu.Show();
             this.Hide();
+        }
+
+        private void btnFilterCategory_Click(object sender, EventArgs e)
+        {
+            List<string> categories = chooseCategory.CheckedItems.Cast<string>().ToList();
+
+            Dictionary<int, ModelData> items = dataOperator.getModelsOfCategories(categories);
+            InitDataTable(sortType: "", ascending: true, items.Values.ToList());
+        }
+
+        private void btnFindName_Click(object sender, EventArgs e)
+        {
+            List<string> categories = chooseCategory.CheckedItems.Cast<string>().ToList();
+
+            string phrase = txtEnterName.Text;
+            if(phrase != "")
+            {
+                Dictionary<int, ModelData> items = dataOperator.getModelsFilteredByName(phrase);
+                InitDataTable(sortType: "", ascending: true, items.Values.ToList());
+            } else
+            {
+                InitDataTable(sortType: "", ascending: true, dataOperator.getModels().Values.ToList());
+            }
         }
     }
 }

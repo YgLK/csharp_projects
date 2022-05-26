@@ -25,6 +25,9 @@ namespace ModelSystemRPG
                 btnLogout.Enabled = true;
                 lblLoggedInUsername.Text = LoginSystem.user.userName;
             }
+
+
+            loadNewestModels();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -112,6 +115,91 @@ namespace ModelSystemRPG
             btnLogout.Visible = false;
             lblLoggedInUsername.Text = "Unknown";
             LoginSystem.LogOut();
+        }
+
+        public void loadNewestModels()
+        {
+            DataOperator dataOperator = new DataOperator();
+            Dictionary<int, ModelData> newestModels = dataOperator.getTheNewestModels();
+
+            List<int> keys = newestModels.Keys.ToList();
+            for (int i = 0; i < keys.Count; i++)
+            {
+                ModelData model = newestModels.Values.ToList()[i];
+                //Label catLabel = new Label();
+                //catLabel.Name = "catLabel" + i;
+                //catLabel.Text = model.categoryName;
+
+
+                //Label modelName = new Label();
+                //modelName.Name = "modelName" + i;
+                //modelName.Text = model.modelName;
+
+                //Button propertiesButton = new Button();
+
+
+
+                // create category information in string
+                string categoryString =
+                    "Category name: \n\t" + model.categoryName + "\n Category description: \n\t" + model.categoryDescription;
+                // Category button
+                Button btnCategory = new Button();
+                btnCategory.Text = model.categoryName;
+                btnCategory.Name = "btnCategory" + i;
+                btnCategory.Size = new System.Drawing.Size(150, 41);
+                btnCategory.UseVisualStyleBackColor = true;
+                // define button activity after clicking it
+                btnCategory.Click +=
+                    (s, e) => {
+                        MessageBox.Show(categoryString);
+                    };
+                this.tableLayoutPanel1.Controls.Add(btnCategory, 0, i);
+                btnCategory.Dock = DockStyle.Fill;
+
+                // Model name label
+                Label txtModelName = new Label();
+                txtModelName.Anchor = System.Windows.Forms.AnchorStyles.Top;
+                txtModelName.AutoSize = true;
+                txtModelName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+                txtModelName.Name = "btnModel" + i;
+                txtModelName.Size = new System.Drawing.Size(106, 21);
+                txtModelName.Text = model.modelName;
+                txtModelName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+                this.tableLayoutPanel1.Controls.Add(txtModelName, 1, i);
+
+
+                // Properties button
+                Button btnProperties = new Button();
+                btnProperties.Name = "btnProperties " + i;
+                btnProperties.Text = "properties";
+                btnProperties.Font = new Font("Tahoma", 9, FontStyle.Bold | FontStyle.Italic);
+                btnProperties.Size = new System.Drawing.Size(278, 60);
+                btnProperties.Click +=
+                    (s, e) =>
+                    {
+                        Properties showProperties = new Properties(model);
+                        showProperties.Show();
+                    };
+                btnProperties.UseVisualStyleBackColor = true;
+                btnCategory.Dock = DockStyle.Fill;
+                this.tableLayoutPanel1.Controls.Add(btnProperties, 2, i);
+
+            }
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

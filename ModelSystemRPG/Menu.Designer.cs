@@ -42,6 +42,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblLoggedInUsername = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.SuspendLayout();
             // 
             // btnAddCategory
@@ -185,11 +187,43 @@
             this.btnLogout.Visible = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Info;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(210, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(242, 21);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "T H E   N E W E S T   M O D E L S";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoScroll = true;
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 41.86047F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 58.13953F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 273F));
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(70, 78);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 44F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(559, 214);
+            this.tableLayoutPanel1.TabIndex = 16;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1145, 668);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.lblLoggedInUsername);
             this.Controls.Add(this.label3);
@@ -207,6 +241,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Menu";
             this.Text = "Menu";
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,8 +262,9 @@
         private Label lblPassword;
         private Button btnLogin;
         private Label label3;
-        private Label label4;
         private Label lblLoggedInUsername;
         private Button btnLogout;
+        private Label label1;
+        private TableLayoutPanel tableLayoutPanel1;
     }
 }
