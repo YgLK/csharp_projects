@@ -32,7 +32,13 @@ namespace ModelSystemRPG
 
         private static bool isPasswordCorrect(string username, string password)
         {
-            if(password == dBHandler.getUserPassword(username)){
+            string encryptedPassword = dBHandler.getUserPassword(username);
+            string decryptedPassword = PasswordEncryptor.DecryptCipherTextToPlainText(encryptedPassword);
+            
+            //if (password == dBHandler.getUserPassword(username))
+            //{
+            if (password == decryptedPassword)
+            {
                 return true;
             }
             return false;

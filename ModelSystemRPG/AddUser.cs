@@ -25,7 +25,7 @@ namespace ModelSystemRPG
             cboxRole.DataSource = new[]{ "User", "Admin" };
         }
 
-        private void btnAddCategory_Click(object sender, EventArgs e)
+        private void btnAddUser_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text;
             string role = cboxRole.Text;
@@ -35,11 +35,11 @@ namespace ModelSystemRPG
             if(password != passwordRepeated)
             {
                 MessageBox.Show("Passwords are not equal. Try again.");
-
             } else if (username != "" && role != "" && email != "" && password != "")
             {
                 DBHandler dbHandler = new DBHandler();
-                dbHandler.addUser(username, role, email, password);
+                string encryptedPassword = PasswordEncryptor.EncryptPlainTextToCipherText(password);
+                dbHandler.addUser(username, role, email, encryptedPassword);
                 MessageBox.Show("New user has been added.");
             } else
             {

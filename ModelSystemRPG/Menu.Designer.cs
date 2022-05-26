@@ -44,13 +44,14 @@
             this.btnLogout = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnAddCategory
             // 
             this.btnAddCategory.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAddCategory.AutoSize = true;
-            this.btnAddCategory.Location = new System.Drawing.Point(868, 439);
+            this.btnAddCategory.Location = new System.Drawing.Point(868, 382);
             this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(248, 45);
             this.btnAddCategory.TabIndex = 0;
@@ -62,7 +63,7 @@
             // 
             this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnExit.AutoSize = true;
-            this.btnExit.Location = new System.Drawing.Point(868, 565);
+            this.btnExit.Location = new System.Drawing.Point(868, 591);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(248, 49);
             this.btnExit.TabIndex = 1;
@@ -74,7 +75,7 @@
             // 
             this.btnAddModel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAddModel.AutoSize = true;
-            this.btnAddModel.Location = new System.Drawing.Point(868, 503);
+            this.btnAddModel.Location = new System.Drawing.Point(868, 433);
             this.btnAddModel.Name = "btnAddModel";
             this.btnAddModel.Size = new System.Drawing.Size(248, 45);
             this.btnAddModel.TabIndex = 2;
@@ -86,7 +87,7 @@
             // 
             this.btnCatalog.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCatalog.AutoSize = true;
-            this.btnCatalog.Location = new System.Drawing.Point(868, 374);
+            this.btnCatalog.Location = new System.Drawing.Point(868, 329);
             this.btnCatalog.Name = "btnCatalog";
             this.btnCatalog.Size = new System.Drawing.Size(248, 47);
             this.btnCatalog.TabIndex = 3;
@@ -217,11 +218,22 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(559, 214);
             this.tableLayoutPanel1.TabIndex = 16;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(868, 484);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(248, 47);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "USER MANAGER";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1145, 668);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogout);
@@ -266,5 +278,6 @@
         private Button btnLogout;
         private Label label1;
         private TableLayoutPanel tableLayoutPanel1;
+        private Button button1;
     }
 }

@@ -22,7 +22,6 @@ namespace ModelSystemRPG
                 lblLoggedInUsername.Text = LoginSystem.user.userName;
             }
 
-
             loadNewestModels();
         }
 
@@ -80,6 +79,8 @@ namespace ModelSystemRPG
         {
             string username = txtUserName.Text;
             string password = txtPassword.Text;
+            
+            //MessageBox.Show("Encrypted password: " + encryptedPassword + "\n Decrypted password: " + decryptedPassword);
 
             if(username != "" && password != "")
             {
@@ -122,18 +123,6 @@ namespace ModelSystemRPG
             for (int i = 0; i < keys.Count; i++)
             {
                 ModelData model = newestModels.Values.ToList()[i];
-                //Label catLabel = new Label();
-                //catLabel.Name = "catLabel" + i;
-                //catLabel.Text = model.categoryName;
-
-
-                //Label modelName = new Label();
-                //modelName.Name = "modelName" + i;
-                //modelName.Text = model.modelName;
-
-                //Button propertiesButton = new Button();
-
-
 
                 // create category information in string
                 string categoryString =
@@ -197,5 +186,12 @@ namespace ModelSystemRPG
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //if()
+        }
+
+
     }
 }

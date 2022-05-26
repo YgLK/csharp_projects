@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAddCategory = new System.Windows.Forms.Button();
+            this.btnAddUser = new System.Windows.Forms.Button();
             this.labelName = new System.Windows.Forms.Label();
             this.labelHeader = new System.Windows.Forms.Label();
             this.labelUser = new System.Windows.Forms.Label();
@@ -46,15 +46,15 @@
             this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // btnAddCategory
+            // btnAddUser
             // 
-            this.btnAddCategory.Location = new System.Drawing.Point(499, 468);
-            this.btnAddCategory.Name = "btnAddCategory";
-            this.btnAddCategory.Size = new System.Drawing.Size(182, 35);
-            this.btnAddCategory.TabIndex = 18;
-            this.btnAddCategory.Text = "CONFIRM";
-            this.btnAddCategory.UseVisualStyleBackColor = true;
-            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
+            this.btnAddUser.Location = new System.Drawing.Point(499, 468);
+            this.btnAddUser.Name = "btnAddUser";
+            this.btnAddUser.Size = new System.Drawing.Size(182, 35);
+            this.btnAddUser.TabIndex = 18;
+            this.btnAddUser.Text = "CONFIRM";
+            this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // labelName
             // 
@@ -201,7 +201,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.btnAddCategory);
+            this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.labelHeader);
             this.Controls.Add(this.labelUser);
@@ -213,7 +213,7 @@
         }
 
         #endregion
-        private Button btnAddCategory;
+        private Button btnAddUser;
         private Label labelName;
         private Label labelHeader;
         private Label labelUser;
