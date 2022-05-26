@@ -14,9 +14,6 @@ namespace WeekSchedulerControl
     {
         WeekScheduler currOpenScheduler;
 
-        //public AddTask(int year = -1, int weekNum = -1, int rowIdx = -1, int colIdx = -1)\
-
-        // not sure if i passed the correct parameter as string date
         public AddTask(WeekScheduler _weekScheduler, string date = "", int rowIdx = -1, int colIdx = -1)
         {
             InitializeComponent();
@@ -104,19 +101,6 @@ namespace WeekSchedulerControl
                 dateTime = dateTime.AddDays(dayDiff);
                 // set picked date on datepicker
                 datePicker.Text = dateTime.ToString();
-                //DateTime()
-
-                // TODO: set date of the chosen year, weeknumber, 
-
-
-
-                //DateTime tmpDate = new DateTime(year, 1, 1).AddDays(7 * (weekNum - 1));
-                //DayOfWeek tmpDayName = tmpDate.DayOfWeek;
-                //tmpDate = tmpDate.AddDays(-1);
-
-                // set date to string
-                //datePicker.Value = tmpDate;
-                //datePicker.Text = tmpDate.Date.ToString();
             }
 
             // if properly rowIdx and colIdx is picked
@@ -141,8 +125,11 @@ namespace WeekSchedulerControl
                 ReaderJSON.addNewTask(task);
                 MessageBox.Show("Success! You added new task to your todo list.");
                 // update scheduler look
+                TableLayoutPanel tlp = currOpenScheduler.Controls.Find("tableLayoutPanel1", true).FirstOrDefault() as TableLayoutPanel;
+                tlp.Visible = false;
                 currOpenScheduler.deleteButtonsFromPreviousTasks();
                 currOpenScheduler.loadTasks();
+                tlp.Visible = true;
                 this.Hide();
             } else
             {

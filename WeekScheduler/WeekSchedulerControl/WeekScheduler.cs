@@ -4,6 +4,7 @@ namespace WeekSchedulerControl
 {
     public partial class WeekScheduler : UserControl
     {
+        bool isReminderShown;
 
         public WeekScheduler()
         {
@@ -11,6 +12,7 @@ namespace WeekSchedulerControl
             addTimelines();
             // read data for each week
             monthCalendar1.ShowWeekNumbers = true;
+            isReminderShown = false;
 
             //Button taskButton = new Button();
             //taskButton.Text = "";
@@ -25,7 +27,7 @@ namespace WeekSchedulerControl
             //taskButton.UseVisualStyleBackColor = true;
             //tableLayoutPanel1.Controls.Add(taskButton, 1, 1);
             initTableLayout();
-
+            timerRemind.Start();
 
             // read tasks
             var tasks = ReaderJSON.getTasksList();
@@ -48,6 +50,7 @@ namespace WeekSchedulerControl
         // TODO: 
         //      - relative path a nie global do pliku JSON // DONE
         //      - refresh planszy po dodaniu/usunieciu taska  // DONE
+        //      - przypomnienia (?) 
 
         public void initTableLayout()
         {
@@ -322,8 +325,10 @@ namespace WeekSchedulerControl
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
+            tableLayoutPanel1.Visible = false;
             deleteButtonsFromPreviousTasks();
             loadTasks();
+            tableLayoutPanel1.Visible = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -412,14 +417,40 @@ namespace WeekSchedulerControl
             deleteTask.Show();
         }
 
-        private void WeekScheduler_Load(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void timerRemind_Tick(object sender, EventArgs e)
+        {
+            if (!isReminderShown)
+            {
+                DateTime nowDate = DateTime.Now;
+
+                Reminder reminder = new Reminder();
+
+                Dictionary<DateTime, Task> taskByRemindTime = reminder.remindTask;
+                foreach(DateTime remindDate in taskByRemindTime.Keys)
+                {
+                    // if less than 10 seconds to remind time
+                    if (Math.Abs((nowDate - remindDate).TotalSeconds) <= 2)
+                    {
+                        timerRemind.Stop();
+                        // show reminder
+                        MessageBox.Show($"Reminder. \"{taskByRemindTime[remindDate].taskName}\" task is set to start in 15 minutes!");
+                        isReminderShown = true;
+                        DialogResult result = MessageBox.Show($"Reminder. \"{taskByRemindTime[remindDate].taskName}\" task is set to start in 15 minutes!", "", MessageBoxButtons.OK);
+                        if (result == DialogResult.OK)
+                        {
+                            isReminderShown = false;
+                            timerRemind.Start();
+                        }
+                    }
+
+                }
+            }
         }
     }
 }

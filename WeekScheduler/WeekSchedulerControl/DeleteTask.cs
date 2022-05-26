@@ -32,11 +32,15 @@ namespace WeekSchedulerControl
         {
             Task toDel = ReaderJSON.getTaskByName(comboBox1.Text);
             ReaderJSON.deleteTask(toDel);
-            // update scheduler form
-            // get back to the scheduler
             MessageBox.Show("Task successfully deleted.");
+
+            TableLayoutPanel tlp = currOpenScheduler.Controls.Find("tableLayoutPanel1", true).FirstOrDefault() as TableLayoutPanel;
+            // update scheduler form
+            tlp.Visible = false;
             currOpenScheduler.deleteButtonsFromPreviousTasks();
             currOpenScheduler.loadTasks();
+            tlp.Visible = true;
+            // get back to the scheduler
             this.Hide();
         }
 

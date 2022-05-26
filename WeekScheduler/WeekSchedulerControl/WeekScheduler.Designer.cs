@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,6 +51,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
+            this.timerRemind = new System.Windows.Forms.Timer(this.components);
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // monthCalendar1
@@ -313,10 +317,37 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // timerRemind
+            // 
+            this.timerRemind.Tick += new System.EventHandler(this.timerRemind_Tick);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.SystemColors.Info;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(44, 12);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(141, 21);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "Weekly Schedule";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Location = new System.Drawing.Point(856, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(302, 20);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "Scroll down to see all the scheduled tasks!";
+            // 
             // WeekScheduler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
@@ -332,7 +363,6 @@
             this.Controls.Add(this.monthCalendar1);
             this.Name = "WeekScheduler";
             this.Size = new System.Drawing.Size(1161, 667);
-            this.Load += new System.EventHandler(this.WeekScheduler_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -362,5 +392,8 @@
         private Button btnNie;
         private Label label8;
         private Button btnExit;
+        private System.Windows.Forms.Timer timerRemind;
+        private Label label10;
+        private Label label11;
     }
 }

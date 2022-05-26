@@ -12,7 +12,6 @@ namespace WeekSchedulerControl
 {
     public class ReaderJSON
     {
-        //public static string filePath = @"E:\csharp_projects\advanced_programming2\WeekScheduler\WeekSchedulerControl\TaskData.json";
         public static string filePath = @"TaskData.json";
 
 
@@ -25,7 +24,6 @@ namespace WeekSchedulerControl
             //_data.Add(task);
 
             string json = System.Text.Json.JsonSerializer.Serialize(data);
-            //File.WriteAllText(@"E:\csharp_projects\advanced_programming2\WeekScheduler\WeekSchedulerControl\TaskData.json", json);
             File.WriteAllText(filePath, json);
         }
 
@@ -42,7 +40,6 @@ namespace WeekSchedulerControl
             }
 
             string json = System.Text.Json.JsonSerializer.Serialize(newData);
-            //File.WriteAllText(@"E:\csharp_projects\advanced_programming2\WeekScheduler\WeekSchedulerControl\TaskData.json", json);
             File.WriteAllText(filePath, json);
 
         }
@@ -54,12 +51,11 @@ namespace WeekSchedulerControl
             {
                 using (StreamWriter sw = File.CreateText(filePath))
                 {
-                    sw.WriteLine("[{\"taskName\":\"Zamknij okno\",\"taskDescription\":\"Przyci\\u015Bnij r\\u0119k\\u0105 cz\\u0119\\u015B\\u0107 okna i go zamknij\",\"date\":\"22/5/2022\",\"dateInfo\":{\"dateString\":null,\"date\":\"0001-01-01T00:00:00\",\"dayName\":\"Monday\",\"weekNumber\":1,\"year\":1},\"timeStart\":\"06:30\",\"timeEnd\":\"07:00\",\"priority\":\"Non-relevant\"},{\"taskName\":\"Check\",\"taskDescription\":\"sprawdzam\",\"date\":\"22/05/2022\",\"dateInfo\":{\"dateString\":\"22/05/2022\",\"date\":\"2022-05-22T00:00:00\",\"dayName\":\"Sunday\",\"weekNumber\":20,\"year\":2022},\"timeStart\":\"03:00\",\"timeEnd\":\"03:30\",\"priority\":\"Important\"},{\"taskName\":\"Sniadanie\",\"taskDescription\":\"Zjesc sniadanie\",\"date\":\"26/05/2022\",\"dateInfo\":{\"dateString\":\"26/05/2022\",\"date\":\"2022-05-26T00:00:00\",\"dayName\":\"Thursday\",\"weekNumber\":21,\"year\":2022},\"timeStart\":\"05:30\",\"timeEnd\":\"06:30\",\"priority\":\"Casual\"},{\"taskName\":\"Karol\",\"taskDescription\":\"ka\",\"date\":\"25/05/2022\",\"dateInfo\":{\"dateString\":\"25/05/2022\",\"date\":\"2022-05-25T00:00:00\",\"dayName\":\"Wednesday\",\"weekNumber\":21,\"year\":2022},\"timeStart\":\"05:00\",\"timeEnd\":\"11:00\",\"priority\":\"Important\"},{\"taskName\":\"Karol\",\"taskDescription\":\"d\",\"date\":\"27/05/2022\",\"dateInfo\":{\"dateString\":\"27/05/2022\",\"date\":\"2022-05-27T00:00:00\",\"dayName\":\"Friday\",\"weekNumber\":21,\"year\":2022},\"timeStart\":\"02:30\",\"timeEnd\":\"09:00\",\"priority\":\"Non-relevant\"},{\"taskName\":\"test\",\"taskDescription\":\"test\",\"date\":\"23/05/2022\",\"dateInfo\":{\"dateString\":\"23/05/2022\",\"date\":\"2022-05-23T00:00:00\",\"dayName\":\"Monday\",\"weekNumber\":21,\"year\":2022},\"timeStart\":\"02:00\",\"timeEnd\":\"06:00\",\"priority\":\"Important\"},{\"taskName\":\"test\",\"taskDescription\":\"test\",\"date\":\"22/05/2022\",\"dateInfo\":{\"dateString\":\"22/05/2022\",\"date\":\"2022-05-22T00:00:00\",\"dayName\":\"Sunday\",\"weekNumber\":20,\"year\":2022},\"timeStart\":\"02:00\",\"timeEnd\":\"04:00\",\"priority\":\"Important\"}]");
+                    // write sample tasks data 
+                    sw.WriteLine("[{\"taskName\":\"Zakupy\",\"taskDescription\":\"Zrobi\\u0107 zakupy\",\"date\":\"26/05/2022\",\"dateInfo\":{\"dateString\":\"26/05/2022\",\"date\":\"2022-05-26T00:00:00\",\"dayName\":\"Thursday\",\"weekNumber\":21,\"year\":2022},\"timeStart\":\"09:30\",\"timeEnd\":\"11:00\",\"priority\":\"Casual\"},{\"taskName\":\"Wyprowadzi\\u0107 psa\",\"taskDescription\":\"P\\u00F3j\\u015B\\u0107 z psem na spacer\",\"date\":\"24/05/2022\",\"dateInfo\":{\"dateString\":\"24/05/2022\",\"date\":\"2022-05-24T00:00:00\",\"dayName\":\"Tuesday\",\"weekNumber\":21,\"year\":2022},\"timeStart\":\"17:00\",\"timeEnd\":\"18:00\",\"priority\":\"Important\"},{\"taskName\":\"Zaj\\u0119cia muzyczne\",\"taskDescription\":\"Pami\\u0119ta\\u0107 o zeszytach! \",\"date\":\"26/05/2022\",\"dateInfo\":{\"dateString\":\"26/05/2022\",\"date\":\"2022-05-26T00:00:00\",\"dayName\":\"Thursday\",\"weekNumber\":21,\"year\":2022},\"timeStart\":\"13:30\",\"timeEnd\":\"16:00\",\"priority\":\"Casual\"},{\"taskName\":\"Kino\",\"taskDescription\":\"Wyj\\u015B\\u0107 do kina\",\"date\":\"28/05/2022\",\"dateInfo\":{\"dateString\":\"28/05/2022\",\"date\":\"2022-05-28T00:00:00\",\"dayName\":\"Saturday\",\"weekNumber\":21,\"year\":2022},\"timeStart\":\"14:00\",\"timeEnd\":\"17:00\",\"priority\":\"Non-relevant\"},{\"taskName\":\"Zrobi\\u0107 obiad\",\"taskDescription\":\"Wykorzysta\\u0107 warzywa z ogrodu.\",\"date\":\"23/05/2022\",\"dateInfo\":{\"dateString\":\"23/05/2022\",\"date\":\"2022-05-23T00:00:00\",\"dayName\":\"Monday\",\"weekNumber\":21,\"year\":2022},\"timeStart\":\"15:00\",\"timeEnd\":\"16:30\",\"priority\":\"Important\"},{\"taskName\":\"P\\u00F3j\\u015B\\u0107 pobiega\\u0107\",\"taskDescription\":\"W parku otworzono now\\u0105 \\u015Bcie\\u017Ck\\u0119!\",\"date\":\"24/05/2022\",\"dateInfo\":{\"dateString\":\"24/05/2022\",\"date\":\"2022-05-24T00:00:00\",\"dayName\":\"Tuesday\",\"weekNumber\":21,\"year\":2022},\"timeStart\":\"12:00\",\"timeEnd\":\"14:30\",\"priority\":\"Non-relevant\"},{\"taskName\":\"Koncert\",\"taskDescription\":\"Koncert juwenaliowy\",\"date\":\"20/05/2022\",\"dateInfo\":{\"dateString\":\"20/05/2022\",\"date\":\"2022-05-20T00:00:00\",\"dayName\":\"Friday\",\"weekNumber\":20,\"year\":2022},\"timeStart\":\"20:00\",\"timeEnd\":\"23:30\",\"priority\":\"Important\"},{\"taskName\":\"Wzi\\u0105\\u0107 prysznic\",\"taskDescription\":\"Zimny\",\"date\":\"18/05/2022\",\"dateInfo\":{\"dateString\":\"18/05/2022\",\"date\":\"2022-05-18T00:00:00\",\"dayName\":\"Wednesday\",\"weekNumber\":20,\"year\":2022},\"timeStart\":\"06:00\",\"timeEnd\":\"06:30\",\"priority\":\"Casual\"},{\"taskName\":\"Wyj\\u015B\\u0107 do biura\",\"taskDescription\":\"Pieszo\",\"date\":\"18/05/2022\",\"dateInfo\":{\"dateString\":\"18/05/2022\",\"date\":\"2022-05-18T00:00:00\",\"dayName\":\"Wednesday\",\"weekNumber\":20,\"year\":2022},\"timeStart\":\"06:30\",\"timeEnd\":\"12:30\",\"priority\":\"Important\"}]");
                 } 
             }
             List<Task> items;
-            // TODO: REMBEMBER TO CHANGE IT"S LOCATION TO RELATIVE FROM ABSOLUTE!
-            //using (StreamReader r = new StreamReader(@"E:\csharp_projects\advanced_programming2\WeekScheduler\WeekSchedulerControl\TaskData.json"))
             using (StreamReader r = new StreamReader(filePath))
             {
                 string json = r.ReadToEnd();
