@@ -189,9 +189,16 @@ namespace ModelSystemRPG
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //if()
+            if (LoginSystem.user != null && LoginSystem.user.role == "Admin")
+            {
+                ManageUsers manageUsers = new ManageUsers();
+                this.Hide();
+                manageUsers.Show();
+            }
+            else
+            {
+                MessageBox.Show("You must be Admin to manage users!");
+            }
         }
-
-
     }
 }
