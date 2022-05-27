@@ -66,7 +66,6 @@ namespace ModelSystemRPG
                 string modelName = model.modelName;
                 if (!modelsByModelName.ContainsKey(modelName))
                 {
-
                     // add new entry if not in the dictionary yet
                     modelsByModelName.Add(modelName, new List<ModelData>());
                 }

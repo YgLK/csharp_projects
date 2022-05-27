@@ -45,7 +45,7 @@
             this.btnSortByCategory = new System.Windows.Forms.Button();
             this.btnSortByModel = new System.Windows.Forms.Button();
             this.checkAscendingSort = new System.Windows.Forms.CheckBox();
-            this.chooseCategory = new System.Windows.Forms.CheckedListBox();
+            this.chListCategory = new System.Windows.Forms.CheckedListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtEnterName = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -228,13 +228,13 @@
             this.checkAscendingSort.Text = "Ascending";
             this.checkAscendingSort.UseVisualStyleBackColor = true;
             // 
-            // chooseCategory
+            // chListCategory
             // 
-            this.chooseCategory.FormattingEnabled = true;
-            this.chooseCategory.Location = new System.Drawing.Point(1035, 315);
-            this.chooseCategory.Name = "chooseCategory";
-            this.chooseCategory.Size = new System.Drawing.Size(257, 112);
-            this.chooseCategory.TabIndex = 12;
+            this.chListCategory.FormattingEnabled = true;
+            this.chListCategory.Location = new System.Drawing.Point(1035, 301);
+            this.chListCategory.Name = "chListCategory";
+            this.chListCategory.Size = new System.Drawing.Size(257, 112);
+            this.chListCategory.TabIndex = 12;
             // 
             // label9
             // 
@@ -325,7 +325,7 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.txtEnterName);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.chooseCategory);
+            this.Controls.Add(this.chListCategory);
             this.Controls.Add(this.checkAscendingSort);
             this.Controls.Add(this.btnSortByModel);
             this.Controls.Add(this.btnSortByCategory);
@@ -377,5 +377,6 @@
         private TextBox txtEnterName;
         private Button btnFindName;
         private Button btnFilterCategory;
+        private CheckedListBox chListCategory;
     }
 }

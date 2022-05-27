@@ -35,8 +35,6 @@ namespace ModelSystemRPG
             string encryptedPassword = dBHandler.getUserPassword(username);
             string decryptedPassword = PasswordEncryptor.DecryptCipherTextToPlainText(encryptedPassword);
             
-            //if (password == dBHandler.getUserPassword(username))
-            //{
             if (password == decryptedPassword)
             {
                 return true;

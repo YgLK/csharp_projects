@@ -80,8 +80,6 @@ namespace ModelSystemRPG
             string username = txtUserName.Text;
             string password = txtPassword.Text;
             
-            //MessageBox.Show("Encrypted password: " + encryptedPassword + "\n Decrypted password: " + decryptedPassword);
-
             if(username != "" && password != "")
             {
                 if(LoginSystem.LogIn(username, password))
@@ -170,21 +168,6 @@ namespace ModelSystemRPG
                 this.tableLayoutPanel1.Controls.Add(btnProperties, 2, i);
 
             }
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Menu_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void button1_Click(object sender, EventArgs e)

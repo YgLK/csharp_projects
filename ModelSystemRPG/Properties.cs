@@ -66,11 +66,6 @@ namespace ModelSystemRPG
                 // increment row count
                 this.tableLayoutPanel1.RowCount = this.tableLayoutPanel1.RowCount + 1;
             }
-
-
-
-            //tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 52F));
-            //this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
         }
 
         private void btnClose_Click(object sender, EventArgs e)

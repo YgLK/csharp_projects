@@ -79,8 +79,6 @@ namespace ModelSystemRPG
                     {
                         propertyKey = txtBoxName.Text;
                         propertyValue = txtBoxValue.Text;
-                        //jsonData += "\"" + propertyKey + "\":\"" + propertyValue + "\",";
-                        
                         dbHandler.addModelProperty(modelId, propertyKey, propertyValue);
                     }
                 }

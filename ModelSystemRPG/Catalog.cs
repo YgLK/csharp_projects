@@ -35,9 +35,13 @@ namespace ModelSystemRPG
             // get all models with data
             modelsData = dataOperator.getModels();
             dbHandler = new DBHandler();
-            
-            chooseCategory.DataSource = dbHandler.getCategoryNames();
 
+            List<string> categoryNames = dbHandler.getCategoryNames();
+
+            foreach (string name in categoryNames)
+            {
+                chListCategory.Items.Add(name);
+            }
 
             List<ModelData> modelList = new List<ModelData>(modelsData.Values);
 
@@ -52,21 +56,9 @@ namespace ModelSystemRPG
             {
                 tableLayoutPanel1.Controls.Clear();
             }
-            // -- get models data --
-
-            // i is compulsory to keep track of row number
+            
+            // idx of row
             int i = 0;
-            // add new rows
-
-            // HERE SORTED MODELS DATA SHOULD BE SET
-            // default case
-
-            // -- EditModel 
-
-            //List<ModelData> modelList = new List<ModelData>(modelsData.Values);
-
-            // -- EditModel 
-
 
             // if sorted parameters are provided
             if (sortType == "categoryName")
@@ -191,8 +183,7 @@ namespace ModelSystemRPG
 
                 // increment row count
                 this.tableLayoutPanel1.RowCount = this.tableLayoutPanel1.RowCount + 1;
-                //tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 52F));
-                //this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+                // increment row number
                 i++;
             }
         }
@@ -238,7 +229,7 @@ namespace ModelSystemRPG
 
         private void btnFilterCategory_Click(object sender, EventArgs e)
         {
-            List<string> categories = chooseCategory.CheckedItems.Cast<string>().ToList();
+            List<string> categories = chListCategory.CheckedItems.Cast<string>().ToList();
 
             Dictionary<int, ModelData> items = dataOperator.getModelsOfCategories(categories);
             InitDataTable(sortType: "", ascending: true, items.Values.ToList());
@@ -246,7 +237,7 @@ namespace ModelSystemRPG
 
         private void btnFindName_Click(object sender, EventArgs e)
         {
-            List<string> categories = chooseCategory.CheckedItems.Cast<string>().ToList();
+            List<string> categories = chListCategory.CheckedItems.Cast<string>().ToList();
 
             string phrase = txtEnterName.Text;
             if(phrase != "")
