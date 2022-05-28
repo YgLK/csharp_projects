@@ -10,3 +10,9 @@
 06 July 2022,Paweł Autor,Toyota ,Toyota Rav4,Brown,2.0 D-4D 116 KM
 06 July 2022,Les More,Toyota ,Toyota Rav4,Brown,2.0 150 KM 2.4 163 KM (USA)
 08 July 2022,Krzysztof Kowal,Volkswagen ,Volkswagen Passat B6,Blue,1.4 TSI
+28 May 2022,John Doe,Volkswagen ,Volkswagen Passat B6,Blue,1.4 TSI
+28 May 2022,John Doe,Volkswagen ,Volkswagen Golf 7,Black,1.4 TSI 122 KM
+28 May 2022,John Doe,Volkswagen ,Volkswagen Passat B6,Blue,1.6 FSI
+28 May 2022,John Doe,Toyota ,Toyota Rav4,Brown,2.0 D-4D 116 KM
+28 May 2022,John Doe,Toyota ,Toyota Corolla,Pink,2.0 Hybrid Dynamic Force 184KM
+28 May 2022,John Doe,Toyota ,Toyota Corolla,Black,1.2 Turbo D-4T 116KM 85kW

@@ -34,7 +34,7 @@ namespace CarDealership
         private void reservationButton_Click(object sender, EventArgs e)
         {
             this.Hide();
-            BookTestDriveForm bookTestDrive = new BookTestDriveForm();
+            btnRemoveRes bookTestDrive = new btnRemoveRes();
             bookTestDrive.Show();
         }
 

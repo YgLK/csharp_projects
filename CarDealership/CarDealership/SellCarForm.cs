@@ -100,7 +100,8 @@ namespace CarDealership
                 string color = colorTextBox.Text.Replace(" ", "");
                 string model = modelTextBox.Text.Replace(" ", "");
                 string filename = color + model + ".png";
-                string carImagesDirPath = @"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\CarImages\" + filename;
+                //string carImagesDirPath = @"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\CarImages\" + filename;
+                string carImagesDirPath = @".\CarImages\" + filename;
 
                 pictureSourcePath = path;
                 pictureDestinationPath = carImagesDirPath;

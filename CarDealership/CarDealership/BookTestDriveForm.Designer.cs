@@ -1,6 +1,6 @@
 ﻿namespace CarDealership
 {
-    partial class BookTestDriveForm
+    partial class btnRemoveRes
     {
         /// <summary>
         /// Required designer variable.
@@ -47,6 +47,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.driverName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,7 +82,7 @@
             // 
             // btnAddReservation
             // 
-            this.btnAddReservation.Location = new System.Drawing.Point(662, 492);
+            this.btnAddReservation.Location = new System.Drawing.Point(314, 470);
             this.btnAddReservation.Name = "btnAddReservation";
             this.btnAddReservation.Size = new System.Drawing.Size(139, 38);
             this.btnAddReservation.TabIndex = 29;
@@ -91,12 +92,14 @@
             // 
             // showReservations
             // 
+            this.showReservations.Enabled = false;
             this.showReservations.Location = new System.Drawing.Point(499, 492);
             this.showReservations.Name = "showReservations";
             this.showReservations.Size = new System.Drawing.Size(145, 38);
             this.showReservations.TabIndex = 30;
             this.showReservations.Text = "SHOW RESERVATION LIST";
             this.showReservations.UseVisualStyleBackColor = true;
+            this.showReservations.Visible = false;
             this.showReservations.Click += new System.EventHandler(this.showReservations_Click);
             // 
             // nameEnterLabel
@@ -121,7 +124,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(826, 492);
+            this.button3.Location = new System.Drawing.Point(891, 513);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(72, 38);
             this.button3.TabIndex = 33;
@@ -138,6 +141,7 @@
             this.colorComboBox.Name = "colorComboBox";
             this.colorComboBox.Size = new System.Drawing.Size(204, 28);
             this.colorComboBox.TabIndex = 41;
+            this.colorComboBox.SelectedIndexChanged += new System.EventHandler(this.colorComboBox_SelectedIndexChanged);
             // 
             // engineComboBox
             // 
@@ -148,6 +152,7 @@
             this.engineComboBox.Name = "engineComboBox";
             this.engineComboBox.Size = new System.Drawing.Size(204, 28);
             this.engineComboBox.TabIndex = 40;
+            this.engineComboBox.SelectedIndexChanged += new System.EventHandler(this.engineComboBox_SelectedIndexChanged);
             // 
             // carModelComboBox
             // 
@@ -232,11 +237,22 @@
             this.driverName.HeaderText = "Name";
             this.driverName.Name = "driverName";
             // 
-            // BookTestDriveForm
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(743, 429);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(105, 37);
+            this.button1.TabIndex = 43;
+            this.button1.Text = "REMOVE RESERVATION";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnRemoveRes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(996, 563);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.colorComboBox);
             this.Controls.Add(this.engineComboBox);
@@ -254,7 +270,7 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "BookTestDriveForm";
+            this.Name = "btnRemoveRes";
             this.Text = "Book the test drive";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -282,5 +298,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn driverName;
+        private System.Windows.Forms.Button button1;
     }
 }

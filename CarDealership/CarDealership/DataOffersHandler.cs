@@ -24,7 +24,10 @@ namespace CarDealership
             // run on the full data
             //string dataFileName = Directory.GetParent(workingDirectory).Parent.FullName + @"\CarData.txt";
             // run on the test data
-            string dataFileName = Directory.GetParent(workingDirectory).Parent.FullName + @"\Data\CarData_test.txt";
+            //string dataFileName = Directory.GetParent(workingDirectory).Parent.FullName + @"\Data\CarData_test.txt";
+
+
+            string dataFileName = @".\Data\CarData_test.txt";
 
             using (StreamReader reader = new StreamReader(dataFileName))
             {
