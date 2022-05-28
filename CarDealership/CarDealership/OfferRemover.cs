@@ -11,8 +11,12 @@ namespace CarDealership
 
         public OfferRemover()
         {
-            offersFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\Data\carData_test.txt";
-            reservationsFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\Data\reservationsTestDrive.txt";
+            //offersFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\Data\carData_test.txt";
+            //reservationsFilePath = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + @"\Data\reservationsTestDrive.txt";
+
+
+            offersFilePath = @".\Data\carData_test.txt";
+            reservationsFilePath = @".\Data\reservationsTestDrive.txt";
         }
 
 

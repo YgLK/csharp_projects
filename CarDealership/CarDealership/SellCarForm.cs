@@ -64,8 +64,11 @@ namespace CarDealership
             string record = year + "," + make + "," + model + "," + price + "," + color + "," + engine;
 
             // it should append txt to cardata_test.txt
-            File.AppendAllText(@"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\Data\carData_test.txt",
+            //File.AppendAllText(@"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\Data\carData_test.txt",
+            //       record + Environment.NewLine);
+            File.AppendAllText(@".\Data\carData_test.txt",
                    record + Environment.NewLine);
+
 
             // upload picture associated with offer
             if (pictureDestinationPath == "" || pictureSourcePath == "")

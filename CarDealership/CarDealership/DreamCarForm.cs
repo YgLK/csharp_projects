@@ -199,7 +199,8 @@ namespace CarDealership
 
                 // remove image associated with the offer - it's not coompulsory
                 string filename = color + model + ".png";
-                string carImagePath = @"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\CarImages\" + filename;
+                //string carImagePath = @"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\CarImages\" + filename;
+                string carImagePath = @".\CarImages\" + filename;
                 // car image cannot be removed because it's used during the deletion of the car offer data
                 //remover.RemoveOfferImage(carImagePath);
 
