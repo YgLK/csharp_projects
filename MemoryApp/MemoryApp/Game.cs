@@ -291,8 +291,11 @@ namespace MemoryApp
                 string rankingRecord = score + "," + MemoryData.nickname + "," + MemoryData.timeToWin + "," + MemoryData.movesToWin;
 
                 // get the path to the ranking data txt file
-                string workingDirectory = Environment.CurrentDirectory;
-                string rankingDataPath = Directory.GetParent(workingDirectory).Parent.FullName + "\\rankingData.txt";
+                //string workingDirectory = Environment.CurrentDirectory;
+                //string rankingDataPath = Directory.GetParent(workingDirectory).Parent.FullName + "\\rankingData.txt";
+
+                // use relative path instead of absolute
+                string rankingDataPath = @".\rankingData.txt";
 
                 // write new game data record to the file
                 using (StreamWriter sw = File.AppendText(rankingDataPath))
