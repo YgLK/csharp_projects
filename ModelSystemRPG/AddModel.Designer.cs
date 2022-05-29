@@ -43,6 +43,8 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.lblLoggedInUsername = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.comboBoxEnv = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnAddModel
@@ -76,7 +78,7 @@
             // labelCategory
             // 
             this.labelCategory.AutoSize = true;
-            this.labelCategory.Location = new System.Drawing.Point(336, 106);
+            this.labelCategory.Location = new System.Drawing.Point(336, 113);
             this.labelCategory.Name = "labelCategory";
             this.labelCategory.Size = new System.Drawing.Size(96, 15);
             this.labelCategory.TabIndex = 8;
@@ -92,11 +94,13 @@
             // comboBoxCat
             // 
             this.comboBoxCat.BackColor = System.Drawing.SystemColors.Window;
+            this.comboBoxCat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCat.FormattingEnabled = true;
-            this.comboBoxCat.Location = new System.Drawing.Point(516, 103);
+            this.comboBoxCat.Location = new System.Drawing.Point(516, 110);
             this.comboBoxCat.Name = "comboBoxCat";
             this.comboBoxCat.Size = new System.Drawing.Size(230, 23);
             this.comboBoxCat.TabIndex = 12;
+            this.comboBoxCat.SelectedIndexChanged += new System.EventHandler(this.comboBoxCat_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -172,11 +176,32 @@
             this.label5.TabIndex = 32;
             this.label5.Text = "Logged in as:";
             // 
+            // comboBoxEnv
+            // 
+            this.comboBoxEnv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEnv.FormattingEnabled = true;
+            this.comboBoxEnv.Location = new System.Drawing.Point(516, 81);
+            this.comboBoxEnv.Name = "comboBoxEnv";
+            this.comboBoxEnv.Size = new System.Drawing.Size(230, 23);
+            this.comboBoxEnv.TabIndex = 34;
+            this.comboBoxEnv.SelectedIndexChanged += new System.EventHandler(this.comboBoxEnv_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(336, 84);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(78, 15);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "Environment:";
+            // 
             // AddModel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1145, 668);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.comboBoxEnv);
             this.Controls.Add(this.lblLoggedInUsername);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -215,5 +240,7 @@
         private FlowLayoutPanel flowLayoutPanel1;
         private Label lblLoggedInUsername;
         private Label label5;
+        private ComboBox comboBoxEnv;
+        private Label label6;
     }
 }

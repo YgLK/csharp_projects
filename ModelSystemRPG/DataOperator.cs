@@ -35,6 +35,8 @@ namespace ModelSystemRPG
                                   CategoryId = ep.CategoryId,
                                   // category description
                                   CategoryDescription = ep.Description,
+                                  // category environment
+                                  CategoryEnvironment = ep.Environment,
                                   // category owner id
                                   CategoryOwnerId = ep.UserId,
                                   // model name
@@ -57,6 +59,8 @@ namespace ModelSystemRPG
                                   CategoryId = ep.CategoryId,
                                   // category description
                                   CategoryDescription = ep.Description,
+                                  // category environment
+                                  CategoryEnvironment = ep.Environment,
                                   // category owner id
                                   CategoryOwnerId = ep.UserId,
                                   // model name
@@ -76,6 +80,7 @@ namespace ModelSystemRPG
                 string categoryName = modelData[i].CategoryName;
                 int categoryId = modelData[i].CategoryId;
                 string categoryDescription = modelData[i].CategoryDescription;
+                string environmentName = modelData[i].CategoryEnvironment;
                 int categoryOwnerId = modelData[i].CategoryOwnerId;
 
                 string modelName = modelData[i].ModelName;
@@ -90,7 +95,7 @@ namespace ModelSystemRPG
                 // craete model if doesnt occur in the dictionary
                 if (!models.ContainsKey(modelId))
                 {
-                    ModelData model = new ModelData(categoryName, categoryDescription, categoryId, categoryOwnerId, modelName, modelId);
+                    ModelData model = new ModelData(categoryName, categoryDescription, categoryId, categoryOwnerId, modelName, modelId, environmentName);
                     models.Add(modelId, model);
                 }
 
@@ -103,7 +108,7 @@ namespace ModelSystemRPG
             {
                 if (!models.ContainsKey(model.ModelId))
                 {
-                    models.Add(model.ModelId, new ModelData(model.CategoryName, model.CategoryDescription, model.CategoryId, model.CategoryOwnerId, model.ModelName, model.ModelId));
+                    models.Add(model.ModelId, new ModelData(model.CategoryName, model.CategoryDescription, model.CategoryId, model.CategoryOwnerId, model.ModelName, model.ModelId, model.CategoryEnvironment));
                 }
             }
 
@@ -165,7 +170,15 @@ namespace ModelSystemRPG
             idsList.Reverse();
 
 
-            for(int i=0; i<5; i++)
+            int modelCount = allModels.Count;
+            int stopNum = 5;
+            // check if there are more than 5 models
+            if(modelCount < 5)
+            {
+                stopNum = modelCount;
+            }
+            // show 5 the newest models
+            for(int i=0; i<stopNum; i++)
             {
                 int idx = idsList[i];
                 if (allModels.Keys.Contains(idx))

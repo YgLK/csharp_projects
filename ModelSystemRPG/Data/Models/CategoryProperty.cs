@@ -10,7 +10,8 @@ namespace ModelSystemRPG.Data.Models
     {
         public int CategoryPropertyId { get; set; }
         public string Name { get; set; }
-        public string Value { get; set; }
+        // possible values: string, int
+        public string Type { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
     }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.btnAddUser = new System.Windows.Forms.Button();
-            this.labelName = new System.Windows.Forms.Label();
             this.labelHeader = new System.Windows.Forms.Label();
             this.labelUser = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
@@ -38,7 +37,6 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.lblLoggedInUsername = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.cboxRole = new System.Windows.Forms.ComboBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPasswordRepeat = new System.Windows.Forms.TextBox();
@@ -56,15 +54,6 @@
             this.btnAddUser.UseVisualStyleBackColor = true;
             this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
-            // labelName
-            // 
-            this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(367, 196);
-            this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(30, 15);
-            this.labelName.TabIndex = 17;
-            this.labelName.Text = "Role";
-            // 
             // labelHeader
             // 
             this.labelHeader.AutoSize = true;
@@ -77,7 +66,7 @@
             // labelUser
             // 
             this.labelUser.AutoSize = true;
-            this.labelUser.Location = new System.Drawing.Point(367, 157);
+            this.labelUser.Location = new System.Drawing.Point(367, 189);
             this.labelUser.Name = "labelUser";
             this.labelUser.Size = new System.Drawing.Size(60, 15);
             this.labelUser.TabIndex = 15;
@@ -85,7 +74,7 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(547, 154);
+            this.txtUsername.Location = new System.Drawing.Point(547, 186);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(230, 23);
             this.txtUsername.TabIndex = 21;
@@ -134,14 +123,6 @@
             this.label3.Size = new System.Drawing.Size(77, 15);
             this.label3.TabIndex = 25;
             this.label3.Text = "Logged in as:";
-            // 
-            // cboxRole
-            // 
-            this.cboxRole.FormattingEnabled = true;
-            this.cboxRole.Location = new System.Drawing.Point(547, 193);
-            this.cboxRole.Name = "cboxRole";
-            this.cboxRole.Size = new System.Drawing.Size(230, 23);
-            this.cboxRole.TabIndex = 27;
             // 
             // txtPassword
             // 
@@ -194,7 +175,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cboxRole);
             this.Controls.Add(this.lblLoggedInUsername);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnBack);
@@ -202,7 +182,6 @@
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.btnAddUser);
-            this.Controls.Add(this.labelName);
             this.Controls.Add(this.labelHeader);
             this.Controls.Add(this.labelUser);
             this.Name = "AddUser";

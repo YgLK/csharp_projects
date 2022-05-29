@@ -14,14 +14,15 @@ namespace ModelSystemRPG.Data
             rpgDbContext = new SystemRPGContext();
         }
 
-        public void addCategory(string name, int userId = 1, string description = "")
+        public void addCategory(string name, int userId = 1, string description = "", string environment = "")
         {
             // add new category
             Category category = new Category();
             category.Name = name;
             category.UserId = userId;
             category.Description = description;
-            
+            category.Environment = environment;
+
             rpgDbContext.Categories.Add(category);
 
             // save data
@@ -49,6 +50,13 @@ namespace ModelSystemRPG.Data
             // get all categories' names
             var categoryNames = rpgDbContext.Categories.Select(e => e.Name).ToList();
             return categoryNames;
+        }
+
+        public void deleteCategory(string categoryName)
+        {
+            var categoryToDel = rpgDbContext.Categories.Where(e => e.Name == categoryName).Select(e => e).ToArray()[0];
+            rpgDbContext.Remove(categoryToDel);
+            rpgDbContext.SaveChanges();
         }
 
         public void deleteModel(int modelId)
@@ -122,11 +130,11 @@ namespace ModelSystemRPG.Data
             rpgDbContext.SaveChanges();
         }
 
-        public void addCategoryProperty(string categoryName, string propertyName, string propertyValue)
+        public void addCategoryProperty(string categoryName, string propertyName, string propertyType)
         {
             CategoryProperty categoryProperty = new CategoryProperty();
             categoryProperty.Name = propertyName;
-            categoryProperty.Value = propertyValue;
+            categoryProperty.Type = propertyType;
 
             // get category id
             int categoryId = rpgDbContext.Categories.Where(e => e.Name == categoryName).Select(e => e.CategoryId).ToArray()[0];
@@ -137,6 +145,16 @@ namespace ModelSystemRPG.Data
 
             // save data
             rpgDbContext.SaveChanges();
+        }
+
+        public List<string> getCategoryNamesByEnvironment(string envName)
+        {
+            return rpgDbContext.Categories.Where(e => e.Environment == envName).Select(e => e.Name).ToList();
+        }
+
+        public List<string> getCategoryPropertiesNames(int _categoryId)
+        {
+            return rpgDbContext.CategoryProperties.Where(e => e.CategoryId == _categoryId).Select(e => e.Name).ToList();
         }
 
 
@@ -169,6 +187,16 @@ namespace ModelSystemRPG.Data
                 Debug.WriteLine(e.Message);
                 return null;
             }
+        }
+
+        public List<string> getCategoryNamesByEnvironmentAndUserId(string envName, int userId)
+        {
+            return rpgDbContext.Categories.Where(e => e.Environment == envName && e.UserId == userId).Select(e => e.Name).ToList();
+        }
+
+        public List<string> getEnvironmentNames()
+        {
+            return rpgDbContext.Categories.Select(e => e.Environment).Distinct().ToList();
         }
 
         public List<string> getUsersNames()

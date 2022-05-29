@@ -51,7 +51,7 @@
             // 
             this.btnAddCategory.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAddCategory.AutoSize = true;
-            this.btnAddCategory.Location = new System.Drawing.Point(868, 382);
+            this.btnAddCategory.Location = new System.Drawing.Point(868, 398);
             this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(248, 45);
             this.btnAddCategory.TabIndex = 0;
@@ -75,7 +75,7 @@
             // 
             this.btnAddModel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAddModel.AutoSize = true;
-            this.btnAddModel.Location = new System.Drawing.Point(868, 433);
+            this.btnAddModel.Location = new System.Drawing.Point(868, 449);
             this.btnAddModel.Name = "btnAddModel";
             this.btnAddModel.Size = new System.Drawing.Size(248, 45);
             this.btnAddModel.TabIndex = 2;
@@ -87,7 +87,7 @@
             // 
             this.btnCatalog.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnCatalog.AutoSize = true;
-            this.btnCatalog.Location = new System.Drawing.Point(868, 329);
+            this.btnCatalog.Location = new System.Drawing.Point(868, 345);
             this.btnCatalog.Name = "btnCatalog";
             this.btnCatalog.Size = new System.Drawing.Size(248, 47);
             this.btnCatalog.TabIndex = 3;
@@ -220,11 +220,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(868, 484);
+            this.button1.Location = new System.Drawing.Point(868, 500);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(248, 47);
             this.button1.TabIndex = 17;
-            this.button1.Text = "USER MANAGER";
+            this.button1.Text = "USER PANEL";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 

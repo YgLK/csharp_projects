@@ -54,6 +54,9 @@
             this.btnBack = new System.Windows.Forms.Button();
             this.lblLoggedInUsername = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.cboxEnvironment = new System.Windows.Forms.ComboBox();
+            this.btnFilterByEnvironment = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -190,7 +193,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(1035, 58);
+            this.label8.Location = new System.Drawing.Point(1035, 35);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(64, 21);
             this.label8.TabIndex = 8;
@@ -198,7 +201,7 @@
             // 
             // btnSortByCategory
             // 
-            this.btnSortByCategory.Location = new System.Drawing.Point(1053, 142);
+            this.btnSortByCategory.Location = new System.Drawing.Point(1053, 119);
             this.btnSortByCategory.Name = "btnSortByCategory";
             this.btnSortByCategory.Size = new System.Drawing.Size(239, 39);
             this.btnSortByCategory.TabIndex = 9;
@@ -208,7 +211,7 @@
             // 
             // btnSortByModel
             // 
-            this.btnSortByModel.Location = new System.Drawing.Point(1053, 196);
+            this.btnSortByModel.Location = new System.Drawing.Point(1053, 173);
             this.btnSortByModel.Name = "btnSortByModel";
             this.btnSortByModel.Size = new System.Drawing.Size(239, 38);
             this.btnSortByModel.TabIndex = 10;
@@ -221,7 +224,7 @@
             this.checkAscendingSort.AutoSize = true;
             this.checkAscendingSort.Checked = true;
             this.checkAscendingSort.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkAscendingSort.Location = new System.Drawing.Point(1068, 106);
+            this.checkAscendingSort.Location = new System.Drawing.Point(1068, 83);
             this.checkAscendingSort.Name = "checkAscendingSort";
             this.checkAscendingSort.Size = new System.Drawing.Size(82, 19);
             this.checkAscendingSort.TabIndex = 11;
@@ -231,16 +234,16 @@
             // chListCategory
             // 
             this.chListCategory.FormattingEnabled = true;
-            this.chListCategory.Location = new System.Drawing.Point(1035, 301);
+            this.chListCategory.Location = new System.Drawing.Point(1035, 378);
             this.chListCategory.Name = "chListCategory";
-            this.chListCategory.Size = new System.Drawing.Size(257, 112);
+            this.chListCategory.Size = new System.Drawing.Size(257, 94);
             this.chListCategory.TabIndex = 12;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(1035, 266);
+            this.label9.Location = new System.Drawing.Point(1035, 340);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(138, 21);
             this.label9.TabIndex = 13;
@@ -248,7 +251,7 @@
             // 
             // txtEnterName
             // 
-            this.txtEnterName.Location = new System.Drawing.Point(1035, 517);
+            this.txtEnterName.Location = new System.Drawing.Point(1035, 553);
             this.txtEnterName.Name = "txtEnterName";
             this.txtEnterName.Size = new System.Drawing.Size(257, 23);
             this.txtEnterName.TabIndex = 14;
@@ -257,7 +260,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(1035, 484);
+            this.label10.Location = new System.Drawing.Point(1035, 520);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(140, 21);
             this.label10.TabIndex = 15;
@@ -265,7 +268,7 @@
             // 
             // btnFindName
             // 
-            this.btnFindName.Location = new System.Drawing.Point(1217, 556);
+            this.btnFindName.Location = new System.Drawing.Point(1217, 592);
             this.btnFindName.Name = "btnFindName";
             this.btnFindName.Size = new System.Drawing.Size(75, 23);
             this.btnFindName.TabIndex = 16;
@@ -275,7 +278,7 @@
             // 
             // btnFilterCategory
             // 
-            this.btnFilterCategory.Location = new System.Drawing.Point(1217, 442);
+            this.btnFilterCategory.Location = new System.Drawing.Point(1217, 494);
             this.btnFilterCategory.Name = "btnFilterCategory";
             this.btnFilterCategory.Size = new System.Drawing.Size(75, 23);
             this.btnFilterCategory.TabIndex = 17;
@@ -285,7 +288,7 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(1165, 630);
+            this.btnBack.Location = new System.Drawing.Point(1165, 650);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(127, 41);
             this.btnBack.TabIndex = 18;
@@ -312,11 +315,43 @@
             this.label11.TabIndex = 19;
             this.label11.Text = "Logged in as:";
             // 
+            // cboxEnvironment
+            // 
+            this.cboxEnvironment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboxEnvironment.FormattingEnabled = true;
+            this.cboxEnvironment.Location = new System.Drawing.Point(1035, 282);
+            this.cboxEnvironment.Name = "cboxEnvironment";
+            this.cboxEnvironment.Size = new System.Drawing.Size(257, 23);
+            this.cboxEnvironment.TabIndex = 21;
+            // 
+            // btnFilterByEnvironment
+            // 
+            this.btnFilterByEnvironment.Location = new System.Drawing.Point(1217, 320);
+            this.btnFilterByEnvironment.Name = "btnFilterByEnvironment";
+            this.btnFilterByEnvironment.Size = new System.Drawing.Size(75, 23);
+            this.btnFilterByEnvironment.TabIndex = 22;
+            this.btnFilterByEnvironment.Text = "Apply";
+            this.btnFilterByEnvironment.UseVisualStyleBackColor = true;
+            this.btnFilterByEnvironment.Click += new System.EventHandler(this.btnFilterByEnvironment_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(1035, 247);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(169, 21);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Choose environment";
+            // 
             // Catalog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1324, 703);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.btnFilterByEnvironment);
+            this.Controls.Add(this.cboxEnvironment);
             this.Controls.Add(this.lblLoggedInUsername);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.btnBack);
@@ -378,5 +413,8 @@
         private Button btnFindName;
         private Button btnFilterCategory;
         private CheckedListBox chListCategory;
+        private ComboBox cboxEnvironment;
+        private Button btnFilterByEnvironment;
+        private Label label12;
     }
 }

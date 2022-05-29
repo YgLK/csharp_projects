@@ -47,51 +47,63 @@ namespace ModelSystemRPG
 
             // get properties for the model
             var properties = model.getPropertiesList();
+            var categoryProperties = dBHandler.getCategoryPropertiesNames(model.categoryId);
 
             // retrieve data and generate row for each property
             foreach (var property in properties)
             {
-                    // show property name
-                    TextBox txtPropertyName = new TextBox();
-                    txtPropertyName.Name = "txtPropertyName" + i;
-                    txtPropertyName.Size = new System.Drawing.Size(311, 36);
-                    txtPropertyName.Text = property.propertyName;
-                    txtPropertyName.AutoSize = false;
-                    txtPropertyName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-                    this.tableLayoutPanel1.Controls.Add(txtPropertyName, 0, i);
+                // show property name
+                TextBox txtPropertyName = new TextBox();
+                txtPropertyName.Name = "txtPropertyName" + i;
+                txtPropertyName.Size = new System.Drawing.Size(311, 36);
+                txtPropertyName.Text = property.propertyName;
+                txtPropertyName.AutoSize = false;
+                txtPropertyName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+                // if property is compulsory disable property name changes
+                if (categoryProperties.Contains(property.propertyName))
+                {
+                    txtPropertyName.Enabled = false;
+                    txtPropertyName.BackColor = Color.Yellow;
+                }
+                this.tableLayoutPanel1.Controls.Add(txtPropertyName, 0, i);
 
-                    // show property value
-                    TextBox txtPropertyValue = new TextBox();
-                    txtPropertyValue.Name = "txtPropertyValue" + i;
-                    txtPropertyValue.Size = new System.Drawing.Size(311, 36);
-                    txtPropertyValue.Text = property.propertyValue;
-                    txtPropertyValue.AutoSize = false;
-                    txtPropertyValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-                    this.tableLayoutPanel1.Controls.Add(txtPropertyValue, 1, i);
+                // show property value
+                TextBox txtPropertyValue = new TextBox();
+                txtPropertyValue.Name = "txtPropertyValue" + i;
+                txtPropertyValue.Size = new System.Drawing.Size(311, 36);
+                txtPropertyValue.Text = property.propertyValue;
+                txtPropertyValue.AutoSize = false;
+                txtPropertyValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+                this.tableLayoutPanel1.Controls.Add(txtPropertyValue, 1, i);
 
-                    // Delete button
-                    Button btnDelete = new Button();
-                    btnDelete.Text = "Delete";
-                    btnDelete.Name = "btnDelete" + i;
-                    // define button activity after clicking it - in this case delete property
-                    btnDelete.Click +=
-                        (s, e) => {
-                            dBHandler.deleteModelProperty(property.propertyId);                             // <- it works, property is deleted, but Forms reload should be fixed
-                            // reload properties edit view
-                            EditModel editModel = new EditModel(model);
-                            editModel.Show();
-                            this.Hide();
-                            MessageBox.Show("Property" + property.propertyName + " has been deleted.");
-                        };
-                    btnDelete.Size = new System.Drawing.Size(145, 36);
-                    btnDelete.UseVisualStyleBackColor = true;
-                    this.tableLayoutPanel1.Controls.Add(btnDelete, 2, i);
+                // Delete button
+                Button btnDelete = new Button();
+                btnDelete.Text = "Delete";
+                btnDelete.Name = "btnDelete" + i;
+                // define button activity after clicking it - in this case delete property
+                btnDelete.Click +=
+                    (s, e) => {
+                        dBHandler.deleteModelProperty(property.propertyId);                             // <- it works, property is deleted, but Forms reload should be fixed
+                        // reload properties edit view
+                        EditModel editModel = new EditModel(model);
+                        editModel.Show();
+                        this.Hide();
+                        MessageBox.Show("Property" + property.propertyName + " has been deleted.");
+                    };
+                btnDelete.Size = new System.Drawing.Size(145, 36);
+                btnDelete.UseVisualStyleBackColor = true;
+                // if property is compulsory disable delete button
+                if (categoryProperties.Contains(property.propertyName))
+                {
+                    btnDelete.Enabled = false;
+                }
+                this.tableLayoutPanel1.Controls.Add(btnDelete, 2, i);
 
 
-                    // increment row count
-                    this.tableLayoutPanel1.RowCount = this.tableLayoutPanel1.RowCount + 1;
-                    // increment row num
-                    i++;
+                // increment row count
+                this.tableLayoutPanel1.RowCount = this.tableLayoutPanel1.RowCount + 1;
+                // increment row num
+                i++;
             }
         }
 

@@ -22,7 +22,7 @@ namespace ModelSystemRPG.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; database=SystemRPG_db;Integrated Security=true");
+                optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB; database=SystemRPG_dbV2;Integrated Security=true");
             }
         }
     }

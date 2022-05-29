@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ModelSystemRPG.Data;
 
@@ -11,9 +12,10 @@ using ModelSystemRPG.Data;
 namespace ModelSystemRPG.Migrations
 {
     [DbContext(typeof(SystemRPGContext))]
-    partial class SystemRPGContextModelSnapshot : ModelSnapshot
+    [Migration("20220528220147_CreateSystemRPG_DB_V2")]
+    partial class CreateSystemRPG_DB_V2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,10 +33,6 @@ namespace ModelSystemRPG.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CategoryId"), 1L, 1);
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Environment")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

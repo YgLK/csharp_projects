@@ -45,8 +45,19 @@ namespace ModelSystemRPG
 
             List<ModelData> modelList = new List<ModelData>(modelsData.Values);
 
-            InitDataTable(sortType: sortType, ascending: ascending, modelList);
+            // set env combobox options
+            cboxEnvironment.DataSource = dbHandler.getEnvironmentNames();
 
+            InitDataTable(sortType: sortType, ascending: ascending, modelList);
+            setCheckBoxCheckedByDefault();
+        }
+
+        private void setCheckBoxCheckedByDefault()
+        {
+            for (int i = 0; i < chListCategory.Items.Count; i++)
+            {
+                chListCategory.SetItemCheckState(i, (true ? CheckState.Checked : CheckState.Unchecked));
+            }
         }
 
         private void InitDataTable(string sortType, bool ascending, List<ModelData> modelList)
@@ -84,8 +95,8 @@ namespace ModelSystemRPG
                     propertiesStr.Append(property.propertyName + ": " + property.propertyValue + "\n");
                 }
                 // create category information in string
-                string categoryString = 
-                    "Category name: \n\t" + model.categoryName + "\n Category description: \n\t" + model.categoryDescription;
+                string categoryString =
+                    $"Environment: \n\t {model.environmentName} \n Category name: \n\t {model.categoryName} \n Category description: \n\t {model.categoryDescription}";
                 // Category button
                 Button btnCategory = new Button();
                 btnCategory.Text = model.categoryName;
@@ -140,9 +151,11 @@ namespace ModelSystemRPG
                 btnEdit.Size = new System.Drawing.Size(160, 41);
                 btnEdit.UseVisualStyleBackColor = true;
                 // if user is owner or admin then allow him to edit the model
-                if (LoginSystem.user != null  && (LoginSystem.user.getCategoriesIds().Contains(model.categoryId) || LoginSystem.user.role == "Admin"))
+
+                //if (LoginSystem.user != null && (LoginSystem.user.getCategoriesIds().Contains(model.categoryId) || LoginSystem.user.role == "Admin"))
+                if ((LoginSystem.user != null) && ((LoginSystem.user.getCategoriesIds().Contains(model.categoryId)) || (LoginSystem.user.role == "Admin" || LoginSystem.user.role == "Moderator")))
                 {
-                    btnEdit.Enabled = true;
+                        btnEdit.Enabled = true;
                 } else
                 {
                     btnEdit.Enabled = false;
@@ -163,7 +176,7 @@ namespace ModelSystemRPG
                 btnDelete.Size = new System.Drawing.Size(145, 41);
                 btnDelete.UseVisualStyleBackColor = true;
                 // if user is owner or admin then allow him to delete the model
-                if (LoginSystem.user != null && (LoginSystem.user.getCategoriesIds().Contains(model.categoryId) || LoginSystem.user.role == "Admin"))
+                if (LoginSystem.user != null && (LoginSystem.user.getCategoriesIds().Contains(model.categoryId) || (LoginSystem.user.role == "Admin" || LoginSystem.user.role == "Moderator")))
                 {
                     btnDelete.Enabled = true;
                 }
@@ -248,6 +261,14 @@ namespace ModelSystemRPG
             {
                 InitDataTable(sortType: "", ascending: true, dataOperator.getModels().Values.ToList());
             }
+        }
+
+        private void btnFilterByEnvironment_Click(object sender, EventArgs e)
+        {
+            List<string> categories = dbHandler.getCategoryNamesByEnvironment(cboxEnvironment.Text); 
+
+            Dictionary<int, ModelData> items = dataOperator.getModelsOfCategories(categories);
+            InitDataTable(sortType: "", ascending: true, items.Values.ToList());
         }
     }
 }

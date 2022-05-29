@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,9 @@ namespace ModelSystemRPG
 {
     public partial class AddCategory : Form
     {
+        DBHandler dbHandler;
+        int propertyCount;
+
         public AddCategory()
         {
             InitializeComponent();
@@ -20,16 +24,50 @@ namespace ModelSystemRPG
             {
                 lblLoggedInUsername.Text = LoginSystem.user.userName;
             }
+            
+            dbHandler = new DBHandler();
+            cboxEnvironment.DataSource = dbHandler.getEnvironmentNames();
+
+            cboxEnvironment.Enabled = true;
+            lblNewEnvName.Visible = false;
+            txtNewEnvName.Visible = false;
+            txtNewEnvName.Enabled = false;
         }
+
+
 
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
-            DBHandler dbHandler = new DBHandler();
             // add new category
             string categoryName = txtCategoryName.Text;
             string description = txtCategoryDescription.Text;
+            string environment = "";
+            if(checkBox1.Checked == true)
+            {
+                environment = txtNewEnvName.Text;
+            }else
+            {
+                environment = cboxEnvironment.Text;
+            }
+
             int userId = LoginSystem.user.userId;
-            dbHandler.addCategory(categoryName, userId, description);
+            if(categoryName == "" || description == "" || environment == "" || userId < 0)
+            {
+                MessageBox.Show("Fill all fields before adding new category!");
+                return;
+            }
+            dbHandler.addCategory(categoryName, userId, description, environment);
+
+
+            // add default category properties to the table
+            for (int i = 0; i < flowLayoutPanel1.Controls.Count - 1; i += 2)
+            {
+                string propertyName = flowLayoutPanel1.Controls[i].Text;
+                string propertyType = flowLayoutPanel1.Controls[i + 1].Text;
+                dbHandler.addCategoryProperty(categoryName, propertyName, propertyType);
+                //Debug.WriteLine("PROPERTY NAME: " + flowLayoutPanel1.Controls[i].Text + " TYPE: " + flowLayoutPanel1.Controls[i + 1].Text);
+            }
+
             MessageBox.Show("New category has been inserted.");
         }
 
@@ -39,6 +77,57 @@ namespace ModelSystemRPG
             Menu menu = new Menu();
             menu.Show();
             this.Hide();
+        }
+
+        private void btnAddProperty_Click(object sender, EventArgs e)
+        {
+            addProperty();
+        }
+
+
+        private void addProperty(string propertyName = "", string propertyValue = "")
+        {
+            // create next property name textbox
+            TextBox tbName = new TextBox();
+            tbName.Text = propertyName;
+            tbName.AutoSize = false;
+            tbName.Size = new System.Drawing.Size(283, 27);
+            tbName.Name = "txtPropertyName" + propertyCount.ToString();
+
+            // create type combobox according to the property name              <- Combobox here with values: int/string
+            ComboBox tbType = new ComboBox();
+            tbType.Text = propertyValue;
+            tbType.AutoSize = false;
+            tbType.DataSource = new List<string>() { "int", "string" };
+            tbType.Size = new System.Drawing.Size(194, 27);
+            tbType.Name = "cbBoxPropertyType" + propertyCount.ToString();
+            // -------------
+            tbType.Visible = false;
+            // -------------
+
+
+            // add textboxes to the panel
+            flowLayoutPanel1.Controls.Add(tbName);
+            flowLayoutPanel1.Controls.Add(tbType);
+            propertyCount++;
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox1.Checked == true)
+            {
+                cboxEnvironment.Enabled = false;
+                lblNewEnvName.Visible = true;
+                txtNewEnvName.Visible = true;
+                txtNewEnvName.Enabled = true;
+            }
+            else
+            {
+                cboxEnvironment.Enabled = true;
+                lblNewEnvName.Visible = false;
+                txtNewEnvName.Visible = false;
+                txtNewEnvName.Enabled = false;
+            }
         }
     }
 }

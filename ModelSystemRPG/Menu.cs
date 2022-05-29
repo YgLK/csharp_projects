@@ -124,7 +124,7 @@ namespace ModelSystemRPG
 
                 // create category information in string
                 string categoryString =
-                    "Category name: \n\t" + model.categoryName + "\n Category description: \n\t" + model.categoryDescription;
+                    $"Environment: \n\t {model.environmentName} \n Category name: \n\t {model.categoryName} \n Category description: \n\t {model.categoryDescription}";
                 // Category button
                 Button btnCategory = new Button();
                 btnCategory.Text = model.categoryName;
@@ -172,16 +172,21 @@ namespace ModelSystemRPG
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (LoginSystem.user != null && LoginSystem.user.role == "Admin")
+            if(LoginSystem.user == null)
             {
+                MessageBox.Show("Only logged-in users can access User panel");
+                return;
+            }
+            //if (LoginSystem.user != null && LoginSystem.user.role == "Admin")
+            //{
                 ManageUsers manageUsers = new ManageUsers();
                 this.Hide();
                 manageUsers.Show();
-            }
-            else
-            {
-                MessageBox.Show("You must be Admin to manage users!");
-            }
+            //}
+            //else
+            //{
+                //MessageBox.Show("You must be Admin to manage users!");
+            //}
         }
     }
 }
