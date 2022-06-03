@@ -82,10 +82,10 @@
             // passwordValidator1
             // 
             this.passwordValidator1.Location = new System.Drawing.Point(222, 163);
-            this.passwordValidator1.MinCapLetterCountProp = 3;
-            this.passwordValidator1.MinCharCountProp = 8;
-            this.passwordValidator1.MinDigitCountProp = 2;
-            this.passwordValidator1.MinSpecCharCountProp = 4;
+            this.passwordValidator1.MinCapLetterCountProp = 1;
+            this.passwordValidator1.MinCharCountProp = 7;
+            this.passwordValidator1.MinDigitCountProp = 3;
+            this.passwordValidator1.MinSpecCharCountProp = 1;
             this.passwordValidator1.Name = "passwordValidator1";
             this.passwordValidator1.Size = new System.Drawing.Size(293, 190);
             this.passwordValidator1.TabIndex = 7;
