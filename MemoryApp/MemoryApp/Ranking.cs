@@ -12,8 +12,10 @@ namespace MemoryApp
         public Ranking()
         {
             InitializeComponent();
-            
-            
+            // set background of labels transparent
+            label1.BackColor = System.Drawing.Color.Transparent;
+
+
             RankingReader rr = new RankingReader();
             records = rr.getRecords();
 

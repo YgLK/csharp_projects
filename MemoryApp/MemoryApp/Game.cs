@@ -41,6 +41,13 @@ namespace MemoryApp
         public Game()
         {
             InitializeComponent();
+            
+            // set background of labels transparent
+            label1.BackColor = System.Drawing.Color.Transparent;
+            label2.BackColor = System.Drawing.Color.Transparent;
+            label3.BackColor = System.Drawing.Color.Transparent;
+            label4.BackColor = System.Drawing.Color.Transparent;
+            movesCountLabel.BackColor = System.Drawing.Color.Transparent;
 
             // set game configuration values
             InitConfiguration();
@@ -101,58 +108,10 @@ namespace MemoryApp
 
         private void InitializeCardValues()
         {
-            // generate 8 pairs of indexes (8*2 indexes included)
-            GenerateIndexPairs();
+            // generate 8 pairs of indexes (8*2 indexes included) for 4x4 board size
+            cardsPairs = PairGenerator.GenerateIndexPairs(cardsCount);
             // generate card value for each pair
-            GenerateCardValues();
-        }
-
-
-        // generate cards pairs by picking random index of another card for each card
-        private void GenerateIndexPairs()
-        {
-            // list of cards indexes
-            List<int> cardsIdxes = Enumerable.Range(0, cardsCount).ToList();
-            // shuffle the indexes
-            cardsIdxes = cardsIdxes.OrderBy(a => Guid.NewGuid()).ToList();
-            // list of pairs
-            List<Tuple<int, int>> cardPairs = new List<Tuple<int, int>>();
-            
-            // shuffle the cards to make pairs until no cards are left
-            while (cardsIdxes.Count != 0)
-            {
-                // get last element of shuffled list 
-                int firstCardIdx = cardsIdxes[cardsIdxes.Count - 1];
-                // remove the taken element
-                cardsIdxes.RemoveAt(cardsIdxes.Count - 1);
-                // get last element of the edited shuffled list
-                int secondCardIdx = cardsIdxes[cardsIdxes.Count - 1];
-                // remove the taken element
-                cardsIdxes.RemoveAt(cardsIdxes.Count - 1);
-
-
-                // add pairs to the dict
-                cardsPairs.Add(firstCardIdx, secondCardIdx);
-                cardsPairs.Add(secondCardIdx, firstCardIdx);
-            }
-        }
-
-        public void GenerateCardValues()
-        {
-            // generate 16 random words form cardsValues
-            int pairCount = cardsCount / 2;
-
-            int i = 0;
-            // add value of each card into the dictionary
-            foreach (KeyValuePair<int, int> kvp in cardsPairs)
-            {
-                if (!cardsImageIdx.Keys.Contains(kvp.Key))
-                {
-                    cardsImageIdx.Add(kvp.Key, i);
-                    cardsImageIdx.Add(kvp.Value, i);
-                    i++;
-                }
-            }
+            cardsImageIdx = PairGenerator.GenerateCardValues(cardsCount, cardsPairs);
         }
 
         public void CreateVisualCards()
@@ -289,10 +248,6 @@ namespace MemoryApp
                 int score = MemoryData.evaluateScore();
                 // prepare data record
                 string rankingRecord = score + "," + MemoryData.nickname + "," + MemoryData.timeToWin + "," + MemoryData.movesToWin;
-
-                // get the path to the ranking data txt file
-                //string workingDirectory = Environment.CurrentDirectory;
-                //string rankingDataPath = Directory.GetParent(workingDirectory).Parent.FullName + "\\rankingData.txt";
 
                 // use relative path instead of absolute
                 string rankingDataPath = @".\rankingData.txt";

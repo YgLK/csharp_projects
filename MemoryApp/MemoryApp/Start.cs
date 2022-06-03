@@ -9,6 +9,9 @@ namespace MemoryApp
         public Start()
         {
             InitializeComponent();
+            // set background of labels transparent
+            label1.BackColor = System.Drawing.Color.Transparent;
+            label3.BackColor = System.Drawing.Color.Transparent;
         }
 
 

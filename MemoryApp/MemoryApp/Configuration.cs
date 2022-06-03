@@ -10,6 +10,13 @@ namespace MemoryApp
         public Configuration()
         {
             InitializeComponent();
+            // set background of labels transparent
+            label1.BackColor = System.Drawing.Color.Transparent;
+            label2.BackColor = System.Drawing.Color.Transparent;
+            label3.BackColor = System.Drawing.Color.Transparent;
+            label4.BackColor = System.Drawing.Color.Transparent;
+            label5.BackColor = System.Drawing.Color.Transparent;
+            label6.BackColor = System.Drawing.Color.Transparent;
         }
 
         private void btnStartGame_Click(object sender, EventArgs e)
@@ -43,6 +50,13 @@ namespace MemoryApp
             // check if all provided data is correct
             if (preTime == -1 || rowSize == -1 || colSize == -1 || cardShownTime == -1)
             {
+                return;
+            }
+
+            // max 12x12 board size
+            if(rowSize * colSize > 100)
+            {
+                MessageBox.Show("Max board size can contain 100 cards (10 x 10).");
                 return;
             }
 

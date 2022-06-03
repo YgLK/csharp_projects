@@ -7,8 +7,6 @@ namespace MemoryApp
 {
     internal class  RankingReader
     {
-        //string rankingPath = Directory.GetParent(
-        //    Environment.CurrentDirectory).Parent.FullName + "\\rankingData.txt";
         string rankingPath = @".\rankingData.txt";
         List<Tuple<int, string>> rankingRecords = new List<Tuple<int, string>>();
 
