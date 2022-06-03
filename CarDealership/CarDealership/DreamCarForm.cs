@@ -24,6 +24,35 @@ namespace CarDealership
         public DreamCarForm()
         {
             InitializeComponent();
+            //dataOffersHandler = new DataOffersHandler();
+            //reservationHandler = new ReservationHandler();
+            //var makes = dataOffersHandler.carOffers.Keys;
+            //carMakeComboBox.DataSource = makes.ToList();
+
+            //// hide text before searching
+            //priceLabel.Text = "";
+            //prodYearLabel.Text = "";
+
+            //accessories = new Dictionary<string, int>();
+
+            //accessories.Add("GPS", 100);
+            //accessories.Add("Parking sensors/camera", 1500);
+            //accessories.Add("Snow Chains", 50);
+            //accessories.Add("Child Seats", 200);
+            //accessories.Add("Car cover", 150);
+            //accessories.Add("Air freshener", 30);
+            //accessories.Add("Jumper cable", 50);
+
+            //foreach (string acc in accessories.Keys.ToList())
+            //{
+            //    boxAdditionalAccessories.Items.Add(acc);
+            //}
+            //showChosenCarImage();
+            loadCarDealershipData();
+        }
+
+        private void loadCarDealershipData()
+        {
             dataOffersHandler = new DataOffersHandler();
             reservationHandler = new ReservationHandler();
             var makes = dataOffersHandler.carOffers.Keys;
@@ -42,7 +71,7 @@ namespace CarDealership
             accessories.Add("Car cover", 150);
             accessories.Add("Air freshener", 30);
             accessories.Add("Jumper cable", 50);
-            
+
             foreach (string acc in accessories.Keys.ToList())
             {
                 boxAdditionalAccessories.Items.Add(acc);
@@ -64,13 +93,9 @@ namespace CarDealership
                 imageName = (colorComboBox.Text + carModelComboBox.Text).Replace(" ", "");
             }
 
-
             // if image doesnt exist
             try
             {
-                //carImage.Image = (Image)Properties.Resources.ResourceManager.GetObject(imageName, Properties.Resources.Culture);
-                //carImage.Image = Image.FromFile(@"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\CarImages\" + imageName + ".png");
-                
                 // relative path to the CarImages dir where the execute file is located
                 carImage.Image = Image.FromFile(@".\CarImages\" + imageName + ".png");
             }
@@ -79,7 +104,6 @@ namespace CarDealership
                 // relative path to the CarImages dir where the execute file is located
                 carImage.Image = Image.FromFile(@".\CarImages\" + "noPicture" + ".png");
             }
-
 
             var imageSize = carImage.Image.Size;
             var fitSize = carImage.ClientSize;
@@ -138,11 +162,9 @@ namespace CarDealership
             {
                 if (offer.model == model)
                 {
-                    //colors.Add(offer.color);
                     engines.Add(offer.engine);
                 }
             }
-            //colorComboBox.DataSource = colors.Distinct().ToList();
             engineComboBox.DataSource = engines.Distinct().ToList();
             showChosenCarImage();
         }
@@ -196,15 +218,8 @@ namespace CarDealership
                 remover.RemoveOffer(carOfferToRemove);
                 remover.RemoveOfferReservations(carReservationToRemove);
 
-
-                // remove image associated with the offer - it's not coompulsory
-                string filename = color + model + ".png";
-                //string carImagePath = @"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\CarImages\" + filename;
-                string carImagePath = @".\CarImages\" + filename;
-                // car image cannot be removed because it's used during the deletion of the car offer data
-                //remover.RemoveOfferImage(carImagePath);
-
                 MessageBox.Show("Car offer removed successfully.");
+                loadCarDealershipData();
             }
         }
 

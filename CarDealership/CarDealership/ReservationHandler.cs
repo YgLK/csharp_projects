@@ -22,10 +22,6 @@ namespace CarDealership
 
             string workingDirectory = Environment.CurrentDirectory;
             
-            // run on the test data
-            //string dataFileName = Directory.GetParent(workingDirectory).Parent.FullName + @"\Data\reservationsTestDrive.txt";
-
-
             string dataFileName = @".\Data\reservationsTestDrive.txt";
             
             using (StreamReader reader = new StreamReader(dataFileName))
@@ -62,11 +58,7 @@ namespace CarDealership
             // reservation format: 
             // 08 July 2022,Krzysztof Kowal, Volkswagen, Volkswagen Passat B6, Blue,1.4 TSI
 
-
-
             reservations = new Dictionary<string, List<Reservation>>();
-
-
 
             // run on the test data
             string dataFileName =  @".\Data\reservationsTestDrive.txt";

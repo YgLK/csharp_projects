@@ -82,7 +82,7 @@
             // 
             // btnAddReservation
             // 
-            this.btnAddReservation.Location = new System.Drawing.Point(314, 470);
+            this.btnAddReservation.Location = new System.Drawing.Point(604, 492);
             this.btnAddReservation.Name = "btnAddReservation";
             this.btnAddReservation.Size = new System.Drawing.Size(139, 38);
             this.btnAddReservation.TabIndex = 29;
@@ -93,7 +93,7 @@
             // showReservations
             // 
             this.showReservations.Enabled = false;
-            this.showReservations.Location = new System.Drawing.Point(499, 492);
+            this.showReservations.Location = new System.Drawing.Point(223, 492);
             this.showReservations.Name = "showReservations";
             this.showReservations.Size = new System.Drawing.Size(145, 38);
             this.showReservations.TabIndex = 30;
@@ -124,9 +124,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(891, 513);
+            this.button3.Location = new System.Drawing.Point(761, 492);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(72, 38);
+            this.button3.Size = new System.Drawing.Size(87, 38);
             this.button3.TabIndex = 33;
             this.button3.Text = "BACK";
             this.button3.UseVisualStyleBackColor = true;

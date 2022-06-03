@@ -14,8 +14,6 @@ namespace CarDealership
 {
     public partial class SellCarForm : Form
     {
-
-
         string pictureSourcePath = "";
         string pictureDestinationPath = "";
 
@@ -46,10 +44,16 @@ namespace CarDealership
         {
             string make = InputValidator.validateString(makeTextBox.Text);
             string model = InputValidator.validateString(modelTextBox.Text);
-            int year = InputValidator.validateYear(yearTextBox.Text);
             string engine = InputValidator.validateString(engineTextBox.Text);
             string color = InputValidator.validateString(colorTextBox.Text);
+            int year = InputValidator.validateYear(yearTextBox.Text);
             double price = InputValidator.validatePrice(priceTextBox.Text);
+
+            if(make == "" || model == "" ||  engine == "" || color == "")
+            {
+                MessageBox.Show("No blank fields are allowed! Fill the compulsory data.");
+                return;
+            }
 
             // add data to set and check if all fields are filled
             HashSet<string> checkData = new HashSet<string> { make, model, year.ToString(), engine, color, price.ToString() };
@@ -63,9 +67,6 @@ namespace CarDealership
 
             string record = year + "," + make + "," + model + "," + price + "," + color + "," + engine;
 
-            // it should append txt to cardata_test.txt
-            //File.AppendAllText(@"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\Data\carData_test.txt",
-            //       record + Environment.NewLine);
             File.AppendAllText(@".\Data\carData_test.txt",
                    record + Environment.NewLine);
 
@@ -94,16 +95,19 @@ namespace CarDealership
 
         private void btnUploadImage_Click(object sender, EventArgs e)
         {
-            openFileDialogCarImage.Filter = "Images (*.png) | *.png"; // file types, that will be allowed to upload
-            openFileDialogCarImage.Multiselect = false; // allow/deny user to upload more than one file at a time
-            if (openFileDialogCarImage.ShowDialog() == DialogResult.OK) // if user clicked OK
+            // file types, that will be allowed to upload
+            openFileDialogCarImage.Filter = "Images (*.png) | *.png"; 
+            // allow/deny user to upload more than one file at a time
+            openFileDialogCarImage.Multiselect = false; 
+            // if user clicked OK
+            if (openFileDialogCarImage.ShowDialog() == DialogResult.OK) 
             {
-                String path = openFileDialogCarImage.FileName; // get name of file
+                // get name of file
+                String path = openFileDialogCarImage.FileName; 
                 carImage.ImageLocation = path;
                 string color = colorTextBox.Text.Replace(" ", "");
                 string model = modelTextBox.Text.Replace(" ", "");
                 string filename = color + model + ".png";
-                //string carImagesDirPath = @"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\CarImages\" + filename;
                 string carImagesDirPath = @".\CarImages\" + filename;
 
                 pictureSourcePath = path;

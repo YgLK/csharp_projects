@@ -25,16 +25,10 @@ namespace CarDealership
             dataOffersHandler = new DataOffersHandler();
             reservationsHandler = new ReservationHandler();
 
-            // DateTimePicker datePickerWithBlackoutDates = dateTimePicker1;
             var makes = dataOffersHandler.carOffers.Keys;
             carMakeComboBox.DataSource = makes.ToList();
             showReservationList();
         }
-
-
-        // TODO:
-        // - relative path to images and reservation/offer data
-        // - remove reservation functionality
 
 
         private void carModelComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -68,7 +62,7 @@ namespace CarDealership
             showReservationList();
         }
 
-        public void showReservationList()
+        private void showReservationList()
         {
             dataGridView1.Rows.Clear();
 
@@ -134,10 +128,6 @@ namespace CarDealership
 
             if (isAvailable)
             {
-                // it should append txt to cardata_test.txt
-                //File.AppendAllText(@"E:\csharp_projects\advanced_programming2\CarDealership\CarDealership\Data\reservationsTestDrive.txt",
-                //        record + Environment.NewLine);
-                // relative path to the Data dir in the execute file is located
                 File.AppendAllText(@".\Data\reservationsTestDrive.txt",
                         record + Environment.NewLine);
 
@@ -185,23 +175,30 @@ namespace CarDealership
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int chosenRowIdx = dataGridView1.SelectedCells[0].RowIndex;
-            if(dataGridView1.Rows[chosenRowIdx].Cells[0].Value != null)
+            try
             {
-                string chosenCellDate = dataGridView1.Rows[chosenRowIdx].Cells[0].Value.ToString();
-                string chosenMake = carMakeComboBox.Text;
-                string chosenModel = carModelComboBox.Text;
-                string chosenColor = colorComboBox.Text;
-                string chosenEngine = engineComboBox.Text;
+                int chosenRowIdx = dataGridView1.SelectedCells[0].RowIndex;
+                if(dataGridView1.Rows[chosenRowIdx].Cells[0].Value != null)
+                {
+                    string chosenCellDate = dataGridView1.Rows[chosenRowIdx].Cells[0].Value.ToString();
+                    string chosenMake = carMakeComboBox.Text;
+                    string chosenModel = carModelComboBox.Text;
+                    string chosenColor = colorComboBox.Text;
+                    string chosenEngine = engineComboBox.Text;
 
-                reservationsHandler.removeReservation(chosenCellDate, chosenMake, chosenModel, chosenColor, chosenEngine);
+                    reservationsHandler.removeReservation(chosenCellDate, chosenMake, chosenModel, chosenColor, chosenEngine);
 
-                MessageBox.Show("Reservation has been deleted.");
-                reservationsHandler = new ReservationHandler();
-                showReservationList();
-            } else
+                    MessageBox.Show("Reservation has been deleted.");
+                    reservationsHandler = new ReservationHandler();
+                    showReservationList();
+                } else
+                {
+                    MessageBox.Show("Choose correct row in the reservation list before reservation removal.");
+                }
+            } catch(System.ArgumentOutOfRangeException exception)
             {
-                MessageBox.Show("Choose correct row in the reservation list before reservation removal.");
+                MessageBox.Show("Choose valid reservation!");
+                Debug.WriteLine(exception.Message);
             }
         }
     }

@@ -116,18 +116,7 @@
   <ItemGroup>
     <Content Include="carData_test - Copy.txt" />
     <Content Include="Data\carData_test.txt" />
-    <None Include="Resources\RedToyotaRav4.png" />
-    <None Include="Resources\WhiteToyotaAvensis.png" />
-    <None Include="Resources\BlueToyotaCorolla.png" />
-    <None Include="Resources\BlackToyotaCorolla.png" />
-    <None Include="Resources\BlackVolkswagenGolf7.png" />
-    <None Include="Resources\BlueToyotaRav4.png" />
-    <None Include="Resources\BlueVolkswagenPassatB6.png" />
-    <None Include="Resources\BlackToyotaRav4.png" />
-    <None Include="Resources\BrownToyotaRav4.png" />
-    <None Include="Resources\PinkToyotaCorolla.png" />
     <Content Include="CarImages\WhiteToyotaAvensis.png" />
-    <Content Include="reservationsTestDrive - Copy.txt" />
     <Content Include="Data\reservationsTestDrive.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

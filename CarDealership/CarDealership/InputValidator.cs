@@ -48,7 +48,6 @@ namespace CarDealership
         {
             if (String.IsNullOrEmpty(str))
             {
-                MessageBox.Show("No blank fields are allowed.");
                 return "";
             }
             return str;
