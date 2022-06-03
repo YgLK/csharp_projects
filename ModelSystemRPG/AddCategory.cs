@@ -65,7 +65,6 @@ namespace ModelSystemRPG
                 string propertyName = flowLayoutPanel1.Controls[i].Text;
                 string propertyType = flowLayoutPanel1.Controls[i + 1].Text;
                 dbHandler.addCategoryProperty(categoryName, propertyName, propertyType);
-                //Debug.WriteLine("PROPERTY NAME: " + flowLayoutPanel1.Controls[i].Text + " TYPE: " + flowLayoutPanel1.Controls[i + 1].Text);
             }
 
             MessageBox.Show("New category has been inserted.");
@@ -104,7 +103,6 @@ namespace ModelSystemRPG
             // -------------
             tbType.Visible = false;
             // -------------
-
 
             // add textboxes to the panel
             flowLayoutPanel1.Controls.Add(tbName);

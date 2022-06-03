@@ -29,8 +29,17 @@ namespace ModelSystemRPG
                 lblLoggedInUsername.Text = LoginSystem.user.userName;
             }
 
+            loadTheModelData();
+            List<ModelData> modelList = new List<ModelData>(modelsData.Values);
 
-            dataOperator = new DataOperator();
+
+            InitDataTable(sortType: sortType, ascending: ascending, modelList);
+            setCheckBoxCheckedByDefault();
+        }
+
+        private void loadTheModelData()
+        {
+             dataOperator = new DataOperator();
 
             // get all models with data
             modelsData = dataOperator.getModels();
@@ -43,13 +52,11 @@ namespace ModelSystemRPG
                 chListCategory.Items.Add(name);
             }
 
-            List<ModelData> modelList = new List<ModelData>(modelsData.Values);
-
             // set env combobox options
-            cboxEnvironment.DataSource = dbHandler.getEnvironmentNames();
-
-            InitDataTable(sortType: sortType, ascending: ascending, modelList);
-            setCheckBoxCheckedByDefault();
+            var envNames = dbHandler.getEnvironmentNames();
+            envNames.Add("All");
+            cboxEnvironment.DataSource = envNames;
+            cboxEnvironment.Text = "All";
         }
 
         private void setCheckBoxCheckedByDefault()
@@ -62,7 +69,6 @@ namespace ModelSystemRPG
 
         private void InitDataTable(string sortType, bool ascending, List<ModelData> modelList)
         {
-
             if (tableLayoutPanel1.Controls.Count != 0)
             {
                 tableLayoutPanel1.Controls.Clear();
@@ -106,7 +112,9 @@ namespace ModelSystemRPG
                 // define button activity after clicking it
                 btnCategory.Click += 
                     (s, e) => { 
-                        MessageBox.Show(categoryString); 
+                        //MessageBox.Show(categoryString);
+                        ShowCategory showCategory = new ShowCategory(model.categoryName, model.categoryDescription, model.environmentName);
+                        showCategory.Show();
                     };
                 this.tableLayoutPanel1.Controls.Add(btnCategory, 0, i);
 
@@ -243,7 +251,7 @@ namespace ModelSystemRPG
         private void btnFilterCategory_Click(object sender, EventArgs e)
         {
             List<string> categories = chListCategory.CheckedItems.Cast<string>().ToList();
-
+            dataOperator = new DataOperator();
             Dictionary<int, ModelData> items = dataOperator.getModelsOfCategories(categories);
             InitDataTable(sortType: "", ascending: true, items.Values.ToList());
         }
@@ -265,10 +273,19 @@ namespace ModelSystemRPG
 
         private void btnFilterByEnvironment_Click(object sender, EventArgs e)
         {
-            List<string> categories = dbHandler.getCategoryNamesByEnvironment(cboxEnvironment.Text); 
+            if(cboxEnvironment.Text == "All")
+            {
+                List<ModelData> modelList = new List<ModelData>(modelsData.Values);
+                InitDataTable(sortType: "", ascending: true, modelList);
+                return;
+            } else
+            {
+                List<string> categories = dbHandler.getCategoryNamesByEnvironment(cboxEnvironment.Text); 
 
-            Dictionary<int, ModelData> items = dataOperator.getModelsOfCategories(categories);
-            InitDataTable(sortType: "", ascending: true, items.Values.ToList());
+                Dictionary<int, ModelData> items = dataOperator.getModelsOfCategories(categories);
+                InitDataTable(sortType: "", ascending: true, items.Values.ToList());
+            }
         }
+
     }
 }

@@ -42,14 +42,14 @@ namespace ModelSystemRPG
                 btnDeleteUser.Enabled = false;
                 btnDeleteUser.Visible = false;
             }
-
+            lblRole.Text = LoginSystem.user.role;
             loadCategoriesList();
         }
 
         public void loadCategoriesList()
         {
             List<string> categoryNames;
-            if(LoginSystem.user.role == "Admin")
+            if(LoginSystem.user.role == "Admin" || LoginSystem.user.role == "Moderator")
             {
                 categoryNames = dbHandler.getCategoryNames();
             } else

@@ -57,18 +57,20 @@
             // labelHeader
             // 
             this.labelHeader.AutoSize = true;
-            this.labelHeader.Location = new System.Drawing.Point(562, 66);
+            this.labelHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelHeader.Location = new System.Drawing.Point(566, 112);
             this.labelHeader.Name = "labelHeader";
-            this.labelHeader.Size = new System.Drawing.Size(80, 15);
+            this.labelHeader.Size = new System.Drawing.Size(102, 19);
             this.labelHeader.TabIndex = 16;
             this.labelHeader.Text = "Add new User";
             // 
             // labelUser
             // 
             this.labelUser.AutoSize = true;
+            this.labelUser.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelUser.Location = new System.Drawing.Point(367, 189);
             this.labelUser.Name = "labelUser";
-            this.labelUser.Size = new System.Drawing.Size(60, 15);
+            this.labelUser.Size = new System.Drawing.Size(76, 19);
             this.labelUser.TabIndex = 15;
             this.labelUser.Text = "Username";
             // 
@@ -82,9 +84,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(367, 239);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 15);
+            this.label1.Size = new System.Drawing.Size(45, 19);
             this.label1.TabIndex = 23;
             this.label1.Text = "Email";
             // 
@@ -134,15 +137,16 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(367, 289);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 15);
+            this.label2.Size = new System.Drawing.Size(73, 19);
             this.label2.TabIndex = 28;
             this.label2.Text = "Password";
             // 
             // txtPasswordRepeat
             // 
-            this.txtPasswordRepeat.Location = new System.Drawing.Point(547, 349);
+            this.txtPasswordRepeat.Location = new System.Drawing.Point(547, 370);
             this.txtPasswordRepeat.Name = "txtPasswordRepeat";
             this.txtPasswordRepeat.Size = new System.Drawing.Size(230, 23);
             this.txtPasswordRepeat.TabIndex = 31;
@@ -150,18 +154,20 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(367, 357);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(367, 371);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 15);
+            this.label4.Size = new System.Drawing.Size(73, 19);
             this.label4.TabIndex = 30;
             this.label4.Text = "Password";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(583, 321);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(580, 327);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(123, 15);
+            this.label5.Size = new System.Drawing.Size(159, 19);
             this.label5.TabIndex = 32;
             this.label5.Text = "Repeat your password";
             // 

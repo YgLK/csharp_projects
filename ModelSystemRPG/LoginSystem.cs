@@ -25,7 +25,6 @@ namespace ModelSystemRPG
                 return true;
             } else
             {
-                // show messageBox that "Incorrect password" etc.
                 return false;
             }
         }

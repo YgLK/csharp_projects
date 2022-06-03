@@ -66,29 +66,32 @@
             // labelCategory
             // 
             this.labelCategory.AutoSize = true;
-            this.labelCategory.Location = new System.Drawing.Point(372, 164);
+            this.labelCategory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelCategory.Location = new System.Drawing.Point(338, 162);
             this.labelCategory.Name = "labelCategory";
-            this.labelCategory.Size = new System.Drawing.Size(91, 15);
+            this.labelCategory.Size = new System.Drawing.Size(113, 19);
             this.labelCategory.TabIndex = 2;
-            this.labelCategory.Text = "Category name:";
+            this.labelCategory.Text = "Category name";
             // 
             // labelHeader
             // 
             this.labelHeader.AutoSize = true;
-            this.labelHeader.Location = new System.Drawing.Point(603, 32);
+            this.labelHeader.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelHeader.Location = new System.Drawing.Point(574, 20);
             this.labelHeader.Name = "labelHeader";
-            this.labelHeader.Size = new System.Drawing.Size(105, 15);
+            this.labelHeader.Size = new System.Drawing.Size(135, 19);
             this.labelHeader.TabIndex = 3;
             this.labelHeader.Text = "Add new Category";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(371, 198);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(338, 198);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 15);
+            this.label1.Size = new System.Drawing.Size(151, 19);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Category description:";
+            this.label1.Text = "Category description";
             // 
             // btnAddCategory
             // 
@@ -140,9 +143,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(822, 284);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(821, 280);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 15);
+            this.label4.Size = new System.Drawing.Size(41, 19);
             this.label4.TabIndex = 35;
             this.label4.Text = "Type";
             this.label4.Visible = false;
@@ -160,18 +164,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(477, 284);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(477, 280);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 15);
+            this.label2.Size = new System.Drawing.Size(110, 19);
             this.label2.TabIndex = 33;
             this.label2.Text = "Property name";
             // 
             // lblDefCatProp
             // 
             this.lblDefCatProp.AutoSize = true;
-            this.lblDefCatProp.Location = new System.Drawing.Point(579, 255);
+            this.lblDefCatProp.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDefCatProp.Location = new System.Drawing.Point(575, 247);
             this.lblDefCatProp.Name = "lblDefCatProp";
-            this.lblDefCatProp.Size = new System.Drawing.Size(150, 15);
+            this.lblDefCatProp.Size = new System.Drawing.Size(196, 19);
             this.lblDefCatProp.TabIndex = 32;
             this.lblDefCatProp.Text = "Default category properties";
             // 
@@ -187,9 +193,10 @@
             // lblEnv
             // 
             this.lblEnv.AutoSize = true;
-            this.lblEnv.Location = new System.Drawing.Point(371, 53);
+            this.lblEnv.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblEnv.Location = new System.Drawing.Point(338, 54);
             this.lblEnv.Name = "lblEnv";
-            this.lblEnv.Size = new System.Drawing.Size(75, 15);
+            this.lblEnv.Size = new System.Drawing.Size(93, 19);
             this.lblEnv.TabIndex = 38;
             this.lblEnv.Text = "Environment";
             // 
@@ -203,9 +210,10 @@
             // lblNewEnvName
             // 
             this.lblNewEnvName.AutoSize = true;
-            this.lblNewEnvName.Location = new System.Drawing.Point(371, 121);
+            this.lblNewEnvName.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblNewEnvName.Location = new System.Drawing.Point(338, 119);
             this.lblNewEnvName.Name = "lblNewEnvName";
-            this.lblNewEnvName.Size = new System.Drawing.Size(135, 15);
+            this.lblNewEnvName.Size = new System.Drawing.Size(169, 19);
             this.lblNewEnvName.TabIndex = 40;
             this.lblNewEnvName.Text = "New environment name";
             // 

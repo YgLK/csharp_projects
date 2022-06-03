@@ -55,6 +55,7 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(136, 183);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(739, 278);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
@@ -88,9 +89,10 @@
             // hCategory
             // 
             this.hCategory.AutoSize = true;
+            this.hCategory.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.hCategory.Location = new System.Drawing.Point(96, 67);
             this.hCategory.Name = "hCategory";
-            this.hCategory.Size = new System.Drawing.Size(58, 15);
+            this.hCategory.Size = new System.Drawing.Size(76, 19);
             this.hCategory.TabIndex = 2;
             this.hCategory.Text = "Category:";
             // 
@@ -106,9 +108,10 @@
             // hModel
             // 
             this.hModel.AutoSize = true;
+            this.hModel.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.hModel.Location = new System.Drawing.Point(96, 34);
             this.hModel.Name = "hModel";
-            this.hModel.Size = new System.Drawing.Size(44, 15);
+            this.hModel.Size = new System.Drawing.Size(56, 19);
             this.hModel.TabIndex = 4;
             this.hModel.Text = "Model:";
             // 
@@ -124,18 +127,20 @@
             // lblProperty
             // 
             this.lblProperty.AutoSize = true;
+            this.lblProperty.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblProperty.Location = new System.Drawing.Point(269, 153);
             this.lblProperty.Name = "lblProperty";
-            this.lblProperty.Size = new System.Drawing.Size(52, 15);
+            this.lblProperty.Size = new System.Drawing.Size(69, 19);
             this.lblProperty.TabIndex = 6;
             this.lblProperty.Text = "Property";
             // 
             // lblPValue
             // 
             this.lblPValue.AutoSize = true;
+            this.lblPValue.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblPValue.Location = new System.Drawing.Point(582, 153);
             this.lblPValue.Name = "lblPValue";
-            this.lblPValue.Size = new System.Drawing.Size(35, 15);
+            this.lblPValue.Size = new System.Drawing.Size(45, 19);
             this.lblPValue.TabIndex = 7;
             this.lblPValue.Text = "Value";
             // 

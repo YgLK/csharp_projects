@@ -24,6 +24,7 @@ namespace ModelSystemRPG
 
         public Dictionary<int, ModelData> getModels()
         {
+            models.Clear();
             // get all models
             var allModelsList = (from ep in dbContext.Categories
                               join e in dbContext.Models on ep.CategoryId equals e.CategoryId
@@ -44,7 +45,6 @@ namespace ModelSystemRPG
                                   // model id
                                   ModelId = e.ModelId,
                               }).ToArray();
-
 
 
             // get all models with their properties 

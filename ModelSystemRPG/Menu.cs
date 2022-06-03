@@ -134,7 +134,8 @@ namespace ModelSystemRPG
                 // define button activity after clicking it
                 btnCategory.Click +=
                     (s, e) => {
-                        MessageBox.Show(categoryString);
+                        ShowCategory showCategory = new ShowCategory(model.categoryName, model.categoryDescription, model.environmentName);
+                        showCategory.Show();
                     };
                 this.tableLayoutPanel1.Controls.Add(btnCategory, 0, i);
                 btnCategory.Dock = DockStyle.Fill;
@@ -177,16 +178,9 @@ namespace ModelSystemRPG
                 MessageBox.Show("Only logged-in users can access User panel");
                 return;
             }
-            //if (LoginSystem.user != null && LoginSystem.user.role == "Admin")
-            //{
-                ManageUsers manageUsers = new ManageUsers();
-                this.Hide();
-                manageUsers.Show();
-            //}
-            //else
-            //{
-                //MessageBox.Show("You must be Admin to manage users!");
-            //}
+            ManageUsers manageUsers = new ManageUsers();
+            this.Hide();
+            manageUsers.Show();
         }
     }
 }

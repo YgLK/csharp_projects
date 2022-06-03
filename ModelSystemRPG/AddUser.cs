@@ -22,13 +22,11 @@ namespace ModelSystemRPG
             {
                 lblLoggedInUsername.Text = LoginSystem.user.userName; 
             }
-            //cboxRole.DataSource = new[]{ "User", "Admin" };
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text;
-            //string role = cboxRole.Text;
             // user role is set by default - only admin can change your role
             string role = "User";
             string email = txtEmail.Text;

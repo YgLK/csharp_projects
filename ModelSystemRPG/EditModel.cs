@@ -42,6 +42,8 @@ namespace ModelSystemRPG
 
         public void loadProperties()
         {
+
+
             lblModelName.Text = model.modelName;
             lblCategoryName.Text = model.categoryName;
 
@@ -49,6 +51,8 @@ namespace ModelSystemRPG
             var properties = model.getPropertiesList();
             var categoryProperties = dBHandler.getCategoryPropertiesNames(model.categoryId);
 
+            // add false property for formatting
+            addNewProperty(false);
             // retrieve data and generate row for each property
             foreach (var property in properties)
             {
@@ -83,7 +87,7 @@ namespace ModelSystemRPG
                 // define button activity after clicking it - in this case delete property
                 btnDelete.Click +=
                     (s, e) => {
-                        dBHandler.deleteModelProperty(property.propertyId);                             // <- it works, property is deleted, but Forms reload should be fixed
+                        dBHandler.deleteModelProperty(property.propertyId);                          
                         // reload properties edit view
                         EditModel editModel = new EditModel(model);
                         editModel.Show();
@@ -116,6 +120,11 @@ namespace ModelSystemRPG
 
         private void btnAddProp_Click(object sender, EventArgs e)
         {
+            addNewProperty();
+        }
+
+       private void addNewProperty(bool visible = true)
+        {
             // show property name
             TextBox txtPropertyName = new TextBox();
             txtPropertyName.Name = "txtNewPropertyName " + i;
@@ -139,17 +148,20 @@ namespace ModelSystemRPG
             btnDelete.Text = "Delete";
             btnDelete.Name = "btnNewDelete" + i;
             btnDelete.Enabled = false;
-            // nie działa, powinno usuwać aktualny wiersz :/
-            //btnDelete.Click +=        -- wyłączyłem ten przycisk, tak też można do tego podejść
-            //            (s, e) => {
-            //                this.Controls.Remove(txtPropertyName);
-            //                this.Controls.Remove(txtPropertyValue);
-            //                this.Controls.Remove(btnDelete);
-            //            };
             btnDelete.Size = new System.Drawing.Size(145, 36);
             btnDelete.UseVisualStyleBackColor = true;
             this.tableLayoutPanel1.Controls.Add(btnDelete, 2, i);
 
+            // create dummy record just for formatting purposes
+            if(visible == false)
+            {
+                txtPropertyName.Visible = false;
+                txtPropertyName.Enabled = false;
+                txtPropertyValue.Visible = false;
+                txtPropertyValue.Enabled = false;
+                btnDelete.Visible = false;
+                btnDelete.Enabled = false;
+            }
 
             // increment row count
             this.tableLayoutPanel1.RowCount = this.tableLayoutPanel1.RowCount + 1;
@@ -202,26 +214,11 @@ namespace ModelSystemRPG
                 }
             }
 
-            // voila
             MessageBox.Show("Changes has been saved.");
-            //InitializeComponent();
             
-            //Catalog catalog = new Catalog();
-            //this.Close();
-            //catalog.Show();
             EditModel editModel = new EditModel(model);
             this.Close();
             editModel.Show();
-            //              W A R N I N G
-            //---------------------------------------------------------------------------------------------------------
-            // TODO:
-            //  - po usunięciu property powinno się odświeżyć tablePanel i wyświetlać aktualne properties,
-            //  po odświeżeniu jednak pozostają properties w takim stanie jak przed usunięciem/zmianą    // DONE
-            // - system z użytkownikami
-            //      - system logowania
-            //      - dane modele może edytować // chyba // tylko wlasciciel kategorii
-            // - filtracja podczas wyświetlania, sortowanie po nazwie/ilości properties etc.
-            //---------------------------------------------------------------------------------------------------------
 
         }
     }
