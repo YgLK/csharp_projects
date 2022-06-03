@@ -24,6 +24,7 @@ namespace ModelSystemRPG
         {
             InitializeComponent();
 
+            //LoginSystem.getUserCategoriesLoaded(LoginSystem.user.userName);
             if (LoginSystem.user != null)
             {
                 lblLoggedInUsername.Text = LoginSystem.user.userName;
@@ -35,6 +36,7 @@ namespace ModelSystemRPG
 
             InitDataTable(sortType: sortType, ascending: ascending, modelList);
             setCheckBoxCheckedByDefault();
+
         }
 
         private void loadTheModelData()
@@ -112,7 +114,6 @@ namespace ModelSystemRPG
                 // define button activity after clicking it
                 btnCategory.Click += 
                     (s, e) => { 
-                        //MessageBox.Show(categoryString);
                         ShowCategory showCategory = new ShowCategory(model.categoryName, model.categoryDescription, model.environmentName);
                         showCategory.Show();
                     };
@@ -160,7 +161,6 @@ namespace ModelSystemRPG
                 btnEdit.UseVisualStyleBackColor = true;
                 // if user is owner or admin then allow him to edit the model
 
-                //if (LoginSystem.user != null && (LoginSystem.user.getCategoriesIds().Contains(model.categoryId) || LoginSystem.user.role == "Admin"))
                 if ((LoginSystem.user != null) && ((LoginSystem.user.getCategoriesIds().Contains(model.categoryId)) || (LoginSystem.user.role == "Admin" || LoginSystem.user.role == "Moderator")))
                 {
                         btnEdit.Enabled = true;

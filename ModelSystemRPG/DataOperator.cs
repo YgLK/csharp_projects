@@ -112,7 +112,6 @@ namespace ModelSystemRPG
                 }
             }
 
-            //}
             //  -- query to find all models with properties -- 
             //  SELECT c.Name as 'cetegory_name', m.Name as 'model_name', mp.Name as 'cecha_name', mp.Value as 'cecha_value'
             //  FROM Categories c

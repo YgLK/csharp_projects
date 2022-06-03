@@ -19,14 +19,22 @@ namespace ModelSystemRPG
             // check if there's username & password match in the database
             if(isPasswordCorrect(username, password))
             {
-                var databaseUser = dBHandler.getUserByUsername(username);
-                List<int> categoriesIdxs = dBHandler.getUsersCategoriesIds(databaseUser.UserId);
-                user = new LoggedUser(databaseUser.UserId, databaseUser.Username, databaseUser.Role, databaseUser.Email, categoriesIdxs);
+                //var databaseUser = dBHandler.getUserByUsername(username);
+                //List<int> categoriesIdxs = dBHandler.getUsersCategoriesIds(databaseUser.UserId);
+                //user = new LoggedUser(databaseUser.UserId, databaseUser.Username, databaseUser.Role, databaseUser.Email, categoriesIdxs);
+                getUserCategoriesLoaded(username);
                 return true;
             } else
             {
                 return false;
             }
+        }
+
+        public static void getUserCategoriesLoaded(string username)
+        {
+            var databaseUser = dBHandler.getUserByUsername(username);
+            List<int> categoriesIdxs = dBHandler.getUsersCategoriesIds(databaseUser.UserId);
+            user = new LoggedUser(databaseUser.UserId, databaseUser.Username, databaseUser.Role, databaseUser.Email, categoriesIdxs);
         }
 
         private static bool isPasswordCorrect(string username, string password)

@@ -64,7 +64,10 @@ namespace ModelSystemRPG
             {
                 string propertyName = flowLayoutPanel1.Controls[i].Text;
                 string propertyType = flowLayoutPanel1.Controls[i + 1].Text;
-                dbHandler.addCategoryProperty(categoryName, propertyName, propertyType);
+                if(propertyName != "")
+                {
+                    dbHandler.addCategoryProperty(categoryName, propertyName, propertyType);
+                }
             }
 
             MessageBox.Show("New category has been inserted.");
@@ -93,7 +96,7 @@ namespace ModelSystemRPG
             tbName.Size = new System.Drawing.Size(283, 27);
             tbName.Name = "txtPropertyName" + propertyCount.ToString();
 
-            // create type combobox according to the property name              <- Combobox here with values: int/string
+            // create type combobox according to the property name            
             ComboBox tbType = new ComboBox();
             tbType.Text = propertyValue;
             tbType.AutoSize = false;
