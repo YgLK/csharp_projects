@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWeekScheduler", "..\TestWeekScheduler\TestWeekScheduler.csproj", "{6CC62AF6-2FC9-432C-B89E-02C601E44689}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeekSchedulerControl", "WeekSchedulerControl.csproj", "{782B9631-A5D9-4424-815F-603D4EDB66C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CC62AF6-2FC9-432C-B89E-02C601E44689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CC62AF6-2FC9-432C-B89E-02C601E44689}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CC62AF6-2FC9-432C-B89E-02C601E44689}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CC62AF6-2FC9-432C-B89E-02C601E44689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{782B9631-A5D9-4424-815F-603D4EDB66C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{782B9631-A5D9-4424-815F-603D4EDB66C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{782B9631-A5D9-4424-815F-603D4EDB66C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{782B9631-A5D9-4424-815F-603D4EDB66C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51E110E8-8FF8-4D4E-A18E-9C08A665BAB2}
+	EndGlobalSection
+EndGlobal
