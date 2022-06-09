@@ -37,7 +37,13 @@ namespace ModelSystemRPG
                 MessageBox.Show("Passwords are not equal. Try again.");
             } else if (username != "" && role != "" && email != "" && password != "")
             {
+
                 DBHandler dbHandler = new DBHandler();
+                if (dbHandler.getUsersNames().Contains(username))
+                {
+                    MessageBox.Show("User " + username + " already exists. Choose different username.");
+                    return;
+                }
                 string encryptedPassword = PasswordEncryptor.EncryptPlainTextToCipherText(password);
                 dbHandler.addUser(username, role, email, encryptedPassword);
                 MessageBox.Show("New user has been added.");

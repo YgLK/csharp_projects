@@ -45,6 +45,11 @@ namespace ModelSystemRPG
             if(checkBox1.Checked == true)
             {
                 environment = txtNewEnvName.Text;
+                if (dbHandler.getEnvironmentNames().Contains(environment))
+                {
+                    MessageBox.Show("Provided environment already exists. Try again.");
+                    return;
+                }
             }else
             {
                 environment = cboxEnvironment.Text;
@@ -54,6 +59,10 @@ namespace ModelSystemRPG
             if(categoryName == "" || description == "" || environment == "" || userId < 0)
             {
                 MessageBox.Show("Fill all fields before adding new category!");
+                return;
+            } else if (dbHandler.getCategoryNames().Contains(categoryName))
+            {
+                MessageBox.Show("Category " + categoryName + " already exists. Try again.");
                 return;
             }
             dbHandler.addCategory(categoryName, userId, description, environment);
@@ -70,7 +79,7 @@ namespace ModelSystemRPG
                 }
             }
 
-            MessageBox.Show("New category has been inserted.");
+            MessageBox.Show("New category has been added.");
         }
 
         private void btnBack_Click(object sender, EventArgs e)

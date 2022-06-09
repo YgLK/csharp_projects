@@ -90,6 +90,10 @@ namespace ModelSystemRPG.Data
             }
         }
 
+        public List<String> getModelNames()
+        {
+            return rpgDbContext.Models.Select(e => e.Name).ToList();
+        }
 
         public int getCategoryIdByName(string categoryName)
         {
@@ -134,7 +138,6 @@ namespace ModelSystemRPG.Data
         {
             CategoryProperty categoryProperty = new CategoryProperty();
             categoryProperty.Name = propertyName;
-            categoryProperty.Type = propertyType;
 
             // get category id
             int categoryId = rpgDbContext.Categories.Where(e => e.Name == categoryName).Select(e => e.CategoryId).ToArray()[0];

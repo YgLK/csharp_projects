@@ -30,13 +30,14 @@ namespace ModelSystemRPG
                 lblLoggedInUsername.Text = LoginSystem.user.userName;
             }
 
+            LoginSystem.getUserCategoriesLoaded(LoginSystem.user.userName);
+
             loadTheModelData();
             List<ModelData> modelList = new List<ModelData>(modelsData.Values);
 
 
             InitDataTable(sortType: sortType, ascending: ascending, modelList);
             setCheckBoxCheckedByDefault();
-
         }
 
         private void loadTheModelData()
@@ -244,8 +245,8 @@ namespace ModelSystemRPG
         private void btnBack_Click(object sender, EventArgs e)
         {
             Menu menu = new Menu();
+            this.Close();
             menu.Show();
-            this.Hide();
         }
 
         private void btnFilterCategory_Click(object sender, EventArgs e)

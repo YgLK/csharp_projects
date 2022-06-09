@@ -10,6 +10,7 @@ namespace ModelSystemRPG
     {
         DBHandler dbHandler;
         int propertyCount;
+        List<Tuple<TextBox, TextBox>> defaultProperties;
 
         public AddModel()
         {
@@ -21,7 +22,8 @@ namespace ModelSystemRPG
             }
 
             dbHandler = new DBHandler();
-
+            // store Textboxes of default properties
+            defaultProperties = new List<Tuple<TextBox, TextBox>>();
 
             comboBoxCat.DropDownStyle = ComboBoxStyle.DropDownList;
             var envNames = dbHandler.getEnvironmentNames();
@@ -72,7 +74,7 @@ namespace ModelSystemRPG
                 // retrieve data and generate row for each property
                 foreach (var propertyName in categoryProperties)
                 {
-                    addProperty(propertyName, "", true);
+                    addProperty(propertyName: propertyName, propertyValue: "0",defaultProperty: true);
                 }
             }
         }
@@ -87,7 +89,11 @@ namespace ModelSystemRPG
 
         private void btnAddModel_Click(object sender, EventArgs e)
         {
-
+            if(comboBoxCat.Text == "No permission.")
+            {
+                MessageBox.Show("You don't have permission to add models to the categories in this environment. \nCreate new category or try again later.");
+                return;
+            }
             // model data
             string categoryName = comboBoxCat.Text;
             string modelName = txtCategoryDescription.Text;
@@ -96,9 +102,24 @@ namespace ModelSystemRPG
                 MessageBox.Show("You have to fill all the fields before adding new model.");
                 return;
             }
-            
+
             int categoryId = dbHandler.getCategoryIdByName(categoryName);
 
+            if (dbHandler.getModelNames().Contains(modelName))
+            {
+                MessageBox.Show("Model " + modelName + " already exists. Choose different name for your model!");
+                return;
+            }
+
+            // check if all default properties are filled
+            foreach(var defProperty in defaultProperties)
+            {
+                if(defProperty.Item1.Text.Trim() == "" || defProperty.Item2.Text.Trim() == "")
+                {
+                    MessageBox.Show("All default properties must be set. Try again.");
+                    return;
+                }
+            }
 
             // add model to db
             dbHandler.addModel(modelName, categoryId);
@@ -127,7 +148,7 @@ namespace ModelSystemRPG
                     }
                 }
             }
-                
+            
             MessageBox.Show("Model \'" + modelName + "\' has been added.");
 
             // get back to the menu
@@ -149,11 +170,6 @@ namespace ModelSystemRPG
             tbName.AutoSize = false;
             tbName.Size = new System.Drawing.Size(283, 27);
             tbName.Name = "txtPropertyName" + propertyCount.ToString();
-            if (defaultProperty)
-            {
-                tbName.Enabled = false;
-                tbName.BackColor = Color.Yellow;
-            }
 
             // create value textbox according to the property name
             TextBox tbValue = new TextBox();
@@ -162,6 +178,14 @@ namespace ModelSystemRPG
             tbValue.Size = new System.Drawing.Size(194, 27);
             tbValue.Name = "txtPropertyValue" + propertyCount.ToString();
 
+
+            if (defaultProperty)
+            {
+                tbName.Enabled = false;
+                tbName.BackColor = Color.Yellow;
+                defaultProperties.Add(Tuple.Create(tbName, tbValue));
+            }
+            
             // add textboxes to the panel
             flowLayoutPanel1.Controls.Add(tbName);
             flowLayoutPanel1.Controls.Add(tbValue);
