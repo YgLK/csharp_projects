@@ -6,6 +6,7 @@ namespace TestPasswordValidator
         {
             InitializeComponent();
             btnRegister.Enabled = false;
+            txtPassword.PasswordChar = '*';
             passwordValidator1.TxtBoxPasswordProp = txtPassword;
         }
 
@@ -22,7 +23,18 @@ namespace TestPasswordValidator
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Password has been accepted.");
+            if(txtUsername.Text == "")
+            {
+                MessageBox.Show("Enter the username!");
+            } else
+            {
+                MessageBox.Show("Password has been accepted.");
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            txtPassword.PasswordChar = checkBox1.Checked ? '\0' : '*';
         }
     }
 }

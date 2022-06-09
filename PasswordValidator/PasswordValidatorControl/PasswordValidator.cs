@@ -11,6 +11,11 @@ namespace PasswordValidatorControl
         private int minSpecCharCount;
         private int minCapLetterCount;
         private int minDigitCount;
+        // set only needed validation
+        private bool minCharEnabled;
+        private bool minSpecCharEnabled;
+        private bool minCapLetterEnabled;
+        private bool minDigitEnabled;
 
 
         public TextBox TxtBoxPasswordProp
@@ -39,13 +44,42 @@ namespace PasswordValidatorControl
             get { return minDigitCount; }
             set { minDigitCount = value; }
         }
-        
+
+        public bool MinCharEnabled
+        {
+            get { return minCharEnabled; }
+            set { minCharEnabled = value; }
+        }
+
+        public bool MinSpecCharEnabled
+        {
+            get { return minSpecCharEnabled; }
+            set { minSpecCharEnabled = value; }
+        }
+
+        public bool MinCapLetterEnabled
+        {
+            get { return minCapLetterEnabled; }
+            set { minCapLetterEnabled = value; }
+        }
+
+        public bool MinDigitEnabled
+        {
+            get { return minDigitEnabled; }
+            set { minDigitEnabled = value; }
+        }
+
 
         public PasswordValidator()
         {
             InitializeComponent();
 
             //setLabels();
+
+            //minCharEnabled = true;
+            //minSpecCharEnabled = true;
+            //minCapLetterEnabled = true;
+            //minDigitEnabled = true;
         }
 
         protected override void OnHandleCreated(EventArgs e)
@@ -55,28 +89,54 @@ namespace PasswordValidatorControl
 
         private void setLabels()
         {
-            lblMinChar.Text = "at least " + minCharCount + " character";
-            if (minCharCount > 1)
+            if (minCharEnabled) { 
+                lblMinChar.Text = "at least " + minCharCount + " character";
+                if (minCharCount > 1)
+                {
+                    lblMinChar.Text += "s";
+                }
+            } else
             {
-                lblMinChar.Text += "s";
+                lblMinChar.Text = "No length constraint.";
             }
 
-            lblMinSpecChar.Text = "at least " + minSpecCharCount + " special character";
-            if (minSpecCharCount > 1)
+            if (minSpecCharEnabled)
             {
-                lblMinSpecChar.Text += "s";
+                lblMinSpecChar.Text = "at least " + minSpecCharCount + " special character";
+                if (minSpecCharCount > 1)
+                {
+                    lblMinSpecChar.Text += "s";
+                }
+            }
+            else
+            {
+                lblMinSpecChar.Text = "No special characters constraint.";
             }
 
-            lblCapitalLetter.Text = "at least " + minCapLetterCount + " capital letter";
-            if (minCapLetterCount > 1)
+            if (minCapLetterEnabled)
             {
-                lblCapitalLetter.Text += "s";
+                lblCapitalLetter.Text = "at least " + minCapLetterCount + " capital letter";
+                if (minCapLetterCount > 1)
+                {
+                    lblCapitalLetter.Text += "s";
+                }
+            }
+            else
+            {
+                lblCapitalLetter.Text = "No capital letter constraint.";
             }
 
-            lblMinDigit.Text = "at least " + minDigitCount + " digit";
-            if (minDigitCount > 1)
+            if (minDigitEnabled)
             {
-                lblMinDigit.Text += "s";
+                lblMinDigit.Text = "at least " + minDigitCount + " digit";
+                if (minDigitCount > 1)
+                {
+                    lblMinDigit.Text += "s";
+                }
+            }
+            else
+            {
+                lblMinDigit.Text = "No digit constraint.";
             }
         }
 
@@ -127,48 +187,71 @@ namespace PasswordValidatorControl
                 return true;
             }
             return false;
-
         }
 
+
         private bool isPasswordLengthCorrect()
-        {  
-            int length = txtBoxPassword.Text.Length;
-            if(length >= minCharCount)
+        {
+            if (minCharEnabled)
+            {
+                int length = txtBoxPassword.Text.Length;
+                if(length >= minCharCount)
+                {
+                    return true;
+                }
+                return false;
+            } else
             {
                 return true;
             }
-            return false;
         }
 
         private bool isSpecialCharCountCorrect()
         {
-            int specialCharCount = Regex.Matches(txtBoxPassword.Text, "[~!@#$%^&*()_+{}:\"<>?]").Count;
-            if (specialCharCount >= minSpecCharCount)
+            if (minSpecCharEnabled)
+            {
+                int specialCharCount = Regex.Matches(txtBoxPassword.Text, "[~!@#$%^&*()_+{}:\"<>?]").Count;
+                if (specialCharCount >= minSpecCharCount)
+                {
+                    return true;
+                }
+                return false;
+            } else
             {
                 return true;
             }
-            return false;
         }
 
         private bool isCapitalLettersCountCorrect()
         {
-            int capitalLettersCount = txtBoxPassword.Text.Count(c => char.IsUpper(c));
-            if (capitalLettersCount >= minCapLetterCount)
+            if (minCapLetterEnabled)
+            {
+                int capitalLettersCount = txtBoxPassword.Text.Count(c => char.IsUpper(c));
+                if (capitalLettersCount >= minCapLetterCount)
+                {
+                    return true;
+                }
+                return false;
+            } else
             {
                 return true;
             }
-            return false;
         }
 
         private bool isDigitCountCorrect()
         {
-            int digitCount = txtBoxPassword.Text.Count(c => Char.IsNumber(c));
-            if (digitCount >= minDigitCount)
+            if (minDigitEnabled)
+            {
+                int digitCount = txtBoxPassword.Text.Count(c => Char.IsNumber(c));
+                if (digitCount >= minDigitCount)
+                {
+                    return true;
+                }
+                return false;
+            } else
             {
                 return true;
             }
-            return false;
         }
-
     }
 }

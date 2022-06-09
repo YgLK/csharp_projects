@@ -34,6 +34,7 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.passwordValidator1 = new PasswordValidatorControl.PasswordValidator();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtPassword
@@ -83,19 +84,35 @@
             // 
             this.passwordValidator1.Location = new System.Drawing.Point(222, 163);
             this.passwordValidator1.MinCapLetterCountProp = 1;
+            this.passwordValidator1.MinCapLetterEnabled = false;
             this.passwordValidator1.MinCharCountProp = 7;
+            this.passwordValidator1.MinCharEnabled = true;
             this.passwordValidator1.MinDigitCountProp = 3;
+            this.passwordValidator1.MinDigitEnabled = true;
             this.passwordValidator1.MinSpecCharCountProp = 1;
+            this.passwordValidator1.MinSpecCharEnabled = true;
             this.passwordValidator1.Name = "passwordValidator1";
             this.passwordValidator1.Size = new System.Drawing.Size(293, 190);
             this.passwordValidator1.TabIndex = 7;
             this.passwordValidator1.TxtBoxPasswordProp = this.txtPassword;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(259, 146);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(108, 19);
+            this.checkBox1.TabIndex = 8;
+            this.checkBox1.Text = "Show password";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.passwordValidator1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtUsername);
@@ -103,6 +120,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPassword);
             this.Name = "Form1";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -116,5 +134,6 @@
         private TextBox txtUsername;
         private Label label2;
         private PasswordValidatorControl.PasswordValidator passwordValidator1;
+        private CheckBox checkBox1;
     }
 }
