@@ -209,6 +209,7 @@ namespace ModelSystemRPG.Data
 
         public User getUserByUsername(string username)
         {
+            rpgDbContext = new SystemRPGContext();
             return rpgDbContext.Users.Where(e => e.Username == username).Select(e => e).ToList()[0];
         }
     }

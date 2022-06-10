@@ -28,9 +28,9 @@ namespace ModelSystemRPG
             if (LoginSystem.user != null)
             {
                 lblLoggedInUsername.Text = LoginSystem.user.userName;
+                LoginSystem.getUserCategoriesLoaded(LoginSystem.user.userName);
             }
 
-            LoginSystem.getUserCategoriesLoaded(LoginSystem.user.userName);
 
             loadTheModelData();
             List<ModelData> modelList = new List<ModelData>(modelsData.Values);
