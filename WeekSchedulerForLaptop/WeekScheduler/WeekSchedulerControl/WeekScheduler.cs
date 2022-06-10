@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics;
+using System.Globalization;
 
 namespace WeekSchedulerControl
 {
@@ -133,25 +134,17 @@ namespace WeekSchedulerControl
                     Button taskButton = new Button();
                     taskButton.Text = task.taskName;
                     taskButton.Name = task.taskName + j;
-                    switch (task.priority)
-                    {
-                        case "Important":
-                            taskButton.ForeColor = Color.White;
-                            taskButton.BackColor = Color.Red;
-                            break;
-                        case "Casual":
-                            taskButton.ForeColor = Color.DarkBlue;
-                            taskButton.BackColor = Color.YellowGreen;
-                            break;
-                        case "Non-relevant":
-                            taskButton.ForeColor = Color.Black;
-                            taskButton.BackColor = Color.LightSkyBlue;
-                            break;
-                    }
+                    taskButton.ForeColor = Color.Black;
+                    // paint button on priority color
+
+                    string colorArgb = ReaderJSON.getColorOfPriority(task.priority);
+                    Debug.Write(colorArgb);
+                    Color colorFromColorCode = System.Drawing.ColorTranslator.FromHtml("#" + colorArgb);
+                    taskButton.BackColor = colorFromColorCode;
+                    
                     taskButton.Click += 
                         (s, e) =>
                          {
-                             //MessageBox.Show($"Task: {task.taskName} \nDescription: {task.taskDescription}\nDate: {task.date}\n Start time: {task.timeStart}\n End time: {task.timeEnd}");
                              DeleteTask deleteTask = new DeleteTask(this, task.taskName);
                              deleteTask.Show();
                          };

@@ -15,8 +15,9 @@ namespace WeekSchedulerControl
         public string timeStart { get; set; }
         public string timeEnd { get; set; }
         public string priority { get; set; }
+        public string priorityColour { get; set; }
 
-        public Task(string _taskName, string _taskDescription, string _date, string _timeStart, string _timeEnd, string _priority)
+        public Task(string _taskName, string _taskDescription, string _date, string _timeStart, string _timeEnd, string _priority, string _priorityColour)
         {
             taskName = _taskName;
             taskDescription = _taskDescription;
@@ -24,6 +25,7 @@ namespace WeekSchedulerControl
             timeStart = _timeStart;
             timeEnd = _timeEnd;
             priority = _priority;
+            priorityColour = _priorityColour;
             dateInfo = new DateInformation(date);
         }
 

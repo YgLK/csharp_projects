@@ -18,12 +18,13 @@ namespace WeekSchedulerControl
         public static void addNewTask(Task task)
         {
             Debug.Write(System.AppDomain.CurrentDomain.BaseDirectory);
-
+            // add task to tasks list
             List<Task> data = getTasksList();
             data.Add(task);
-            //_data.Add(task);
 
+            // serialize list of tasks to string
             string json = System.Text.Json.JsonSerializer.Serialize(data);
+            // save serialized list of tasks in JSON format to file
             File.WriteAllText(filePath, json);
         }
 
@@ -31,6 +32,7 @@ namespace WeekSchedulerControl
         {
             List<Task> data = getTasksList();
             List<Task> newData = new List<Task>();
+            // omit task to delete
             foreach(Task task in data){
                 if(task.taskName == taskToRemove.taskName)
                 {
@@ -39,6 +41,7 @@ namespace WeekSchedulerControl
                 newData.Add(task);
             }
 
+            // save list of tasks without deleted task
             string json = System.Text.Json.JsonSerializer.Serialize(newData);
             File.WriteAllText(filePath, json);
 
@@ -56,6 +59,7 @@ namespace WeekSchedulerControl
                 } 
             }
             List<Task> items;
+            // deserialize list of tasks from JSON file
             using (StreamReader r = new StreamReader(filePath))
             {
                 string json = r.ReadToEnd();
@@ -69,12 +73,14 @@ namespace WeekSchedulerControl
             List<Task> tasks = getTasksList();
             foreach(Task task in tasks)
             {
+                // return task if found
                 if(task.taskName == taskName)
                 {
                     return task;
                 }
             }
-            return new Task("Non-existing task", "ERROR", "ERROR", "ERROR", "ERROR", "ERROR");
+            // if task isn't found
+            return new Task("Non-existing task", "ERROR", "ERROR", "ERROR", "ERROR", "ERROR", "ERROR");
         }
 
         public static List<string> getTaskNames()
@@ -90,15 +96,33 @@ namespace WeekSchedulerControl
             return names;
         }
 
-        public string getColorForPriority(string priority)
+        public static string getColorOfPriority(string priority)
         {
+            var priorityColors = getPriorityColours();
             if (priority == "")
             {
                 return "";
+            } else
+            {
+                return priorityColors[priority];
             }
-            return "";
         }
 
+        public static Dictionary<string, string> getPriorityColours()
+        {
+            Dictionary<string, string> priorityColours =  new Dictionary<string, string>();
+
+            var tasks = getTasksList();
+            // add color for each priority occuring in the task dataset
+            foreach(var task in tasks)
+            {
+                if (!priorityColours.ContainsKey(task.priority))
+                {
+                    priorityColours.Add(task.priority, task.priorityColour);
+                }
+            }
+            return priorityColours;
+        }
 
         public static void saveTasksToFilepath(string filePath)
         {

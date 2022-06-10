@@ -18,9 +18,11 @@ namespace WeekSchedulerControl
         public DeleteTask(WeekScheduler _weekScheduler, String taskName = "")
         {
             InitializeComponent();
+            // load all task names
             comboBox1.DataSource = ReaderJSON.getTaskNames();
             currOpenScheduler = _weekScheduler;
 
+            // show picked task information
             Task pickedTask = ReaderJSON.getTaskByName(comboBox1.Text);
             lblDate.Text =  pickedTask.date;
             lblDescription.Text = pickedTask.taskDescription;
@@ -37,13 +39,17 @@ namespace WeekSchedulerControl
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            // get task to delete
             Task toDel = ReaderJSON.getTaskByName(comboBox1.Text);
+            // delete task 
             ReaderJSON.deleteTask(toDel);
+            // show message
             MessageBox.Show("Task successfully deleted.");
 
             TableLayoutPanel tlp = currOpenScheduler.Controls.Find("tableLayoutPanel1", true).FirstOrDefault() as TableLayoutPanel;
             // update scheduler form
             tlp.Visible = false;
+            // refresh WeekScheduler tasks
             currOpenScheduler.deleteButtonsFromPreviousTasks();
             currOpenScheduler.loadTasks();
             tlp.Visible = true;
@@ -58,12 +64,6 @@ namespace WeekSchedulerControl
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Task pickedTask = ReaderJSON.getTaskByName(comboBox1.Text);
-            //lblDate.Text = pickedTask.date;
-            //lblDescription.Text = pickedTask.taskDescription;
-            //lblPriority.Text = pickedTask.priority;
-            //lblStartTime.Text = pickedTask.timeStart;
-            //lblEndTime.Text = pickedTask.timeEnd;
             showTaskInfo(comboBox1.Text);
         }
 

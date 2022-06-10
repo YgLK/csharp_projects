@@ -50,7 +50,8 @@ namespace WeekSchedulerControl
                 if( taskStartDate.ToShortDateString() == DateTime.Now.ToShortDateString())
                 {
                     // 15 minutes before task start is set the reminder time
-                    DateTime remindTime = taskStartDate.AddMinutes(-15);
+                    DateTime remindTime = taskStartDate.AddMinutes(-15); 
+                    //DateTime remindTime = taskStartDate.AddMinutes(-12);
                     // add datetime with its task to the list
                     remindTask.Add(remindTime, task);
                 }

@@ -43,6 +43,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtTaskDescription = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.checkBoxCustomPriority = new System.Windows.Forms.CheckBox();
+            this.txtNewPriority = new System.Windows.Forms.TextBox();
+            this.lblNewPriority = new System.Windows.Forms.Label();
+            this.btnColourChoose = new System.Windows.Forms.Button();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.SuspendLayout();
             // 
             // txtTaskName
@@ -55,9 +60,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(200, 67);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(160, 67);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 15);
+            this.label1.Size = new System.Drawing.Size(90, 21);
             this.label1.TabIndex = 1;
             this.label1.Text = "Task name";
             // 
@@ -72,6 +78,7 @@
             // 
             // cbxPriority
             // 
+            this.cbxPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxPriority.FormattingEnabled = true;
             this.cbxPriority.Location = new System.Drawing.Point(310, 141);
             this.cbxPriority.Name = "cbxPriority";
@@ -81,51 +88,55 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(200, 149);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(160, 143);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 15);
+            this.label3.Size = new System.Drawing.Size(67, 21);
             this.label3.TabIndex = 4;
             this.label3.Text = "Priority";
             // 
             // datePicker
             // 
             this.datePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.datePicker.Location = new System.Drawing.Point(310, 216);
+            this.datePicker.Location = new System.Drawing.Point(310, 307);
             this.datePicker.Name = "datePicker";
-            this.datePicker.Size = new System.Drawing.Size(200, 23);
+            this.datePicker.Size = new System.Drawing.Size(204, 23);
             this.datePicker.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(200, 222);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(160, 309);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 15);
+            this.label4.Size = new System.Drawing.Size(93, 21);
             this.label4.TabIndex = 6;
             this.label4.Text = "Pick a date";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(200, 260);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(160, 354);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 15);
+            this.label5.Size = new System.Drawing.Size(85, 21);
             this.label5.TabIndex = 7;
             this.label5.Text = "Start time";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(200, 297);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(160, 391);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 15);
+            this.label6.Size = new System.Drawing.Size(78, 21);
             this.label6.TabIndex = 8;
             this.label6.Text = "End time";
             // 
             // cbbStart
             // 
             this.cbbStart.FormattingEnabled = true;
-            this.cbbStart.Location = new System.Drawing.Point(310, 257);
+            this.cbbStart.Location = new System.Drawing.Point(310, 352);
             this.cbbStart.Name = "cbbStart";
             this.cbbStart.Size = new System.Drawing.Size(204, 23);
             this.cbbStart.TabIndex = 9;
@@ -133,14 +144,14 @@
             // cbbEnd
             // 
             this.cbbEnd.FormattingEnabled = true;
-            this.cbbEnd.Location = new System.Drawing.Point(310, 294);
+            this.cbbEnd.Location = new System.Drawing.Point(310, 389);
             this.cbbEnd.Name = "cbbEnd";
             this.cbbEnd.Size = new System.Drawing.Size(204, 23);
             this.cbbEnd.TabIndex = 10;
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(321, 333);
+            this.btnSubmit.Location = new System.Drawing.Point(232, 446);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(134, 36);
             this.btnSubmit.TabIndex = 11;
@@ -151,9 +162,10 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(200, 106);
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(160, 105);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(91, 15);
+            this.label7.Size = new System.Drawing.Size(133, 21);
             this.label7.TabIndex = 13;
             this.label7.Text = "Task description";
             // 
@@ -166,7 +178,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(321, 387);
+            this.button1.Location = new System.Drawing.Point(400, 446);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(134, 36);
             this.button1.TabIndex = 14;
@@ -174,11 +186,53 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // checkBoxCustomPriority
+            // 
+            this.checkBoxCustomPriority.AutoSize = true;
+            this.checkBoxCustomPriority.Location = new System.Drawing.Point(310, 170);
+            this.checkBoxCustomPriority.Name = "checkBoxCustomPriority";
+            this.checkBoxCustomPriority.Size = new System.Drawing.Size(132, 19);
+            this.checkBoxCustomPriority.TabIndex = 15;
+            this.checkBoxCustomPriority.Text = "Add custom priority";
+            this.checkBoxCustomPriority.UseVisualStyleBackColor = true;
+            this.checkBoxCustomPriority.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // txtNewPriority
+            // 
+            this.txtNewPriority.Location = new System.Drawing.Point(310, 214);
+            this.txtNewPriority.Name = "txtNewPriority";
+            this.txtNewPriority.Size = new System.Drawing.Size(204, 23);
+            this.txtNewPriority.TabIndex = 16;
+            // 
+            // lblNewPriority
+            // 
+            this.lblNewPriority.AutoSize = true;
+            this.lblNewPriority.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblNewPriority.Location = new System.Drawing.Point(338, 198);
+            this.lblNewPriority.Name = "lblNewPriority";
+            this.lblNewPriority.Size = new System.Drawing.Size(132, 13);
+            this.lblNewPriority.TabIndex = 17;
+            this.lblNewPriority.Text = "Enter new priority name";
+            // 
+            // btnColourChoose
+            // 
+            this.btnColourChoose.Location = new System.Drawing.Point(310, 254);
+            this.btnColourChoose.Name = "btnColourChoose";
+            this.btnColourChoose.Size = new System.Drawing.Size(204, 30);
+            this.btnColourChoose.TabIndex = 18;
+            this.btnColourChoose.Text = "Choose colouring";
+            this.btnColourChoose.UseVisualStyleBackColor = true;
+            this.btnColourChoose.Click += new System.EventHandler(this.button2_Click);
+            // 
             // AddTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(801, 513);
+            this.Controls.Add(this.btnColourChoose);
+            this.Controls.Add(this.lblNewPriority);
+            this.Controls.Add(this.txtNewPriority);
+            this.Controls.Add(this.checkBoxCustomPriority);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtTaskDescription);
@@ -218,5 +272,11 @@
         private Label label7;
         private TextBox txtTaskDescription;
         private Button button1;
+        private CheckBox checkBox1;
+        private TextBox txtNewPriority;
+        private Label lblNewPriority;
+        private Button btnColourChoose;
+        private ColorDialog colorDialog1;
+        private CheckBox checkBoxCustomPriority;
     }
 }
