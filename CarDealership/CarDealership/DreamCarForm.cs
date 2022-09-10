@@ -12,42 +12,9 @@ namespace CarDealership
         ReservationHandler reservationHandler;
         Dictionary<string, int> accessories;
 
-        // -------------------------------------------------------- # DONE
-        // TODO:
-        // BUG JEST - Toyota Rav4 - kila kolorów samochodu dla każdego koloru po jednym silniku 
-        // silniki nie są rozdzielane na podstawie kolorów przez co brakuje ceny jesli damy nieodpowiedni 
-        // silnik do auta o innym kolorze - zrobić wyswietlanie silników na podstawie kolorów,
-        // czyt. wybór najpierw koloru, a później silnika, gdzie silnik jest uzależniony od koloru
-        // lub jakoś inaczej to przemyśleć
-        // --------------------------------------------------------
-
         public DreamCarForm()
         {
             InitializeComponent();
-            //dataOffersHandler = new DataOffersHandler();
-            //reservationHandler = new ReservationHandler();
-            //var makes = dataOffersHandler.carOffers.Keys;
-            //carMakeComboBox.DataSource = makes.ToList();
-
-            //// hide text before searching
-            //priceLabel.Text = "";
-            //prodYearLabel.Text = "";
-
-            //accessories = new Dictionary<string, int>();
-
-            //accessories.Add("GPS", 100);
-            //accessories.Add("Parking sensors/camera", 1500);
-            //accessories.Add("Snow Chains", 50);
-            //accessories.Add("Child Seats", 200);
-            //accessories.Add("Car cover", 150);
-            //accessories.Add("Air freshener", 30);
-            //accessories.Add("Jumper cable", 50);
-
-            //foreach (string acc in accessories.Keys.ToList())
-            //{
-            //    boxAdditionalAccessories.Items.Add(acc);
-            //}
-            //showChosenCarImage();
             loadCarDealershipData();
         }
 

@@ -74,12 +74,6 @@ namespace PasswordValidatorControl
         {
             InitializeComponent();
 
-            //setLabels();
-
-            //minCharEnabled = true;
-            //minSpecCharEnabled = true;
-            //minCapLetterEnabled = true;
-            //minDigitEnabled = true;
         }
 
         protected override void OnHandleCreated(EventArgs e)

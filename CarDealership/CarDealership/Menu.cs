@@ -16,7 +16,6 @@ namespace CarDealership
         {
             InitializeComponent();
             label1.BackColor = System.Drawing.Color.Transparent;
-
         }
 
         private void dreamCarButton_Click(object sender, EventArgs e)

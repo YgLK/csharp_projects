@@ -83,8 +83,9 @@
             // passwordValidator1
             // 
             this.passwordValidator1.Location = new System.Drawing.Point(222, 163);
+            this.passwordValidator1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.passwordValidator1.MinCapLetterCountProp = 1;
-            this.passwordValidator1.MinCapLetterEnabled = false;
+            this.passwordValidator1.MinCapLetterEnabled = true;
             this.passwordValidator1.MinCharCountProp = 7;
             this.passwordValidator1.MinCharEnabled = true;
             this.passwordValidator1.MinDigitCountProp = 3;
@@ -121,7 +122,7 @@
             this.Controls.Add(this.txtPassword);
             this.Name = "Form1";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.Text = "Form1";
+            this.Text = "PasswordValidatorDemo";
             this.ResumeLayout(false);
             this.PerformLayout();
 
