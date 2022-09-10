@@ -14,9 +14,9 @@ Database Viewer is a simple project which can be used for database manipulation 
 
 ## Setup  <a name="initial-setup"></a>
 
-1. Install .NET and MySQL (if not installed already).
-2. Database is stored in the `AddressBook.mdb` file.
-3. Run the app from the Visual Studio or build the project and run the created executable file.
+0. Install .NET and MySQL (if not installed already).
+1. Database is stored in the `AddressBook.mdb` file.
+2. Run the app from the Visual Studio or build the project and run the created executable file.
 
 ## Technologies used <a name="technologies-used"></a>
 
