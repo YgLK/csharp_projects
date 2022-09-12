@@ -8,7 +8,7 @@
 | 1   |                    [Memory Game](./MemoryApp)                     |
 | 2   |                 [Car Dealership](./CarDealership)                 |
 | 3   | [**RPG Models Management System**](./ModelSystemRPG) |
-| 4   |          [Week Scheduler (Control)](./PasswordValidator)          |
+| 4   |          [Week Scheduler (Control)](./WeekScheduler)          |
 | 5   |        [Password Validator (Control)](./PasswordValidator)        |
 | 6   |             [Database Data Viewer](./DatabaseViewer)              |
 | 7   |                        [Others](./Others)                         |
